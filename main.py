@@ -48,6 +48,26 @@ def S_type(l):
 
 
 def SB_type(l):
+    if(l[0]=='beq'):
+        if(l[1]==l[2]):
+            return 1
+        else:
+            return 0
+    if(l[0]=='bne'):
+        if(l[1]!=l[2]):
+            return 1
+        else:
+            return 0
+    if(l[0]=='bge'):
+        if(l[1]>=l[2]):
+            return 1
+        else:
+            return 0
+    if(l[0]=='blt'):
+        if(l[1]<l[2]):
+            return 1
+        else:
+            return 0    
 
 def I_type(l):
     if l[0]=='addi':
@@ -63,20 +83,26 @@ def I_type(l):
 
 
 def UJ_type(l):
-    
-def U_type(l):
+    #we don't have to do anything in uj_type instruction in execution step
 
+def U_type(l):
+    return l[1]<<12
 
 
 
 def execute(l):
     if(l[0]=='R'):
-
+        return R_type(l[1:])
     elif(l[0]=='S'):
+        return S_type(l[1:])
     elif l[0]=='I':
+        return I_type(l[1:])
     elif l[0]=='SB':
+        return SB_type(l[1:])
     elif l[0]=='U':
+        return U_type(l[1:])
     elif l[0]=='UJ':
+        return UJ_type(l[1:])
     else:
         print("Invalid Instruction type!")
 
