@@ -1,4 +1,4 @@
-mc_file=open('Samplemc.txt')
+mc_file=open('Samplemc.txt')  #here sample file is mc file
 
 dict_text=dict()
 dict_data=dict()
@@ -6,7 +6,7 @@ dict_data=dict()
 def form_dict_text(sample_file):
     for line in sample_file:
         words=line.split()
-        if words[0]=='0xffffc':
+        if words[0]=='0xffffc':      #Have taken 0xffffc as delimiter for text segment
             break
         dict_text[words[0]]=words[1]
     return dict_text
