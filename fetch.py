@@ -1,3 +1,4 @@
+#Returns two dictionaries one with the text and other with data part
 mc_file=open('Samplemc.txt')  #here sample file is mc file
 
 dict_text=dict()
