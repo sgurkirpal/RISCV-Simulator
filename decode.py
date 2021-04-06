@@ -14,11 +14,9 @@ def twos(string):
     return z
 def decode(instrc):
     x=int(instrc,16)    
-    bin_x="{:032b}".format(x)       
-    print(bin_x)     
+    bin_x="{:032b}".format(x)           
     d={}
     opcode=bin_x[25:32]
-    print(opcode)
     if(opcode=='0110011'):   # R-type instruction 
         d['type']="R"
         rd=bin_x[32-12:32-7]
@@ -146,7 +144,7 @@ def decode(instrc):
             d['opr']='bge'
         elif(func3=='100'):
             d['opr']='blt'
-              
+
     return d
         
     
