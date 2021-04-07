@@ -1,6 +1,8 @@
 def to_hex(n): # gives string output
     num=hex(n)
     return num
+
+
 def twos(string):
     x=string
     l=len(x)
@@ -12,6 +14,8 @@ def twos(string):
     z=bin(z)
     z='-'+z
     return z
+
+    
 def decode(instrc):
     x=int(instrc,16)    
     bin_x="{:032b}".format(x)           
