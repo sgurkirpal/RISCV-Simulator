@@ -3,15 +3,6 @@
 #like whether the instruction is r type s type....
 #we also have the value of immediate rs1, rs2...whatever required
 
-reg={} #registers
-for i in range(32):
-    reg[i]=0x00000000
-    if i==2:
-        reg[i]=0x7FFFFFF0
-    if i==3:
-        reg[i]=0x10000000
-
-
 def rshift(val, n):  #logical right shift
     return val>>n if val >= 0 else (val+0x100000000)>>n
 
@@ -53,22 +44,22 @@ def S_type(l):  #l[1] is rs1 and l[2] is immmedirdiate
 def SB_type(l):
     if(l[0]=='beq'):
         if(l[1]==l[2]):
-            return 1
+            return l[3]
         else:
             return 0
     if(l[0]=='bne'):
         if(l[1]!=l[2]):
-            return 1
+            return l[3]
         else:
             return 0
     if(l[0]=='bge'):
         if(l[1]>=l[2]):
-            return 1
+            return l[3]
         else:
             return 0
     if(l[0]=='blt'):
         if(l[1]<l[2]):
-            return 1
+            return l[3]
         else:
             return 0    
 
@@ -86,7 +77,7 @@ def I_type(l):  #l[0] is operation , l[1] is rs1 and l[2] is immediate
 
 
 def UJ_type(l):
-    hi=None
+    return l[1]
     #we don't have to do anything in uj_type instruction in execution step
 
 def U_type(l):
@@ -105,7 +96,7 @@ def execute(d):
         l=[d['opr'],d['rs1'],d['imm']]
         return I_type(l)
     elif d['type']=='SB':
-        l=[d['opr'],d['rs1'],d['rs2']]
+        l=[d['opr'],d['rs1'],d['rs2'],d['imm']]
         return SB_type(l)
     elif d['type']=='U':
         l=[d['opr'],d['imm']]

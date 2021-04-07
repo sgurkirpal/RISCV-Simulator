@@ -7,6 +7,15 @@ import execute
 instruction_dict={}    #dictionary storing instructions
 data_dict={}    #dictionary storing data in memory
 
+reg={} #registers
+for i in range(32):
+    reg[i]=0x00000000
+    if i==2:
+        reg[i]=0x7FFFFFF0
+    if i==3:
+        reg[i]=0x10000000
+
+
 file=open("sample.mc","r")
 
 instruction_dict,data_dict = fetch.fetch_file(file)
