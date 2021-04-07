@@ -18,9 +18,11 @@ def twos(string):
     
 def decode(instrc):
     x=int(instrc,16)    
-    bin_x="{:032b}".format(x)           
+    bin_x="{:032b}".format(x)       
+    print(bin_x)     
     d={}
     opcode=bin_x[25:32]
+    print(opcode)
     if(opcode=='0110011'):   # R-type instruction 
         d['type']="R"
         rd=bin_x[32-12:32-7]
@@ -47,6 +49,10 @@ def decode(instrc):
             d['opr']='and'
         elif(func3=='110'and func7=='0000000'):
             d['opr']='or'
+        elif(func3=='000'and func7=='0000001'):
+            d['opr']='mul'
+        elif(func3=='100'and func7=='0000001'):
+            d['opr']='div'
             
     if(bin_x[25:32]=='0010011'):   # I type instruction 1st half
         d['type']="I"
@@ -104,7 +110,7 @@ def decode(instrc):
         d['imm']=bin_x[32-32:32-25]+bin_x[32-12:32-7]
         if(d['imm'][0]=='1'):                           # to check for sign extension
             d['imm']=twos(d['imm'])
-        elif(func3=='000'):
+        if(func3=='000'):
             d['opr']='sb'
         elif(func3=='001'):
             d['opr']='sh'
@@ -119,10 +125,10 @@ def decode(instrc):
         d['rs1']=bin_x[32-20:32-15]
         d['rs2']=bin_x[32-25:32-20]
         func3=bin_x[32-15:32-12]
-        d['imm']=bin_x[32-32]+bin_x[32-8]+bin_x[32-12:32-8]+bin_x[32-31:32-25]+'0'
+        d['imm']=bin_x[32-32]+bin_x[32-8]+bin_x[32-31:32-25]+bin_x[32-12:32-8]+'0'
         if(d['imm'][0]=='1'):                           # to check for sign extension
             d['imm']=twos(d['imm'])
-        elif(func3=='000'):
+        if(func3=='000'):
             d['opr']='beq'
         elif(func3=='001'):
             d['opr']='bne'
@@ -131,25 +137,57 @@ def decode(instrc):
         elif(func3=='100'):
             d['opr']='blt'
             
-    if(bin_x[25:32]=='1100011'):   # U type instructions
+    if(bin_x[25:32]=='0010111'or bin_x[25:32]=='0110111'):   # U type instructions
         d['type']="U"       
        
         rd=bin_x[32-12:32-7]
         d['rd']=rd
         
-        d['imm']=bin_x[32-32:32-25]
+        string=bin_x[32-32:32-12]
+        for i in range(32-len(string)):
+            string=string+'0'
+        d['imm']=string
         if(d['imm'][0]=='1'):                           # to check for sign extension
             d['imm']=twos(d['imm'])
-        elif(func3=='000'):
-            d['opr']='beq'
-        elif(func3=='001'):
-            d['opr']='bne'
-        elif(func3=='101'):
-            d['opr']='bge'
-        elif(func3=='100'):
-            d['opr']='blt'
-
+        if(opcode=='0010111'):
+            d['opr']='auipc'
+        else:
+            d['opr']='lui'
+    if(bin_x[25:32]=='1101111'):   # UJ type instructions
+        d['type']="UJ"       
+       
+        rd=bin_x[32-12:32-7]
+        d['rd']=rd
+        
+        string=bin_x[0]+bin_x[32-20:32-12]+bin_x[32-21]+bin_x[32-31:32-21]
+        for i in range(32-len(string)):
+            string=string+'0'
+        d['imm']=string
+        if(d['imm'][0]=='1'):                           # to check for sign extension
+            d['imm']=twos(d['imm'])
+       
+        d['opr']='jal'
+        
+            
+            
+            
+     
+        
+        
+            
+            
+        
+        
+        
+        
+        
     return d
+        
+    
+    
+    
+    
+    
         
     
     
