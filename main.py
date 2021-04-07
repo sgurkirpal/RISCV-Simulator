@@ -2,6 +2,7 @@
 
 import fetch
 import decode
+import execute
 
 instruction_dict={}    #dictionary storing instructions
 data_dict={}    #dictionary storing data in memory
@@ -21,5 +22,6 @@ for i in range(10):
 
     decoded_info=decode.decode(instruction_register)
     print(decoded_info)
-    print(pc)
-    pc_temp=fetch.increment_pc(pc)
+    #rz=execute.execute(decoded_info)
+
+    pc=fetch.increment_pc(pc)

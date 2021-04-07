@@ -16,9 +16,9 @@ def rshift(val, n):  #logical right shift
     return val>>n if val >= 0 else (val+0x100000000)>>n
 
 
-def R_type(l):
-    if l[0]=='add':
-        return l[1]+l[2]
+def R_type(l): #l[0] is operation
+    if l[0]=='add':  
+        return l[1]+l[2]    #l[1] is rs1 and l[2] is rs[2]
     if(l[0]=='sub'):
         return l[1]-l[2]
     if(l[0]=='or'):
@@ -46,7 +46,7 @@ def R_type(l):
         return l[1]*l[2]
 
 
-def S_type(l):
+def S_type(l):  #l[1] is rs1 and l[2] is immmedirdiate
     return l[1]+l[2]
 
 
@@ -72,7 +72,7 @@ def SB_type(l):
         else:
             return 0    
 
-def I_type(l):
+def I_type(l):  #l[0] is operation , l[1] is rs1 and l[2] is immediate
     if l[0]=='addi':
         return l[1]+l[2]
     if l[0]=='ori':
@@ -94,21 +94,28 @@ def U_type(l):
 
 
 
-def execute(l):
-    if(l[0]=='R'):
-        return R_type(l[1:])
-    elif(l[0]=='S'):
-        return S_type(l[1:])
-    elif l[0]=='I':
-        return I_type(l[1:])
-    elif l[0]=='SB':
-        return SB_type(l[1:])
-    elif l[0]=='U':
-        return U_type(l[1:])
-    elif l[0]=='UJ':
-        return UJ_type(l[1:])
+def execute(d):
+    if(d['type']=='R'):
+        l=[d['opr'],d['rs1'],d['rs2']]
+        return R_type(l)
+    elif(d['type']=='S'):
+        l=[d['opr'],d['rs1'],d['imm']]
+        return S_type(l)
+    elif d['type']=='I':
+        l=[d['opr'],d['rs1'],d['imm']]
+        return I_type(l)
+    elif d['type']=='SB':
+        l=[d['opr'],d['rs1'],d['rs2']]
+        return SB_type(l)
+    elif d['type']=='U':
+        l=[d['opr'],d['imm']]
+        return U_type(l)
+    elif d['type']=='UJ':
+        l=[d['opr'],d['imm']]
+        return UJ_type(l)
     else:
         print("Invalid Instruction type!")
+        return 0
 
 
 
