@@ -81,28 +81,34 @@ def UJ_type(l):
     #we don't have to do anything in uj_type instruction in execution step
 
 def U_type(l):
-    return l[1]<<12
+    return l[1]
 
 
 
-def execute(d):
+def execute(d,reg):
+    if 'rs1' in d:
+        rs1=int(reg[int(d['rs1'],2)],16)
+    if 'rs2' in d:
+        rs2=int(reg[int(d['rs2'],2)],16)
+    if 'imm' in d:
+        imm=int(d['imm'],2)
     if(d['type']=='R'):
-        l=[d['opr'],d['rs1'],d['rs2']]
+        l=[d['opr'],rs1,rs2]
         return R_type(l)
     elif(d['type']=='S'):
-        l=[d['opr'],d['rs1'],d['imm']]
+        l=[d['opr'],rs1,imm]
         return S_type(l)
     elif d['type']=='I':
-        l=[d['opr'],d['rs1'],d['imm']]
+        l=[d['opr'],rs1,imm]
         return I_type(l)
     elif d['type']=='SB':
-        l=[d['opr'],d['rs1'],d['rs2'],d['imm']]
+        l=[d['opr'],rs1,rs2,imm]
         return SB_type(l)
     elif d['type']=='U':
-        l=[d['opr'],d['imm']]
+        l=[d['opr'],imm]
         return U_type(l)
     elif d['type']=='UJ':
-        l=[d['opr'],d['imm']]
+        l=[d['opr'],imm]
         return UJ_type(l)
     else:
         print("Invalid Instruction type!")
