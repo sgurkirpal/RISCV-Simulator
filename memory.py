@@ -2,12 +2,14 @@
 
 def memory(return_address,rz,l,rm,memory_dictionary,pc_temp):
     if(l[1]=='lw'):
-        return memory_dictionary[rz]
+        sam=memory_dictionary[rz]
+        am=sam[6:8]+sam[4:6]+sam[2:4]+sam[:2]
+        return am
     elif(l[1]=='lb'):
-        a=str(memory_dictionary)
+        a=memory_dictionary[rz]
         return '000000'+a[:2]
     elif(l[1]=='lh'):
-        a=str(memory_dictionary)
+        a=memory_dictionary[rz]
         return '0000'+a[:4]
     elif(l[1]=='jalr'):
         return pc_temp
