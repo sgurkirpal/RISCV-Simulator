@@ -1,23 +1,23 @@
 #Returns two dictionaries one with the text and other with data part
 
-def form_dict_text(sample_file):
-    dict_text={}
-    for line in sample_file:
-        words=line.split()
-        if words[0]=='0xffffc':      #Have taken 0xffffc as delimiter for text segment
-            break
-        dict_text[words[0]]=words[1]
-    return dict_text
-
-def form_dict_data(sample_file):
-    dict_data={}
-    for line in sample_file:
-        words=line.split()
-        dict_data[words[0]]=words[1]
-    return dict_data
+def increment_pc(pc):   #takes a hex string as input and returns a hex string with 0x4 added in it
+    pc_int=int(pc,16)
+    new_pc=pc_int + 0x4
+    new_pc=hex(new_pc)
+    return str(new_pc)
 
 def fetch_file(mc_file):
-    dict_text=form_dict_text(mc_file)
-    dict_data=form_dict_data(mc_file)
-
+    dict_text={}
+    dict_data={}
+    flag=0 # 0 while we add pc and 1 while adding memory
+    for line in mc_file:
+        words=line.split()
+        if(words[0]=='0xffffc'):   # delimilter --> 0xffffc
+            flag=1
+            continue
+        if flag==0:
+            dict_text[words[0]]=words[1]
+        else:
+            dict_data[words[0]]=words[1]
+        
     return dict_text,dict_data
