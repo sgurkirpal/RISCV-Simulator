@@ -1,9 +1,7 @@
 #Returns two dictionaries one with the text and other with data part
 
-dict_text=dict()
-dict_data=dict()
-
 def form_dict_text(sample_file):
+    dict_text={}
     for line in sample_file:
         words=line.split()
         if words[0]=='0xffffc':      #Have taken 0xffffc as delimiter for text segment
@@ -12,6 +10,7 @@ def form_dict_text(sample_file):
     return dict_text
 
 def form_dict_data(sample_file):
+    dict_data={}
     for line in sample_file:
         words=line.split()
         dict_data[words[0]]=words[1]
