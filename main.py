@@ -30,7 +30,7 @@ pc_temp="0x0"
 pc_final="0x0"
 
 instruction_register=None
-
+print(data_dict)
 while(1):
     if pc not in instruction_dict:
         break
