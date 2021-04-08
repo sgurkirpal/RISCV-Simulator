@@ -170,6 +170,8 @@ class Ui_MainWindow(object):
             temp2="x"+str(x)
             self.tableWidget.setItem(i,0,QtWidgets.QTableWidgetItem(temp2))
             temp1=dic[x].upper()
+            if(temp1[0]=='-'):
+                temp1=hex(int(temp1,16)+(1<<32))
             for j in range(1,6):
                 self.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*j:2*(j+1)]))
             i+=1
