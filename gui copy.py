@@ -76,8 +76,8 @@ class Ui_MainWindow(object):
         self.tableWidget_2 = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_2.setGeometry(QtCore.QRect(620, 420, 291, 341))
         self.tableWidget_2.setObjectName("tableWidget_2")
-        self.tableWidget_2.setColumnCount(0)
-        self.tableWidget_2.setRowCount(0)
+        self.tableWidget_2.setColumnCount(5)
+        self.tableWidget_2.setRowCount(13)
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser_2.setGeometry(QtCore.QRect(310, 420, 256, 31))
         self.textBrowser_2.setObjectName("textBrowser_2")
@@ -113,9 +113,6 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName("label_7")
         self.tableWidget_3 = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_3.setGeometry(QtCore.QRect(620, 80, 281, 301))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.tableWidget_3.setFont(font)
         self.tableWidget_3.setRowCount(10)
         self.tableWidget_3.setColumnCount(2)
         self.tableWidget_3.setObjectName("tableWidget_3")
@@ -138,17 +135,19 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-
         self.tableWidget.setColumnWidth(0,50)
         self.tableWidget.setColumnWidth(1,42)
         self.tableWidget.setColumnWidth(2,42)
         self.tableWidget.setColumnWidth(3,42)
         self.tableWidget.setColumnWidth(4,42)
+        self.tableWidget_2.setColumnWidth(0,80)
+        self.tableWidget_2.setColumnWidth(1,42)
+        self.tableWidget_2.setColumnWidth(2,42)
+        self.tableWidget_2.setColumnWidth(3,42)
+        self.tableWidget_2.setColumnWidth(4,42)
         self.tableWidget_3.setColumnWidth(1,135)
     def loaddata(self,dic):
         i=0
-        
         for x in dic:
             temp2="x"+str(x)
             self.tableWidget.setItem(i,0,QtWidgets.QTableWidgetItem(temp2))
@@ -158,16 +157,20 @@ class Ui_MainWindow(object):
             i+=1
     def loaddata2(self,dic):
         i=0
-        self.tableWidget_3.setRowCount(len(dic))
-        
+        self.tableWidget_3.setRowCount(max(11,len(dic)))
         for x in dic:
-            print(x)
             self.tableWidget_3.setItem(i,0,QtWidgets.QTableWidgetItem(x))
             temp1=dic[x].upper()
             self.tableWidget_3.setItem(i,1,QtWidgets.QTableWidgetItem(temp1))
-            self.tableWidget_3.setColumnWidth(1,135)
             i+=1
-        
+    def loaddata3(self,dic):
+        i=0
+        for x in dic:
+            self.tableWidget_2.setItem(i,0,QtWidgets.QTableWidgetItem(x))
+            temp1=dic[x].upper()
+            for j in range(1,6):
+                self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*j:2*(j+1)]))
+            i+=1
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -236,7 +239,8 @@ class Ui_MainWindow(object):
         ir,pc,reg,idi,dd=main_copy.assemble()
         self.loaddata(reg)
         self.loaddata2(idi)
-        self.tableWidget_3.setColumnWidth(1,135)
+        self.loaddata3(dd)
+
         
 
     
