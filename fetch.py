@@ -18,8 +18,8 @@ def fetch_file(mc_file):
         if flag==0:
             dict_text[words[0]]=words[1]
         else:
-            if(len(words[1]==3)):
-                words[1]=words[:2]+'0'+words[2:]
+            if(len(words[1])==3):
+                words[1]=words[1][:2]+'0'+words[1][2:]
             dict_data[words[0]]=words[1]
         
     return dict_text,dict_data
