@@ -141,9 +141,7 @@ def decode(instrc):
         rd=bin_x[32-12:32-7]
         d['rd']=rd
         
-        string=bin_x[32-32:32-12]
-        for i in range(32-len(string)):
-            string=string+'0'
+        string=bin_x[32-32:32-12]+'0'*12
         d['imm']=string
         if(d['imm'][0]=='1'):                           # to check for sign extension
             d['imm']=twos(d['imm'])
@@ -157,9 +155,8 @@ def decode(instrc):
         rd=bin_x[32-12:32-7]
         d['rd']=rd
         
-        string=bin_x[0]+bin_x[32-20:32-12]+bin_x[32-21]+bin_x[32-31:32-21]
-        for i in range(32-len(string)):
-            string=string+'0'
+        string=bin_x[0]+bin_x[32-20:32-12]+bin_x[32-21]+bin_x[32-31:32-21]+'0'
+        string=string[0]*(32-len(string))+string
         d['imm']=string
         if(d['imm'][0]=='1'):                           # to check for sign extension
             d['imm']=twos(d['imm'])
