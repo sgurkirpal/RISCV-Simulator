@@ -100,10 +100,12 @@ def U_type(l,pc_temp):
 
 def execute(d,reg,pc_temp):
     #print("HEllo mam",d)
-    #print(reg)
+    print(reg)
     if 'rs1' in d:
+        print(d['rs1'])
         rs1=int(reg[int(d['rs1'],2)],16)
     if 'rs2' in d:
+        print(d['rs2'])
         rs2=int(reg[int(d['rs2'],2)],16)
     if 'imm' in d:
         imm=int(d['imm'],2)

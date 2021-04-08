@@ -49,9 +49,13 @@ while(1):
     rz,pc_final=execute.execute(decoded_info,reg,pc_temp)
     
     rz=hex(rz)
-    if(len(rz)!=10):
-        rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
-    
+    if(int(rz,16)<0):
+        if(len(rz)!=11):
+            rz='-'+rz[1:3]+'0'*(11-len(rz))+rz[3:]
+    else:
+        if(len(rz)!=10):
+            rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
+    print(int(rz,16))
     muxy,data_dict=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
 
     if('rd' in decoded_info):
