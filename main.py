@@ -37,7 +37,7 @@ while(1):
     instruction_register=instruction_dict[pc]
     pc_temp=fetch.increment_pc(pc)
     decoded_info=decode.decode(instruction_register)
-    #print("HI ADITI",decoded_info)
+    print(decoded_info)
     rm=None
     
     if 'rs2' in decoded_info:
@@ -51,6 +51,7 @@ while(1):
     
     #print(rz)
     rz=hex(rz)
+    print(rz)
     if(len(rz)!=10):
         rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
     #print(rz)
@@ -62,5 +63,5 @@ while(1):
     pc=pc_final
     #print(reg)
 print("Done")
-#print(reg)
+print(reg)
 #print(data_dict)

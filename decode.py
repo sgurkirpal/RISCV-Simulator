@@ -40,7 +40,7 @@ def decode(instrc):
         elif(func3=='101'and func7=='0100000'):
             d['opr']='sra'
         elif(func3=='010'and func7=='0000000'):
-            d['opr']='sra'
+            d['opr']='slt'
         elif(func3=='100'and func7=='0000000'):
             d['opr']='xor'
         elif(func3=='111'and func7=='0000000'):
