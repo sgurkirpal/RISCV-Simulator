@@ -2,40 +2,69 @@
 
 def memory(return_address,rz,l,rm,memory_dictionary,pc_temp):
     if(l[1]=='lw'):
-        sam=memory_dictionary[rz]
-        sam=sam[2:]
-        am='0x'+sam[6:8]+sam[4:6]+sam[2:4]+sam[:2]
+        rz=int(rz,16)
+        am='0x'
+        if(hex(rz+3) in memory_dictionary):
+            am+=memory_dictionary[hex(rz+3)][2:]
+        else:
+            am+='00'
+        if(hex(rz+2) in memory_dictionary):
+            am+=memory_dictionary[hex(rz+2)][2:]
+        else:
+            am+='00'
+        if(hex(rz+1) in memory_dictionary):
+            am+=memory_dictionary[hex(rz+1)][2:]
+        else:
+            am+='00'
+        if(hex(rz) in memory_dictionary):
+            am+=memory_dictionary[hex(rz)][2:]
+        else:
+            am+='00'
         return am,memory_dictionary
     elif(l[1]=='lb'):
-        a=memory_dictionary[rz]
-        a=a[2:]
-        if(a[0]<0x8):
-            return '0x000000'+a[:2],memory_dictionary
+        am='0x'
+        if(rz in memory_dictionary):
+            am+=memory_dictionary[hex(rz)][2:]
         else:
-            return '0x111111'+a[:2],memory_dictionary
+            am+='00'
+        if(am[2]<0x8):
+            return '0x000000'+am[2:],memory_dictionary
+        else:
+            return '0x111111'+am[2:],memory_dictionary
     elif(l[1]=='lh'):
-        a=memory_dictionary[rz]
-        a=a[2:]
-        if(a[2]<0x8):
-            return '0x0000'+a[2:4]+a[0:2],memory_dictionary
+        rz=int(rz,16)
+        am='0x'
+        if(hex(rz+1) in memory_dictionary):
+            am+=memory_dictionary[hex(rz+1)][2:]
         else:
-            return '0x1111'+a[2:4]+a[0:2],memory_dictionary
+            am+='00'
+        if(hex(rz) in memory_dictionary):
+            am+=memory_dictionary[hex(rz)][2:]
+        else:
+            am+='00'
+        if(am[2]<0x8):
+            return '0x0000'+am[2:],memory_dictionary
+        else:
+            return '0x1111'+am[2:],memory_dictionary
     elif(l[1]=='jalr'):
         return pc_temp,memory_dictionary
     elif(l[1]=='sw'):
+        rz=int(rz,16)
         rm=str(rm)
-        am=rm[6:8]+rm[4:6]+rm[2:4]+rm[:2]
-        memory_dictionary[rz]='0x'+am
+        memory_dictionary[hex(rz+3)]='0x'+rm[0:2]
+        memory_dictionary[hex(rz+2)]='0x'+rm[2:4]
+        memory_dictionary[hex(rz+1)]='0x'+rm[4:6]
+        memory_dictionary[hex(rz)]='0x'+rm[6:8]
         return rz,memory_dictionary
     elif(l[1]=='sh'):
+        rz=int(rz,16)
         rm=str(rm)
-        am=rm[6:8]+rm[4:6]
-        memory_dictionary[rz]='0x'+am+'0000'
+        memory_dictionary[hex(rz+1)]='0x'+rm[4:6]
+        memory_dictionary[hex(rz)]='0x'+rm[6:8]
         return rz,memory_dictionary
     elif(l[1]=='sb'):
         rm=str(rm)
-        am=rm[6:8]
-        memory_dictionary[rz]='0x'+am+'000000'
+        memory_dictionary[rz]='0x'+rm[6:8]
         return rz,memory_dictionary
     else:
         return rz,memory_dictionary
