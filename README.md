@@ -39,6 +39,13 @@ RISCV-Simulator
       |- bubble_sort.mc
 
 ==============
+Requirements
+==============
+Python library - "PyQt5" is required to run the GUI.
+It Can be installed using:
+"pip install PyQt5".
+
+==============
 How to run
 ==============
 	|
