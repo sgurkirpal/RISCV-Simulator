@@ -9,9 +9,17 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+import os,sys,subprocess
+import gui_main
 class Ui_MainWindow(object):
+    pc=0
+    ir=0
+    reg=0
+    idi=0
+    dd=0
+    clock=0
+    pc_f=0
+    pc_t=0
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(932, 821)
@@ -30,7 +38,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setGeometry(QtCore.QRect(370, 70, 131, 31))
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(440, 210, 131, 31))
+        self.pushButton_3.setGeometry(QtCore.QRect(445, 230, 131, 31))
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_4.setGeometry(QtCore.QRect(90, 750, 89, 25))
@@ -76,16 +84,16 @@ class Ui_MainWindow(object):
         self.tableWidget_2 = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_2.setGeometry(QtCore.QRect(620, 420, 291, 341))
         self.tableWidget_2.setObjectName("tableWidget_2")
-        self.tableWidget_2.setColumnCount(0)
-        self.tableWidget_2.setRowCount(0)
+        self.tableWidget_2.setColumnCount(5)
+        self.tableWidget_2.setRowCount(13)
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser_2.setGeometry(QtCore.QRect(310, 420, 256, 31))
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(310, 210, 111, 31))
+        self.pushButton_5.setGeometry(QtCore.QRect(305, 230, 131, 31))
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_6.setGeometry(QtCore.QRect(380, 140, 101, 31))
+        self.pushButton_6.setGeometry(QtCore.QRect(385, 120, 101, 31))
         self.pushButton_6.setObjectName("pushButton_6")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(320, 280, 81, 31))
@@ -111,11 +119,17 @@ class Ui_MainWindow(object):
         font.setPointSize(13)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
+        self.label_8 = QtWidgets.QLabel(self.centralwidget)
+        self.label_8.setGeometry(QtCore.QRect(320, 165, 81, 31))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label_8")
+        self.textBrowser_6 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_6.setGeometry(QtCore.QRect(390, 165, 101, 31))
+        self.textBrowser_6.setObjectName("textBrowser_6")
         self.tableWidget_3 = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_3.setGeometry(QtCore.QRect(620, 80, 281, 301))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.tableWidget_3.setFont(font)
         self.tableWidget_3.setRowCount(10)
         self.tableWidget_3.setColumnCount(2)
         self.tableWidget_3.setObjectName("tableWidget_3")
@@ -138,24 +152,63 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-
         self.tableWidget.setColumnWidth(0,50)
         self.tableWidget.setColumnWidth(1,42)
         self.tableWidget.setColumnWidth(2,42)
         self.tableWidget.setColumnWidth(3,42)
         self.tableWidget.setColumnWidth(4,42)
-        self.loaddata()
-    def loaddata(self):
-        dic={'x1':'0xdeadbeef','x2':'0xbeefdead'}
+        self.tableWidget_2.setColumnWidth(0,80)
+        self.tableWidget_2.setColumnWidth(1,42)
+        self.tableWidget_2.setColumnWidth(2,42)
+        self.tableWidget_2.setColumnWidth(3,42)
+        self.tableWidget_2.setColumnWidth(4,42)
+        self.tableWidget_3.setColumnWidth(1,135)
+    def loaddata(self,dic):
         i=0
         for x in dic:
-            self.tableWidget.setItem(i,0,QtWidgets.QTableWidgetItem(x))
+            temp2="x"+str(x)
+            self.tableWidget.setItem(i,0,QtWidgets.QTableWidgetItem(temp2))
             temp1=dic[x].upper()
             for j in range(1,6):
                 self.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*j:2*(j+1)]))
             i+=1
-
+    def loaddata2(self,dic):
+        i=0
+        self.tableWidget_3.setRowCount(max(11,len(dic)))
+        for x in dic:
+            self.tableWidget_3.setItem(i,0,QtWidgets.QTableWidgetItem(x))
+            temp1=dic[x].upper()
+            self.tableWidget_3.setItem(i,1,QtWidgets.QTableWidgetItem(temp1))
+            i+=1
+    def loaddata3(self,dic):
+        
+        t1=list(dic.keys())
+        newdic={}
+        for i in range(len(t1)):
+            newdic[int(t1[i],16)]=dic[t1[i]][2:]
+            t1[i]=int(t1[i],16)
+        t1.sort()
+        fina={}
+        nice=0
+        for i in range(len(t1)):
+            if(t1[i]%4==0):
+                nice=t1[i]//4
+                fina[hex(nice*4)]=newdic[t1[i]]+"000000"
+            else:
+                nice=t1[i]//4
+                etc=t1[i]%4
+                if(fina.get(hex(nice*4),-1)==-1):
+                    fina[hex(nice*4)]="00"*(etc)+newdic[t1[i]]+"00"*(3-etc)
+                else:
+                    fina[hex(nice*4)]=fina[hex(nice*4)][:2*(etc)]+newdic[t1[i]]+fina[hex(nice*4)][2*(etc+1):]
+        self.tableWidget_2.setRowCount(max(13,len(fina)))
+        i=0
+        for x in fina:
+            self.tableWidget_2.setItem(i,0,QtWidgets.QTableWidgetItem(x))
+            temp1=fina[x].upper()
+            for j in range(1,6):
+                self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*(j-1):2*(j)]))
+            i+=1
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -177,6 +230,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "PC :"))
         self.label_6.setText(_translate("MainWindow", "IR:"))
         self.label_7.setText(_translate("MainWindow", "Instructions"))
+        self.label_8.setText(_translate("MainWindow", "Clock:"))
         self.textBrowser_5.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -190,7 +244,93 @@ class Ui_MainWindow(object):
         self.label_5.adjustSize()
         self.label_6.adjustSize()
         self.label_7.adjustSize()
-        
+        self.pushButton_2.clicked.connect(lambda: self.opendata())
+        self.pushButton.clicked.connect(lambda: self.guihelp())
+        self.pushButton_4.clicked.connect(lambda: self.outputlog())
+        self.pushButton_6.clicked.connect(lambda: self.assembly())
+        self.pushButton_5.clicked.connect(lambda: self.step())
+        self.pushButton_3.clicked.connect(lambda: self.run())
+
+
+    def opendata(self):
+        try:
+            string=os.path.abspath(os.getcwd())
+            string+="\data.mc"
+            os.startfile(string)
+        except:
+            opener = "open" if sys.platform == "darwin" else "xdg-open"
+            subprocess.call([opener, "data.mc"])
+    def guihelp(self):
+        try:
+            string=os.path.abspath(os.getcwd())
+            string+="\guihelp.txt"
+            os.startfile(string)
+        except:
+            opener = "open" if sys.platform == "darwin" else "xdg-open"
+            subprocess.call([opener, "guihelp.txt"])
+    def outputlog(self):
+        try:
+            string=os.path.abspath(os.getcwd())
+            string+="\output.txt"
+            os.startfile(string)
+        except:
+            opener = "open" if sys.platform == "darwin" else "xdg-open"
+            subprocess.call([opener, "output.txt"])
+    def assembly(self):
+        self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t=gui_main.assemble()
+        self.loaddata(self.reg)
+        self.loaddata2(self.idi)
+        self.loaddata3(self.dd)
+        self.textBrowser_3.clear()
+        self.textBrowser_3.append(self.pc)
+        self.textBrowser_4.clear()
+        self.clockadj()
+        self.tableWidget_2.clear()
+
+
+    def step(self):
+        print(self.pc)
+        if(self.pc!=-1):
+            self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+            self.loaddata(self.reg)
+            self.loaddata2(self.idi)
+            self.loaddata3(self.dd)
+            self.textBrowser_3.clear()
+            if(self.pc!=-1):
+                self.textBrowser_3.append(str(self.pc))
+            else:
+                self.textBrowser_3.append("Completed")
+            self.textBrowser_4.clear()
+            self.textBrowser_4.append(self.ir)
+            self.clockadj()
+        else:
+            return
+    def run(self):
+        while(self.pc!=-1):
+            self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+            self.loaddata(self.reg)
+            self.loaddata2(self.idi)
+            self.loaddata3(self.dd)
+            self.textBrowser_3.clear()
+            if(self.pc!=-1):
+                self.textBrowser_3.append(str(self.pc))
+            else:
+                self.textBrowser_3.append("Completed")
+            self.textBrowser_4.clear()
+            self.textBrowser_4.append(self.ir)
+            self.clockadj()
+
+    def clockadj(self):
+        self.textBrowser_6.clear()
+        temp1=""
+        if(self.clock==1):
+            temp1=str(self.clock)+" Cycle"
+        else:
+            temp1=str(self.clock)+ " Cycles"
+        self.textBrowser_6.append(temp1)
+    
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

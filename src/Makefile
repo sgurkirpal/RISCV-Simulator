@@ -1,5 +1,5 @@
 
 default:
-	python final_gui.py
+	python gui.py
 
 
