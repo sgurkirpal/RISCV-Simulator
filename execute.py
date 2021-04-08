@@ -87,7 +87,7 @@ def UJ_type(l,pc_temp):
 def U_type(l,pc_temp):
     #in case of auipc just add the value of pc temp in it
     if(l[0]=='auipc'):
-        return l[1]+pc_temp-4,pc_temp
+        return l[1]+int(pc_temp,16)-4,pc_temp
     #in case of lui we don't have to do anything.
     return l[1],pc_temp
 
