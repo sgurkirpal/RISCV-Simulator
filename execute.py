@@ -75,7 +75,8 @@ def I_type(l,pc_temp):  #l[0] is operation , l[1] is rs1 and l[2] is immediate
     if l[0]=='lb' or l[0]=='lh' or l[0]=='ld' or l[0]=='lw':
         return l[1]+l[2],pc_temp
     if l[0]=='jalr':
-        return int(pc_temp,16),l[1]+l[2]
+        print(l[1]+l[2])
+        return int(pc_temp,16),hex(l[1]+l[2])
 
 
 def UJ_type(l,pc_temp):
