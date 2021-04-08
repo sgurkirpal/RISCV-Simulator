@@ -46,22 +46,22 @@ def SB_type(l,pc_temp):
         if(l[1]==l[2]):
             #yahan kuch pc final type ki baat hori hai..we have to go in pc final 
             #we don't have to return the value of other things.
-            return 1,l[3]
+            return 1,hex(int(pc_temp,16)-4+l[3])
         else:
             return 0,pc_temp
     if(l[0]=='bne'):
         if(l[1]!=l[2]):
-            return 1,l[3]
+            return 1,hex(int(pc_temp,16)-4+l[3])
         else:
             return 0,pc_temp
     if(l[0]=='bge'):
         if(l[1]>=l[2]):
-            return 1,l[3]
+            return 1,hex(int(pc_temp,16)+l[3]-4)
         else:
             return 0,pc_temp
     if(l[0]=='blt'):
         if(l[1]<l[2]):
-            return 1,l[3]
+            return 1,hex(int(pc_temp,16)-4+l[3])
         else:
             return 0,pc_temp   
 
@@ -81,13 +81,13 @@ def I_type(l,pc_temp):  #l[0] is operation , l[1] is rs1 and l[2] is immediate
 def UJ_type(l,pc_temp):
     #we have to change the value of pc final to pc_immediate and also we have to store the value of next thing in register
     #we have to store the value of pc_temp also
-    return 1,l[1]
+    return 1,hex(int(pc_temp,16)+l[1]-4)
     #we don't have to do anything in uj_type instruction in execution step
 
 def U_type(l,pc_temp):
     #in case of auipc just add the value of pc temp in it
     if(l[0]=='auipc'):
-        return l[1]+int(pc_temp,16)-4,pc_temp
+        return int(pc_temp,16)+l[1]-4,pc_temp
     #in case of lui we don't have to do anything.
     return l[1],pc_temp
 
