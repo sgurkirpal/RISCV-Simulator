@@ -216,7 +216,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "RISC-V Simulator"))
-        self.pushButton.setText(_translate("MainWindow", "GUI Help"))
+        self.pushButton.setText(_translate("MainWindow", "README"))
         self.pushButton_2.setText(_translate("MainWindow", "Open data.mc"))
         self.pushButton_3.setText(_translate("MainWindow", "RUN"))
         self.pushButton_4.setText(_translate("MainWindow", "Output Log"))
@@ -266,11 +266,11 @@ class Ui_MainWindow(object):
     def guihelp(self):
         try:
             string=os.path.abspath(os.getcwd())
-            string+="\guihelp.txt"
+            string+="\README.md"
             os.startfile(string)
         except:
             opener = "open" if sys.platform == "darwin" else "xdg-open"
-            subprocess.call([opener, "guihelp.txt"])
+            subprocess.call([opener, "README.md"])
     def outputlog(self):
         try:
             string=os.path.abspath(os.getcwd())
@@ -290,7 +290,6 @@ class Ui_MainWindow(object):
         self.clockadj()
         self.tableWidget_2.clear()
         self.textBrowser.clear()
-
 
     def step(self):
         print(self.pc)
