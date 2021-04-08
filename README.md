@@ -82,6 +82,7 @@ Output console
 --It will show opcode,func3,func7
 --Instruction type
 --Rs1,RS2,Immediate values
+--Messages like which function executed.
 
 
 Open data.mc button
