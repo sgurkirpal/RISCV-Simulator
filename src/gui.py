@@ -20,6 +20,7 @@ class Ui_MainWindow(object):
     clock=0
     pc_f=0
     pc_t=0
+    outtext=0
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(932, 821)
@@ -286,12 +287,13 @@ class Ui_MainWindow(object):
         self.textBrowser_4.clear()
         self.clockadj()
         self.tableWidget_2.clear()
+        self.textBrowser.clear()
 
 
     def step(self):
         print(self.pc)
         if(self.pc!=-1):
-            self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+            self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
@@ -303,11 +305,12 @@ class Ui_MainWindow(object):
             self.textBrowser_4.clear()
             self.textBrowser_4.append(self.ir)
             self.clockadj()
+            self.textBrowser.append(self.outtext)
         else:
             return
     def run(self):
         while(self.pc!=-1):
-            self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+            self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
@@ -319,6 +322,8 @@ class Ui_MainWindow(object):
             self.textBrowser_4.clear()
             self.textBrowser_4.append(self.ir)
             self.clockadj()
+            self.textBrowser.append(self.outtext)
+        
 
     def clockadj(self):
         self.textBrowser_6.clear()
