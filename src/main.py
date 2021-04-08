@@ -19,7 +19,7 @@ for i in range(32):
         reg[i]='0x10000000'
 
 
-file=open("sample.mc","r")
+file=open("data.mc","r")
 
 instruction_dict,data_dict = fetch.fetch_file(file)
 #print(instruction_dict)

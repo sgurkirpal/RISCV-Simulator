@@ -19,7 +19,7 @@ def assemble():
             reg[i]='0x10000000'
 
 
-    file=open("sample.mc","r")
+    file=open("data.mc","r")
 
     instruction_dict,data_dict = fetch.fetch_file(file)
     #print(instruction_dict)
@@ -53,9 +53,14 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     
     #print(rz)
     rz=hex(rz)
+    if(int(rz,16)<0):
+        if(len(rz)!=11):
+            rz='-'+rz[1:3]+'0'*(11-len(rz))+rz[3:]
+    else:
+        if(len(rz)!=10):
+            rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
+    print(int(rz,16))
     print(rz,pc_final)
-    if(len(rz)!=10):
-        rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
     #print(rz)
     
     muxy,data_dict=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
