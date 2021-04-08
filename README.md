@@ -18,34 +18,36 @@ RISCV-Simulator
   |
   |- src
       |
-      |- myRISCVSim
+      |- main.py(containing whole code to run on terminal)
+      |- fetch.py(containing the code for fetch step)
+      |- decode.py(containing the code for decode step)
+      |- execute.py(containing the code for execute step)
+      |- memory.py(containing the code for memory step) 
+      |- writeback.py(containing the code for writeback step)
+      |- gui.py
+      |- gui_main.py(containing whole code to run on gui window)
+      |- data.mc
+      |- makefile 
   |- doc
       |
       |- design-doc.docx
-  |- README
+  |- README.md
       |
-      |- myRISCVSim.h
-  |- problem statement
-      |- main.c
-      |- Makefile
-      |- myRISCVSim.h
   |- test
-      |- simple_add.mc
-      |- fib.mc
-      |- array_add.mc
-      |- fact.mc
-      |- bubble.mc
+      |- fibonacci.mc
+      |- factorial.mc
+      |- bubble_sort.mc
 
 ==============
 How to run
 ==============
 	|
-	$cd 
+	$cd src
+	$cd make 
 	|
 	|_ _(With GUI)-
 	|	|
-	|	|
-	| 1. python gui.py 
+	|	| 
 	| A window will appear
 	| 2. Firstly click on Assemble
  	| If you want to run the code step by step:-
@@ -60,7 +62,6 @@ How to run
 	|_ _(Without Gui-on terminal)-
 	|	|
 	|	|
-	|  python main.py
 	|   Output-Values stored in all the registers
 	| 	  -Values stored in memory
 	| 	  -Used dictionaries as a data structure for storing these values
@@ -81,6 +82,7 @@ Output console
 --It will show opcode,func3,func7
 --Instruction type
 --Rs1,RS2,Immediate values
+
 
 Open data.mc button
 --This is the input file containing all the machine codes
