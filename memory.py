@@ -9,11 +9,17 @@ def memory(return_address,rz,l,rm,memory_dictionary,pc_temp):
     elif(l[1]=='lb'):
         a=memory_dictionary[rz]
         a=a[2:]
-        return '0x000000'+a[:2],memory_dictionary
+        if(a[0]<0x8):
+            return '0x000000'+a[:2],memory_dictionary
+        else:
+            return '0x111111'+a[:2],memory_dictionary
     elif(l[1]=='lh'):
         a=memory_dictionary[rz]
         a=a[2:]
-        return '0x0000'+a[:4],memory_dictionary
+        if(a[2]<0x8):
+            return '0x0000'+a[2:4]+a[0:2],memory_dictionary
+        else:
+            return '0x1111'+a[2:4]+a[0:2],memory_dictionary
     elif(l[1]=='jalr'):
         return pc_temp,memory_dictionary
     elif(l[1]=='sw'):
