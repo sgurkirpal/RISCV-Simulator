@@ -38,7 +38,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setGeometry(QtCore.QRect(370, 70, 131, 31))
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(440, 210, 131, 31))
+        self.pushButton_3.setGeometry(QtCore.QRect(445, 230, 131, 31))
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_4.setGeometry(QtCore.QRect(90, 750, 89, 25))
@@ -90,10 +90,10 @@ class Ui_MainWindow(object):
         self.textBrowser_2.setGeometry(QtCore.QRect(310, 420, 256, 31))
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(310, 210, 111, 31))
+        self.pushButton_5.setGeometry(QtCore.QRect(305, 230, 131, 31))
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_6.setGeometry(QtCore.QRect(380, 140, 101, 31))
+        self.pushButton_6.setGeometry(QtCore.QRect(385, 120, 101, 31))
         self.pushButton_6.setObjectName("pushButton_6")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(320, 280, 81, 31))
@@ -119,6 +119,15 @@ class Ui_MainWindow(object):
         font.setPointSize(13)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
+        self.label_8 = QtWidgets.QLabel(self.centralwidget)
+        self.label_8.setGeometry(QtCore.QRect(320, 165, 81, 31))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label_8")
+        self.textBrowser_6 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_6.setGeometry(QtCore.QRect(390, 165, 101, 31))
+        self.textBrowser_6.setObjectName("textBrowser_6")
         self.tableWidget_3 = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_3.setGeometry(QtCore.QRect(620, 80, 281, 301))
         self.tableWidget_3.setRowCount(10)
@@ -172,13 +181,33 @@ class Ui_MainWindow(object):
             self.tableWidget_3.setItem(i,1,QtWidgets.QTableWidgetItem(temp1))
             i+=1
     def loaddata3(self,dic):
+        
+        t1=list(dic.keys())
+        newdic={}
+        for i in range(len(t1)):
+            newdic[int(t1[i],16)]=dic[t1[i]][2:]
+            t1[i]=int(t1[i],16)
+        t1.sort()
+        fina={}
+        nice=0
+        for i in range(len(t1)):
+            if(t1[i]%4==0):
+                nice=t1[i]//4
+                fina[hex(nice*4)]=newdic[t1[i]]+"000000"
+            else:
+                nice=t1[i]//4
+                etc=t1[i]%4
+                if(fina.get(hex(nice*4),-1)==-1):
+                    fina[hex(nice*4)]="00"*(etc)+newdic[t1[i]]+"00"*(3-etc)
+                else:
+                    fina[hex(nice*4)]=fina[hex(nice*4)][:2*(etc)]+newdic[t1[i]]+fina[hex(nice*4)][2*(etc+1):]
+        self.tableWidget_2.setRowCount(max(13,len(fina)))
         i=0
-        self.tableWidget_2.setRowCount(max(13,len(dic)))
-        for x in dic:
+        for x in fina:
             self.tableWidget_2.setItem(i,0,QtWidgets.QTableWidgetItem(x))
-            temp1=dic[x].upper()
+            temp1=fina[x].upper()
             for j in range(1,6):
-                self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*j:2*(j+1)]))
+                self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*(j-1):2*(j)]))
             i+=1
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -201,6 +230,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "PC :"))
         self.label_6.setText(_translate("MainWindow", "IR:"))
         self.label_7.setText(_translate("MainWindow", "Instructions"))
+        self.label_8.setText(_translate("MainWindow", "Clock:"))
         self.textBrowser_5.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -254,6 +284,8 @@ class Ui_MainWindow(object):
         self.textBrowser_3.clear()
         self.textBrowser_3.append(self.pc)
         self.textBrowser_4.clear()
+        self.clockadj()
+
 
     def step(self):
         print(self.pc)
@@ -263,9 +295,10 @@ class Ui_MainWindow(object):
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
             self.textBrowser_3.clear()
-            self.textBrowser_3.append(self.pc)
+            self.textBrowser_3.append(str(self.pc))
             self.textBrowser_4.clear()
             self.textBrowser_4.append(self.ir)
+            self.clockadj()
         else:
             return
     def run(self):
@@ -278,8 +311,16 @@ class Ui_MainWindow(object):
             self.textBrowser_3.append(str(self.pc))
             self.textBrowser_4.clear()
             self.textBrowser_4.append(self.ir)
+            self.clockadj()
 
-
+    def clockadj(self):
+        self.textBrowser_6.clear()
+        temp1=""
+        if(self.clock==1):
+            temp1=str(self.clock)+" Cycle"
+        else:
+            temp1=str(self.clock)+ " Cycles"
+        self.textBrowser_6.append(temp1)
     
 
 
