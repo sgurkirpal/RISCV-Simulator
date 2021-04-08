@@ -31,7 +31,9 @@ pc_final="0x0"
 
 instruction_register=None
 print(data_dict)
+cnt=0
 while(1):
+    cnt+=1
     if pc not in instruction_dict:
         break
     print("pc",pc)
@@ -63,7 +65,9 @@ while(1):
             reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
     pc=pc_final
     #print(reg,data_dict)
-    print(reg)
+    print(reg,data_dict)
+    print("================================================================================================")
 print("Done")
 print(reg)
 print(data_dict)
+print(")))))))))",cnt)

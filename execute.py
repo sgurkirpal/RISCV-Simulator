@@ -42,6 +42,10 @@ def S_type(l,pc_temp):  #l[1] is rs1 and l[2] is immmedirdiate
 
 
 def SB_type(l,pc_temp):
+    if l[1]>=(1<<31):
+        l[1]=(1<<31)-l[1]
+    if l[2]>=(1<<31):
+        l[2]=(1<<31)-l[2]
     if(l[0]=='beq'):
         if(l[1]==l[2]):
             #yahan kuch pc final type ki baat hori hai..we have to go in pc final 
