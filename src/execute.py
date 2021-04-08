@@ -7,129 +7,154 @@ def rshift(val, n):  #logical right shift
     return val>>n if val >= 0 else (val+0x100000000)>>n
 
 
-def R_type(l,pc_temp): #l[0] is operation
+def R_type(l,pc_temp,output): #l[0] is operation
     if l[0]=='add':  
-        return l[1]+l[2],pc_temp    #l[1] is rs1 and l[2] is rs[2]
+        output+="EXECUTE: Adding "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]+l[2],pc_temp,output    #l[1] is rs1 and l[2] is rs[2]
     if(l[0]=='sub'):
-        return l[1]-l[2],pc_temp
+        output+="EXECUTE: Subtracting "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]-l[2],pc_temp,output
     if(l[0]=='or'):
-        return l[1]|l[2],pc_temp
+        output+="EXECUTE: Bitwise OR of "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]|l[2],pc_temp,output
     if(l[0]=='and'):
-        return l[1]&l[2],pc_temp
+        output+="EXECUTE: Bitwise AND of "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]&l[2],pc_temp,output
     if(l[0]=='sll'):
-        return l[1]<<l[2],pc_temp
+        output+="EXECUTE: Shift left of "+str(l[1])+" by "+str(l[2])+"\n"
+        return l[1]<<l[2],pc_temp,output
     if(l[0]=='slt'):
+        output+="EXECUTE: Set if "+str(l[1])+" is less than "+str(l[2])+"\n"
         if(l[1]<l[2]):
-            return 1,pc_temp
+            return 1,pc_temp,output
         else:
-            return 0,pc_temp
+            return 0,pc_temp,output
     if(l[0]=='sra'):
-        return rshift(l[1],l[2]),pc_temp
+        output+="EXECUTE: Shift Right arithmatic of "+str(l[1])+" by "+str(l[2])+"\n"
+        return rshift(l[1],l[2]),pc_temp,output
     if(l[0]=='srl'):
-        return l[1]>>l[2],pc_temp
+        output+="EXECUTE: Shift Right logical of "+str(l[1])+" by "+str(l[2])+"\n"
+        return l[1]>>l[2],pc_temp,output
     if(l[0]=='xor'):
-        return l[1]^l[2],pc_temp
+        output+="EXECUTE: XOR of "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]^l[2],pc_temp,output
     if(l[0]=='rem'):
-        return l[1]%l[2],pc_temp
+        output+="EXECUTE: Remainder on dividing "+str(l[1])+" by "+str(l[2])+"\n"
+        return l[1]%l[2],pc_temp,output
     if(l[0]=='div'):
-        return l[1]//l[2],pc_temp
+        output+="EXECUTE: Division of "+str(l[1])+" by "+str(l[2])+"\n"
+        return l[1]//l[2],pc_temp,output
     if(l[0]=='mul'):
-        return l[1]*l[2],pc_temp
+        output+="EXECUTE: Multiplication of "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]*l[2],pc_temp,output
 
 
-def S_type(l,pc_temp):  #l[1] is rs1 and l[2] is immmedirdiate
-    return l[1]+l[2],pc_temp
+def S_type(l,pc_temp,output):  #l[1] is rs1 and l[2] is immmedirdiate
+    output+="EXECUTE: Calculating net memory address by adding "+str(l[1])+" and "+str(l[2])+" in S-type instructions\n"
+    return l[1]+l[2],pc_temp,output
 
 
-def SB_type(l,pc_temp):
+def SB_type(l,pc_temp,output):
     if l[1]>=(1<<31):
         l[1]=(1<<31)-l[1]
     if l[2]>=(1<<31):
         l[2]=(1<<31)-l[2]
     if(l[0]=='beq'):
         if(l[1]==l[2]):
+            output+="EXECUTE: "+str(l[1])+" and "+str(l[2])+" are equal, hence, pc incremented. \n"
             #yahan kuch pc final type ki baat hori hai..we have to go in pc final 
             #we don't have to return the value of other things.
-            return 1,hex(int(pc_temp,16)-4+l[3])
+            return 1,hex(int(pc_temp,16)-4+l[3]),output
         else:
-            return 0,pc_temp
+            output+="EXECUTE: "+str(l[1])+" and "+str(l[2])+" are not equal, hence, pc not updated. \n"
+            return 0,pc_temp,output
     if(l[0]=='bne'):
         if(l[1]!=l[2]):
-            return 1,hex(int(pc_temp,16)-4+l[3])
+            output+="EXECUTE: "+str(l[1])+" and "+str(l[2])+" are not equal, hence, pc incremented. \n"
+            return 1,hex(int(pc_temp,16)-4+l[3]),output
         else:
-            return 0,pc_temp
+            output+="EXECUTE: "+str(l[1])+" and "+str(l[2])+" are equal, hence, pc not updated. \n"
+            return 0,pc_temp,output
     if(l[0]=='bge'):
         if(l[1]>=l[2]):
-            return 1,hex(int(pc_temp,16)+l[3]-4)
+            output+="EXECUTE: "+str(l[1])+" is greater than "+str(l[2])+" hence, pc incremented. \n"
+            return 1,hex(int(pc_temp,16)+l[3]-4),output
         else:
-            return 0,pc_temp
+            output+="EXECUTE: "+str(l[1])+" is not greater than "+str(l[2])+" hence, pc not updated. \n"
+            return 0,pc_temp,output
     if(l[0]=='blt'):
         if(l[1]<l[2]):
-            return 1,hex(int(pc_temp,16)-4+l[3])
+            output+="EXECUTE: "+str(l[1])+" is less than "+str(l[2])+" hence, pc incremented. \n"
+            return 1,hex(int(pc_temp,16)-4+l[3]),output
         else:
-            return 0,pc_temp   
+            output+="EXECUTE: "+str(l[1])+" is not less than "+str(l[2])+" hence, pc not updated. \n"
+            return 0,pc_temp,output   
 
-def I_type(l,pc_temp):  #l[0] is operation , l[1] is rs1 and l[2] is immediate
+def I_type(l,pc_temp,output):  #l[0] is operation , l[1] is rs1 and l[2] is immediate
     if l[0]=='addi':
-        return l[1]+l[2],pc_temp
+        output+="EXECUTE: Adding "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]+l[2],pc_temp,output
     if l[0]=='ori':
-        return l[1]|l[2],pc_temp
+        output+="EXECUTE: OR of "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]|l[2],pc_temp,output
     if l[0]=='andi':
-        return l[1]&l[2],pc_temp
+        output+="EXECUTE: AND of "+str(l[1])+" and "+str(l[2])+"\n"
+        return l[1]&l[2],pc_temp,output
     if l[0]=='lb' or l[0]=='lh' or l[0]=='ld' or l[0]=='lw':
-        return l[1]+l[2],pc_temp
+        output+="EXECUTE: Calculating net memory address by adding "+str(l[1])+" and "+str(l[2])+" in Load instructions\n"
+        return l[1]+l[2],pc_temp,output
     if l[0]=='jalr':
-        print(l[1]+l[2])
-        return int(pc_temp,16),hex(l[1]+l[2])
+        output+="EXECUTE: Calculating net memory address by adding "+str(l[1])+" and "+str(l[2])+" in jalr instruction\n"
+        return int(pc_temp,16),hex(l[1]+l[2]),output
 
 
-def UJ_type(l,pc_temp):
+def UJ_type(l,pc_temp,output):
     #we have to change the value of pc final to pc_immediate and also we have to store the value of next thing in register
     #we have to store the value of pc_temp also
-    return int(pc_temp,16),hex(int(pc_temp,16)+l[1]-4)
+    output+="EXECUTE: Calculating net memory address by adding "+str(l[1])+" in jal instruction\n"
+    return int(pc_temp,16),hex(int(pc_temp,16)+l[1]-4),output
     #we don't have to do anything in uj_type instruction in execution step
 
-def U_type(l,pc_temp):
+def U_type(l,pc_temp,output):
     #in case of auipc just add the value of pc temp in it
     if(l[0]=='auipc'):
-        return int(pc_temp,16)+l[1]-4,pc_temp
+        output+="EXECUTE: PC added to "+str(l[1])+"\n"
+        return int(pc_temp,16)+l[1]-4,pc_temp,output
     #in case of lui we don't have to do anything.
-    return l[1],pc_temp
+    output+="EXECUTE: No execute operation"
+    return l[1],pc_temp,output
 
 
 
 def execute(d,reg,pc_temp):
-    #print("HEllo mam",d)
-    print(reg)
+    output=""
     if 'rs1' in d:
-        print(d['rs1'])
         rs1=int(reg[int(d['rs1'],2)],16)
     if 'rs2' in d:
-        print(d['rs2'])
         rs2=int(reg[int(d['rs2'],2)],16)
     if 'imm' in d:
         imm=int(d['imm'],2)
     if(d['type']=='R'):
         l=[d['opr'],rs1,rs2]
-        return R_type(l,pc_temp)
+        return R_type(l,pc_temp,output)
     elif(d['type']=='S'):
         l=[d['opr'],rs1,imm]
-        return S_type(l,pc_temp)
+        return S_type(l,pc_temp,output)
     elif d['type']=='I':
         l=[d['opr'],rs1,imm]
-        return I_type(l,pc_temp)
+        return I_type(l,pc_temp,output)
     elif d['type']=='SB':
         l=[d['opr'],rs1,rs2,imm]
-        return SB_type(l,pc_temp)
+        return SB_type(l,pc_temp,output)
     elif d['type']=='U':
         l=[d['opr'],imm]
-        return U_type(l,pc_temp)
+        return U_type(l,pc_temp,output)
     elif d['type']=='UJ':
         l=[d['opr'],imm]
-        return UJ_type(l,pc_temp)
+        return UJ_type(l,pc_temp,output)
     else:
         print("Invalid Instruction type!")
-        return 0,0
+        return 0,0,""
 
 
 

@@ -294,7 +294,6 @@ class Ui_MainWindow(object):
         data.write("")
 
     def step(self):
-        print(self.pc)
         if(self.pc!=-1):
             self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
             self.loaddata(self.reg)

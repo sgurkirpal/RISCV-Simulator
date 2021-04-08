@@ -22,15 +22,12 @@ for i in range(32):
 file=open("data.mc","r")
 
 instruction_dict,data_dict = fetch.fetch_file(file)
-#print(instruction_dict)
-#print(data_dict)
-#print(data_dict)
+
 pc="0x0"    #initial pc is by default 0x0
 pc_temp="0x0"
 pc_final="0x0"
 
 instruction_register=None
-print(data_dict)
 clock=0
 while(1):
     if pc not in instruction_dict:
@@ -55,15 +52,9 @@ while(1):
     else:
         if(len(rz)!=10):
             rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
-    print(int(rz,16))
     muxy,data_dict=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
 
     if('rd' in decoded_info):
         if(int(decoded_info['rd'],2)!=0):
             reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
     pc=pc_final
-    
-print("Done")
-print(reg)
-print(data_dict)
-print(")))))))))",clock)
