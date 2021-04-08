@@ -4,6 +4,7 @@ import fetch
 import decode
 import execute
 import memory
+import Writeback
 
 instruction_dict={}    #dictionary storing instructions
 data_dict={}    #dictionary storing data in memory
@@ -21,18 +22,22 @@ for i in range(32):
 file=open("sample.mc","r")
 
 instruction_dict,data_dict = fetch.fetch_file(file)
+#print(instruction_dict)
+#print(data_dict)
 #print(data_dict)
 pc="0x0"    #initial pc is by default 0x0
+pc_temp="0x0"
+pc_final="0x0"
 
 instruction_register=None
 
-for i in range(10):
+while(1):
     if pc not in instruction_dict:
         break
     instruction_register=instruction_dict[pc]
-
+    pc_temp=fetch.increment_pc(pc)
     decoded_info=decode.decode(instruction_register)
-
+    #print("HI ADITI",decoded_info)
     rm=None
 
     if 'rs2' in decoded_info:
@@ -40,18 +45,22 @@ for i in range(10):
         rm=rm[2:]
         for i in range(8-len(rm)):
             rm="0"+rm
-
+    #print(rm)
+    
     #print(decoded_info)
     #print(hex(int(decoded_info['imm'],2)))
-    rz=execute.execute(decoded_info,reg)
-    rz=hex(rz)
+    rz,pc_final=execute.execute(decoded_info,reg,pc_temp)
+    
     #print(rz)
-    ry=memory.memory(0x0,rz,[0,decoded_info['opr']],rm,data_dict,fetch.increment_pc(pc))
+    rz=hex(rz)
+    if(len(rz)!=10):
+        rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
+    #print(rz)
+    muxy,data_dict=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],rm,data_dict,pc_temp)
     #print(ry)
-    if 'rd' in decoded_info:
-        reg[int(decoded_info['rd'],2)]=ry
-    pc=fetch.increment_pc(pc)
+    reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
+    pc=pc_final
     #print(reg)
-
+print("Done")
 #print(reg)
 #print(data_dict)
