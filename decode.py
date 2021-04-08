@@ -40,7 +40,11 @@ def decode(instrc):
         elif(func3=='101'and func7=='0100000'):
             d['opr']='sra'
         elif(func3=='010'and func7=='0000000'):
+<<<<<<< HEAD
             d['opr']='sra'
+=======
+            d['opr']='slt'
+>>>>>>> 31eb8883be8e77578a3c8ed2bf0311e418eb1ea7
         elif(func3=='100'and func7=='0000000'):
             d['opr']='xor'
         elif(func3=='111'and func7=='0000000'):
@@ -141,9 +145,13 @@ def decode(instrc):
         rd=bin_x[32-12:32-7]
         d['rd']=rd
         
+<<<<<<< HEAD
         string=bin_x[32-32:32-12]
         for i in range(32-len(string)):
             string=string+'0'
+=======
+        string=bin_x[32-32:32-12]+'0'*12
+>>>>>>> 31eb8883be8e77578a3c8ed2bf0311e418eb1ea7
         d['imm']=string
         if(d['imm'][0]=='1'):                           # to check for sign extension
             d['imm']=twos(d['imm'])
@@ -157,9 +165,14 @@ def decode(instrc):
         rd=bin_x[32-12:32-7]
         d['rd']=rd
         
+<<<<<<< HEAD
         string=bin_x[0]+bin_x[32-20:32-12]+bin_x[32-21]+bin_x[32-31:32-21]
         for i in range(32-len(string)):
             string=string+'0'
+=======
+        string=bin_x[0]+bin_x[32-20:32-12]+bin_x[32-21]+bin_x[32-31:32-21]+'0'
+        string=string[0]*(32-len(string))+string
+>>>>>>> 31eb8883be8e77578a3c8ed2bf0311e418eb1ea7
         d['imm']=string
         if(d['imm'][0]=='1'):                           # to check for sign extension
             d['imm']=twos(d['imm'])

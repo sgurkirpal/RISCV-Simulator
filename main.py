@@ -31,6 +31,7 @@ pc_final="0x0"
 
 instruction_register=None
 
+<<<<<<< HEAD
 while(1):
     if pc not in instruction_dict:
         break
@@ -38,6 +39,16 @@ while(1):
     pc_temp=fetch.increment_pc(pc)
     decoded_info=decode.decode(instruction_register)
     #print("HI ADITI",decoded_info)
+=======
+for i in range(80):
+    if pc not in instruction_dict:
+        break
+    print("pc",pc)
+    instruction_register=instruction_dict[pc]
+    pc_temp=fetch.increment_pc(pc)
+    decoded_info=decode.decode(instruction_register)
+    print(decoded_info)
+>>>>>>> 31eb8883be8e77578a3c8ed2bf0311e418eb1ea7
     rm=None
     
     if 'rs2' in decoded_info:
@@ -51,6 +62,10 @@ while(1):
     
     #print(rz)
     rz=hex(rz)
+<<<<<<< HEAD
+=======
+    print(rz,pc_final)
+>>>>>>> 31eb8883be8e77578a3c8ed2bf0311e418eb1ea7
     if(len(rz)!=10):
         rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
     #print(rz)
@@ -58,9 +73,19 @@ while(1):
     muxy,data_dict=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
     #print(ry)
     if('rd' in decoded_info):
+<<<<<<< HEAD
         reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
     pc=pc_final
     #print(reg)
 print("Done")
 #print(reg)
+=======
+        if(int(decoded_info['rd'],2)!=0):
+            reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
+    pc=pc_final
+    print(reg,data_dict)
+    #print(reg)
+print("Done")
+print(reg)
+>>>>>>> 31eb8883be8e77578a3c8ed2bf0311e418eb1ea7
 #print(data_dict)
