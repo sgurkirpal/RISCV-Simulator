@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'project.ui'
+# Form implementation generated from reading ui file 'final.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(949, 600)
+        MainWindow.resize(932, 821)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -27,52 +27,109 @@ class Ui_MainWindow(object):
         self.pushButton.setGeometry(QtCore.QRect(0, 0, 89, 25))
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(415, 70, 131, 31))
+        self.pushButton_2.setGeometry(QtCore.QRect(370, 70, 131, 31))
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(415, 110, 131, 31))
+        self.pushButton_3.setGeometry(QtCore.QRect(440, 210, 131, 31))
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(60, 530, 89, 25))
+        self.pushButton_4.setGeometry(QtCore.QRect(90, 750, 89, 25))
         self.pushButton_4.setObjectName("pushButton_4")
         self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(7, 170, 791, 20))
+        self.line.setGeometry(QtCore.QRect(290, 380, 641, 20))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
-        self.line_2.setGeometry(QtCore.QRect(280, 190, 20, 381))
+        self.line_2.setGeometry(QtCore.QRect(280, 20, 20, 751))
         self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(310, 220, 256, 331))
+        self.tableWidget.setGeometry(QtCore.QRect(310, 430, 256, 331))
         self.tableWidget.setRowCount(32)
-        self.tableWidget.setColumnCount(2)
+        self.tableWidget.setColumnCount(5)
         self.tableWidget.setObjectName("tableWidget")
-        self.tableView = QtWidgets.QTableView(self.centralwidget)
-        self.tableView.setGeometry(QtCore.QRect(620, 220, 256, 331))
-        self.tableView.setObjectName("tableView")
         self.line_3 = QtWidgets.QFrame(self.centralwidget)
-        self.line_3.setGeometry(QtCore.QRect(580, 190, 20, 371))
+        self.line_3.setGeometry(QtCore.QRect(580, 390, 20, 381))
         self.line_3.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(380, 190, 101, 17))
+        self.label_3.setGeometry(QtCore.QRect(380, 390, 111, 21))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(700, 190, 111, 20))
+        self.label_4.setGeometry(QtCore.QRect(700, 390, 111, 20))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(90, 200, 71, 17))
+        self.label_2.setGeometry(QtCore.QRect(90, 50, 71, 17))
         self.label_2.setObjectName("label_2")
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(10, 230, 256, 281))
+        self.textBrowser.setGeometry(QtCore.QRect(10, 80, 271, 661))
         self.textBrowser.setObjectName("textBrowser")
+        self.tableWidget_2 = QtWidgets.QTableWidget(self.centralwidget)
+        self.tableWidget_2.setGeometry(QtCore.QRect(620, 420, 291, 341))
+        self.tableWidget_2.setObjectName("tableWidget_2")
+        self.tableWidget_2.setColumnCount(0)
+        self.tableWidget_2.setRowCount(0)
+        self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_2.setGeometry(QtCore.QRect(310, 420, 256, 31))
+        self.textBrowser_2.setObjectName("textBrowser_2")
+        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_5.setGeometry(QtCore.QRect(310, 210, 111, 31))
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_6.setGeometry(QtCore.QRect(380, 140, 101, 31))
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(320, 280, 81, 31))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.label_6 = QtWidgets.QLabel(self.centralwidget)
+        self.label_6.setGeometry(QtCore.QRect(320, 330, 67, 17))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.textBrowser_3 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_3.setGeometry(QtCore.QRect(370, 280, 181, 31))
+        self.textBrowser_3.setObjectName("textBrowser_3")
+        self.textBrowser_4 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_4.setGeometry(QtCore.QRect(370, 320, 181, 31))
+        self.textBrowser_4.setObjectName("textBrowser_4")
+        self.label_7 = QtWidgets.QLabel(self.centralwidget)
+        self.label_7.setGeometry(QtCore.QRect(720, 40, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.tableWidget_3 = QtWidgets.QTableWidget(self.centralwidget)
+        self.tableWidget_3.setGeometry(QtCore.QRect(620, 80, 281, 301))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.tableWidget_3.setFont(font)
+        self.tableWidget_3.setRowCount(10)
+        self.tableWidget_3.setColumnCount(2)
+        self.tableWidget_3.setObjectName("tableWidget_3")
+        self.textBrowser_5 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_5.setGeometry(QtCore.QRect(620, 70, 281, 31))
+        self.textBrowser_5.setObjectName("textBrowser_5")
+        self.line_4 = QtWidgets.QFrame(self.centralwidget)
+        self.line_4.setGeometry(QtCore.QRect(580, 60, 20, 381))
+        self.line_4.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_4.setObjectName("line_4")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 949, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 932, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -82,11 +139,27 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+
+        self.tableWidget.setColumnWidth(0,50)
+        self.tableWidget.setColumnWidth(1,42)
+        self.tableWidget.setColumnWidth(2,42)
+        self.tableWidget.setColumnWidth(3,42)
+        self.tableWidget.setColumnWidth(4,42)
+        self.loaddata()
+    def loaddata(self):
+        dic={'x1':'0xdeadbeef','x2':'0xbeefdead'}
+        i=0
+        for x in dic:
+            self.tableWidget.setItem(i,0,QtWidgets.QTableWidgetItem(x))
+            temp1=dic[x].upper()
+            for j in range(1,6):
+                self.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*j:2*(j+1)]))
+            i+=1
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "RISC-V Simulator"))
-        self.label.adjustSize()
         self.pushButton.setText(_translate("MainWindow", "GUI Help"))
         self.pushButton_2.setText(_translate("MainWindow", "Open data.mc"))
         self.pushButton_3.setText(_translate("MainWindow", "RUN"))
@@ -94,10 +167,30 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Register View"))
         self.label_4.setText(_translate("MainWindow", "Memory View"))
         self.label_2.setText(_translate("MainWindow", "Output"))
-
-
-
-
+        self.textBrowser_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">          Register</p></body></html>"))
+        self.pushButton_5.setText(_translate("MainWindow", "STEP"))
+        self.pushButton_6.setText(_translate("MainWindow", "ASSEMBLE"))
+        self.label_5.setText(_translate("MainWindow", "PC :"))
+        self.label_6.setText(_translate("MainWindow", "IR:"))
+        self.label_7.setText(_translate("MainWindow", "Instructions"))
+        self.textBrowser_5.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">           PC                Instructions</p></body></html>"))
+        # new stuff
+        self.label.adjustSize()
+        self.label_2.adjustSize()
+        self.label_3.adjustSize()
+        self.label_4.adjustSize()
+        self.label_5.adjustSize()
+        self.label_6.adjustSize()
+        self.label_7.adjustSize()
+        
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
