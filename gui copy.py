@@ -145,8 +145,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setColumnWidth(2,42)
         self.tableWidget.setColumnWidth(3,42)
         self.tableWidget.setColumnWidth(4,42)
+        self.tableWidget_3.setColumnWidth(1,135)
     def loaddata(self,dic):
         i=0
+        
         for x in dic:
             temp2="x"+str(x)
             self.tableWidget.setItem(i,0,QtWidgets.QTableWidgetItem(temp2))
@@ -154,7 +156,18 @@ class Ui_MainWindow(object):
             for j in range(1,6):
                 self.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*j:2*(j+1)]))
             i+=1
-
+    def loaddata2(self,dic):
+        i=0
+        self.tableWidget_3.setRowCount(len(dic))
+        
+        for x in dic:
+            print(x)
+            self.tableWidget_3.setItem(i,0,QtWidgets.QTableWidgetItem(x))
+            temp1=dic[x].upper()
+            self.tableWidget_3.setItem(i,1,QtWidgets.QTableWidgetItem(temp1))
+            self.tableWidget_3.setColumnWidth(1,135)
+            i+=1
+        
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -211,7 +224,7 @@ class Ui_MainWindow(object):
         except:
             opener = "open" if sys.platform == "darwin" else "xdg-open"
             subprocess.call([opener, "guihelp.txt"])
-    def outputllog(self):
+    def outputlog(self):
         try:
             string=os.path.abspath(os.getcwd())
             string+="\output.txt"
@@ -220,8 +233,12 @@ class Ui_MainWindow(object):
             opener = "open" if sys.platform == "darwin" else "xdg-open"
             subprocess.call([opener, "output.txt"])
     def assembly(self):
-        ir,pc,reg,id,dd=main_copy.assemble()
+        ir,pc,reg,idi,dd=main_copy.assemble()
         self.loaddata(reg)
+        self.loaddata2(idi)
+        self.tableWidget_3.setColumnWidth(1,135)
+        
+
     
 
 

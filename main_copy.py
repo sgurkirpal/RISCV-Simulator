@@ -5,11 +5,9 @@ import decode
 import execute
 import memory
 import Writeback
-
 def assemble():
     instruction_dict={}    #dictionary storing instructions
     data_dict={}    #dictionary storing data in memory
-
     reg={} #registers
     reg[0]='0x0'
     for i in range(32):
@@ -32,11 +30,12 @@ def assemble():
 
     instruction_register=None
     return instruction_register,pc,reg,instruction_dict,data_dict
-def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register):
+def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register,clock):
     if pc not in instruction_dict:
         pc=-1
         return instruction_register,pc,reg,instruction_dict,data_dict
     print("pc",pc)
+    clock+=1
     instruction_register=instruction_dict[pc]
     pc_temp=fetch.increment_pc(pc)
     decoded_info=decode.decode(instruction_register)
@@ -65,5 +64,5 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
             reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
     pc=pc_final
     #print(reg,data_dict)
-    return instruction_register,pc,reg,instruction_dict,data_dict
+    return instruction_register,pc,reg,instruction_dict,data_dict,clock
 print("Done")
