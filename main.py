@@ -46,8 +46,6 @@ while(1):
         for i in range(8-len(rm)):
             rm="0"+rm
     #print(rm)
-    
-    print(decoded_info)
     #print(hex(int(decoded_info['imm'],2)))
     rz,pc_final=execute.execute(decoded_info,reg,pc_temp)
     
@@ -56,9 +54,11 @@ while(1):
     if(len(rz)!=10):
         rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
     #print(rz)
-    muxy,data_dict=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],rm,data_dict,pc_temp)
+    
+    muxy,data_dict=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
     #print(ry)
-    reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
+    if('rd' in decoded_info):
+        reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
     pc=pc_final
     #print(reg)
 print("Done")
