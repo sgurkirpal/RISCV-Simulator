@@ -39,7 +39,7 @@ while(1):
     decoded_info=decode.decode(instruction_register)
     #print("HI ADITI",decoded_info)
     rm=None
-
+    
     if 'rs2' in decoded_info:
         rm=reg[int(decoded_info['rs2'],2)]
         rm=rm[2:]
@@ -47,7 +47,7 @@ while(1):
             rm="0"+rm
     #print(rm)
     
-    #print(decoded_info)
+    print(decoded_info)
     #print(hex(int(decoded_info['imm'],2)))
     rz,pc_final=execute.execute(decoded_info,reg,pc_temp)
     
