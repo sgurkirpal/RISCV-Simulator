@@ -77,13 +77,15 @@ Delimiter-0xffffc
 ==================
 More About GUI
 ==================
-Output console 
+Output  
 --While proceeding with step button
 --It will show opcode,func3,func7
 --Instruction type
 --Rs1,RS2,Immediate values
 --Messages like which function executed.
 
+Output log:-
+--By clicking on this button, complete output file will be displayed
 
 Open data.mc button
 --This is the input file containing all the machine codes
