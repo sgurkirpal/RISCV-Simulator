@@ -290,6 +290,8 @@ class Ui_MainWindow(object):
         self.clockadj()
         self.tableWidget_2.clear()
         self.textBrowser.clear()
+        data=open("output.txt","wt")
+        data.write("")
 
     def step(self):
         print(self.pc)
@@ -307,6 +309,12 @@ class Ui_MainWindow(object):
             self.textBrowser_4.append(self.ir)
             self.clockadj()
             self.textBrowser.append(self.outtext)
+            data=open("output.txt",'a')
+            data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
+            if(self.pc==-1):
+                data.write("X----------------X\nCode Ran Successfully\n")
+            data.write(self.outtext)
+            data.write("\n\n")
         else:
             return
     def run(self):
@@ -324,6 +332,12 @@ class Ui_MainWindow(object):
             self.textBrowser_4.append(self.ir)
             self.clockadj()
             self.textBrowser.append(self.outtext)
+            data=open("output.txt",'a')
+            data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
+            if(self.pc==-1):
+                data.write("X----------------X\nCode Ran Successfully\n")
+            data.write(self.outtext)
+            data.write("\n\n")
         
 
     def clockadj(self):

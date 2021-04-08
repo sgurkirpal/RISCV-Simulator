@@ -1,0 +1,167 @@
+PC is 0x50
+IR is 0x0500006F
+Fetch Instruction 0x0500006F from address 0x0
+type is UJ
+rd is 00000
+imm is 00000000000000000000000001010000
+opr is jal
+
+
+PC is 0x54
+IR is 0x00B00293
+Fetch Instruction 0x00B00293 from address 0x50
+type is I
+rd is 00101
+rs1 is 00000
+imm is 000000001011
+opr is addi
+
+
+PC is 0x4
+IR is 0xFB1FF0EF
+Fetch Instruction 0xFB1FF0EF from address 0x54
+type is UJ
+rd is 00001
+imm is -0b1010000
+opr is jal
+
+
+PC is 0x8
+IR is 0xFF810113
+Fetch Instruction 0xFF810113 from address 0x4
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b1000
+opr is addi
+
+
+PC is 0xc
+IR is 0x00612023
+Fetch Instruction 0x00612023 from address 0x8
+type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000000
+opr is sw
+
+
+PC is 0x10
+IR is 0x00712223
+Fetch Instruction 0x00712223 from address 0xc
+type is S
+rs1 is 00010
+rs2 is 00111
+imm is 000000000100
+opr is sw
+
+
+PC is 0x14
+IR is 0x00000313
+Fetch Instruction 0x00000313 from address 0x10
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000000
+opr is addi
+
+
+PC is 0x18
+IR is 0x00100393
+Fetch Instruction 0x00100393 from address 0x14
+type is I
+rd is 00111
+rs1 is 00000
+imm is 000000000001
+opr is addi
+
+
+PC is 0x24
+IR is 0x00029663
+Fetch Instruction 0x00029663 from address 0x18
+type is SB
+rs1 is 00101
+rs2 is 00000
+imm is 0000000001100
+opr is bne
+
+
+PC is 0x30
+IR is 0x00729663
+Fetch Instruction 0x00729663 from address 0x24
+type is SB
+rs1 is 00101
+rs2 is 00111
+imm is 0000000001100
+opr is bne
+
+
+PC is 0x34
+IR is 0x00200413
+Fetch Instruction 0x00200413 from address 0x30
+type is I
+rd is 01000
+rs1 is 00000
+imm is 000000000010
+opr is addi
+
+
+PC is 0x38
+IR is 0x006383B3
+Fetch Instruction 0x006383B3 from address 0x34
+type is R
+rd is 00111
+rs1 is 00111
+rs2 is 00110
+opr is add
+
+
+PC is 0x3c
+IR is 0x40638333
+Fetch Instruction 0x40638333 from address 0x38
+type is R
+rd is 00110
+rs1 is 00111
+rs2 is 00110
+opr is sub
+
+
+PC is 0x48
+IR is 0x00541663
+Fetch Instruction 0x00541663 from address 0x3c
+type is SB
+rs1 is 01000
+rs2 is 00101
+imm is 0000000001100
+opr is bne
+
+
+PC is 0x4c
+IR is 0x00140413
+Fetch Instruction 0x00140413 from address 0x48
+type is I
+rd is 01000
+rs1 is 01000
+imm is 000000000001
+opr is addi
+
+
+PC is 0x34
+IR is 0xFE9FF06F
+Fetch Instruction 0xFE9FF06F from address 0x4c
+type is UJ
+rd is 00000
+imm is -0b11000
+opr is jal
+
+
+PC is 0x38
+IR is 0x006383B3
+Fetch Instruction 0x006383B3 from address 0x34
+type is R
+rd is 00111
+rs1 is 00111
+rs2 is 00110
+opr is add
+
+
