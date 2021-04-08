@@ -285,6 +285,7 @@ class Ui_MainWindow(object):
         self.textBrowser_3.append(self.pc)
         self.textBrowser_4.clear()
         self.clockadj()
+        self.tableWidget_2.clear()
 
 
     def step(self):
@@ -295,7 +296,10 @@ class Ui_MainWindow(object):
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
             self.textBrowser_3.clear()
-            self.textBrowser_3.append(str(self.pc))
+            if(self.pc!=-1):
+                self.textBrowser_3.append(str(self.pc))
+            else:
+                self.textBrowser_3.append("Completed")
             self.textBrowser_4.clear()
             self.textBrowser_4.append(self.ir)
             self.clockadj()
@@ -308,7 +312,10 @@ class Ui_MainWindow(object):
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
             self.textBrowser_3.clear()
-            self.textBrowser_3.append(str(self.pc))
+            if(self.pc!=-1):
+                self.textBrowser_3.append(str(self.pc))
+            else:
+                self.textBrowser_3.append("Completed")
             self.textBrowser_4.clear()
             self.textBrowser_4.append(self.ir)
             self.clockadj()
