@@ -34,11 +34,11 @@ instruction_register=None
 while(1):
     if pc not in instruction_dict:
         break
-    #print("pc",pc)
+    print("pc",pc)
     instruction_register=instruction_dict[pc]
     pc_temp=fetch.increment_pc(pc)
     decoded_info=decode.decode(instruction_register)
-    #print(decoded_info)
+    print(decoded_info)
     rm=None
     
     if 'rs2' in decoded_info:
@@ -51,7 +51,7 @@ while(1):
     
     #print(rz)
     rz=hex(rz)
-    #print(rz,pc_final)
+    print(rz,pc_final)
     if(len(rz)!=10):
         rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
     #print(rz)
@@ -63,7 +63,7 @@ while(1):
             reg=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)
     pc=pc_final
     #print(reg,data_dict)
-    #print(reg)
+    print(reg)
 print("Done")
 print(reg)
-#print(data_dict)
+print(data_dict)
