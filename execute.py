@@ -72,16 +72,16 @@ def I_type(l,pc_temp):  #l[0] is operation , l[1] is rs1 and l[2] is immediate
         return l[1]|l[2],pc_temp
     if l[0]=='andi':
         return l[1]&l[2],pc_temp
-    if l[0]=='lb' or 'lh' or 'ld' or 'lw':
+    if l[0]=='lb' or l[0]=='lh' or l[0]=='ld' or l[0]=='lw':
         return l[1]+l[2],pc_temp
     if l[0]=='jalr':
-        return l[1]+l[2],pc_temp
+        return int(pc_temp,16),l[1]+l[2]
 
 
 def UJ_type(l,pc_temp):
     #we have to change the value of pc final to pc_immediate and also we have to store the value of next thing in register
     #we have to store the value of pc_temp also
-    return 1,hex(int(pc_temp,16)+l[1]-4)
+    return int(pc_temp,16),hex(int(pc_temp,16)+l[1]-4)
     #we don't have to do anything in uj_type instruction in execution step
 
 def U_type(l,pc_temp):
