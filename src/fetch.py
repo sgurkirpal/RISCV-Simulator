@@ -12,6 +12,8 @@ def fetch_file(mc_file):
     flag=0 # 0 while we add pc and 1 while adding memory
     for line in mc_file:
         words=line.split()
+        if(len(words)==0):
+            break
         if(words[0]=='0xffffc'):   # delimilter --> 0xffffc
             flag=1
             continue
