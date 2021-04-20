@@ -175,6 +175,8 @@ class Ui_MainWindow(object):
             for j in range(1,6):
                 self.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*j:2*(j+1)]))
             i+=1
+
+
     def loaddata2(self,dic):
         i=0
         self.tableWidget_3.setRowCount(max(11,len(dic)))
@@ -183,6 +185,8 @@ class Ui_MainWindow(object):
             temp1=dic[x].upper()
             self.tableWidget_3.setItem(i,1,QtWidgets.QTableWidgetItem(temp1))
             i+=1
+        
+    
     def loaddata3(self,dic):
         
         t1=list(dic.keys())
@@ -295,10 +299,22 @@ class Ui_MainWindow(object):
 
     def step(self):
         if(self.pc!=-1):
+            num=int(self.pc,16)
+            temp_pc=self.pc
             self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
+            if(self.pc!=-1):
+                self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
+                self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
+                self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
+            else:
+                num=int(temp_pc,16)
+                self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
+                self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
+                self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
+
             self.textBrowser_3.clear()
             if(self.pc!=-1):
                 self.textBrowser_3.append(str(self.pc))
@@ -318,11 +334,24 @@ class Ui_MainWindow(object):
             return
     def run(self):
         while(self.pc!=-1):
+            num=int(self.pc,16)
+            temp_pc=self.pc
             self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
+            if(self.pc!=-1):
+                self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
+                self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
+                self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
+            else:
+                num=int(temp_pc,16)
+                
+                self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
+                self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
+                self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
             self.textBrowser_3.clear()
+
             if(self.pc!=-1):
                 self.textBrowser_3.append(str(self.pc))
             else:
