@@ -36,22 +36,35 @@ rm=hex(0)
 muxy=hex(0)
 btb={}
 predicted={}
+mem_pc=[]
+write_pc=[]
+execute_pc=[]
+decode_pc=[]
+fetch_pc=[]
+decode_pc.append("0x0")
 while(1):
     if pc not in instruction_dict and fetch.decrement_pc(pc,16) not in instruction_dict:
         break
     clock+=1
 
     #write_back
-    if fetch.decrement_pc(pc, 16) in instruction_dict:
-        this_pc=fetch.decrement_pc(pc, 16)
+    if len(write_pc)!=0:
+        this_pc=write_pc[0]
+        write_pc.pop(0)
+        if fetch.increment_pc(this_pc) in instruction_dict:
+            write_pc.append(fetch.increment_pc(this_pc))
         print("write",this_pc)
         if('rd' in decoded_info[this_pc]):
             if(int(decoded_info[this_pc]['rd'],2)!=0):
                 reg,temp_string_writeback=Writeback.write_back(muxy,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr'],decoded_info[this_pc]['rd']],reg)
 
     #memory
-    if fetch.decrement_pc(pc,12) in instruction_dict:
-        this_pc=fetch.decrement_pc(pc,12)
+    if len(mem_pc)!=0:
+        this_pc=mem_pc[0]
+        mem_pc.pop(0)
+        write_pc.append(this_pc)
+        if fetch.increment_pc(this_pc) in instruction_dict:
+            mem_pc.append(fetch.increment_pc(this_pc))
         print("mem",this_pc)
         rm=None
         if 'rs2' in decoded_info[this_pc]:
@@ -69,8 +82,12 @@ while(1):
 
 
     #execute
-    if fetch.decrement_pc(pc,8) in instruction_dict:
-        this_pc=fetch.decrement_pc(pc,8)
+    if len(execute_pc)!=0:
+        this_pc=execute_pc[0]
+        execute_pc.pop(0)
+        mem_pc.append(this_pc)
+        if fetch.increment_pc(this_pc) in instruction_dict:
+            execute_pc.append(fetch.increment_pc(this_pc))
         print("execute",this_pc)
         pc_temp=fetch.increment_pc(this_pc)
         print("nonoo")
@@ -79,8 +96,12 @@ while(1):
     
 
     #decode
-    if fetch.decrement_pc(pc,4) in instruction_dict:
-        this_pc=fetch.decrement_pc(pc,4)
+    if len(decode_pc)!=0:
+        this_pc=decode_pc[0]
+        decode_pc.pop(0)
+        execute_pc.append(this_pc)
+        if fetch.increment_pc(this_pc) in instruction_dict:
+            decode_pc.append(fetch.increment_pc(this_pc))
         print("decode",this_pc)
         instruction_register=instruction_dict[this_pc]
         pc_temp=fetch.increment_pc(this_pc)
