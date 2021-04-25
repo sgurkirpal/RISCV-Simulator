@@ -42,8 +42,10 @@ execute_pc=[]
 decode_pc=[]
 fetch_pc=[]
 decode_pc.append("0x0")
+control_inst=False
+remove_decode=False
 while(1):
-    if pc not in instruction_dict and fetch.decrement_pc(pc,16) not in instruction_dict:
+    if len(write_pc)==0 and len(mem_pc)==0 and len(execute_pc)==0 and len(decode_pc)==0:
         break
     clock+=1
 
@@ -51,7 +53,7 @@ while(1):
     if len(write_pc)!=0:
         this_pc=write_pc[0]
         write_pc.pop(0)
-        print("write",this_pc)
+        #print("write",this_pc)
         if('rd' in decoded_info[this_pc]):
             if(int(decoded_info[this_pc]['rd'],2)!=0):
                 reg,temp_string_writeback=Writeback.write_back(muxy,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr'],decoded_info[this_pc]['rd']],reg)
@@ -61,7 +63,7 @@ while(1):
         this_pc=mem_pc[0]
         mem_pc.pop(0)
         write_pc.append(this_pc)
-        print("mem",this_pc)
+        #print("mem",this_pc)
         rm=None
         if 'rs2' in decoded_info[this_pc]:
             rm=reg[int(decoded_info[this_pc]['rs2'],2)]
@@ -73,7 +75,7 @@ while(1):
         else:
             if(len(rz)!=10):
                 rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
-        print(rz)
+        #print(rz)
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr']],rm,data_dict,pc_temp)
 
 
@@ -82,37 +84,53 @@ while(1):
         this_pc=execute_pc[0]
         execute_pc.pop(0)
         mem_pc.append(this_pc)
-        print("execute",this_pc)
+        #print("execute",this_pc)
         pc_temp=fetch.increment_pc(this_pc)
-        print("nonoo")
+        #print("nonoo")
         rz,pc_final,temp_string_execute=execute.execute(decoded_info[this_pc],reg,pc_temp)
         rz=hex(rz)
+        if control_inst:
+            control_inst=False
+            if this_pc in btb:
+                if pc_final==btb[this_pc]:
+                    pass
+                else:
+                    remove_decode=True
+                    decode_pc.append(pc_final)
+            else:
+                btb[this_pc]=pc_final
+                if pc_final==fetch.increment_pc(this_pc):
+                    pass
+                else:
+                    remove_decode=True
+                    decode_pc.append(pc_final)
     
 
-    #decode
+    #decode 
     if len(decode_pc)!=0:
         this_pc=decode_pc[0]
         decode_pc.pop(0)
-        execute_pc.append(this_pc)
-        if fetch.increment_pc(this_pc) in instruction_dict:
-            decode_pc.append(fetch.increment_pc(this_pc))
-        print("decode",this_pc)
+        if remove_decode==False:
+            #print("httt")
+            execute_pc.append(this_pc)
+            if fetch.increment_pc(this_pc) in instruction_dict:
+                decode_pc.append(fetch.increment_pc(this_pc))
+        remove_decode=False
+        #print("decode",this_pc)
         instruction_register=instruction_dict[this_pc]
         pc_temp=fetch.increment_pc(this_pc)
         decoded_info[this_pc]=decode.decode(instruction_register)
         opr=decoded_info[this_pc]['opr']
         if(opr=='jal' or opr=='jalr' or opr=='beq' or opr=='bne' or opr=='bge' or opr=='blt'):
-            if(decoded_info[this_pc]['imm']>0):
-                predicted[this_pc]=fetch.increment_pc(pc)
+            #print("cheee")
+            control_inst=True
+            decode_pc.pop()
+            if this_pc in btb:
+                decode_pc.append(btb[this_pc])
             else:
-                if(opr=='jal'):
-                    predicted[this_pc]=this_pc+decoded_info[this_pc]['imm']
-                elif(opr=='jalr'):
-                    predicted[this_pc]=decoded_info[this_pc]['rs1']+decoded_info[this_pc]['imm']
-                else:
-                    predicted[this_pc]=this_pc+decoded_info[this_pc]['imm']
-
-    pc=fetch.increment_pc(pc)
+                decode_pc.append(fetch.increment_pc(this_pc))
+    #print(remove_decode)
+    #print(decode_pc,execute_pc,mem_pc,write_pc)
 
 print(data_dict)
 print(reg)
