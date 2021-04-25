@@ -6,6 +6,12 @@ def increment_pc(pc):   #takes a hex string as input and returns a hex string wi
     new_pc=hex(new_pc)
     return str(new_pc)
 
+def decrement_pc(pc,index):
+    pc_int=int(pc,16)
+    new_pc=pc_int - index
+    new_pc=hex(new_pc)
+    return str(new_pc)
+
 def fetch_file(mc_file):
     dict_text={}
     dict_data={}

@@ -163,19 +163,6 @@ def decode(instrc):
        
         d['opr']='jal'
         
-            
-            
-            
-     
-        
-        
-            
-            
-        
-        
-        
-        
-        
     return d
         
     

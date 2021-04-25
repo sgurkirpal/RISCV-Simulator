@@ -1,75 +1,81 @@
 PC is 0x4
-IR is 0x07B00293
-Fetch Instruction 0x07B00293 from address 0x0
+IR is 0x00500293
+Fetch Instruction 0x00500293 from address 0x0
 type is I
 rd is 00101
-rs1 is 00000
-imm is 000001111011
-opr is addi
-EXECUTE: Adding 0 and 123
-MEMORY: No memory operation.
-WRITEBACK: Register 5 updated with 0x0000007b.
-
-
-PC is 0x8
-IR is 0x01300213
-Fetch Instruction 0x01300213 from address 0x4
-type is I
-rd is 00100
-rs1 is 00000
-imm is 000000010011
-opr is addi
-EXECUTE: Adding 0 and 19
-MEMORY: No memory operation.
-WRITEBACK: Register 4 updated with 0x00000013.
-
-
-PC is 0x50
-IR is 0x0480006F
-Fetch Instruction 0x0480006F from address 0x8
-type is UJ
-rd is 00000
-imm is 00000000000000000000000001001000
-opr is jal
-EXECUTE: Calculating net memory address by adding 72 in jal instruction
-MEMORY: No memory operation.
-
-
-PC is 0x54
-IR is 0x00500313
-Fetch Instruction 0x00500313 from address 0x50
-type is I
-rd is 00110
 rs1 is 00000
 imm is 000000000101
 opr is addi
 EXECUTE: Adding 0 and 5
 MEMORY: No memory operation.
-WRITEBACK: Register 6 updated with 0x00000005.
+WRITEBACK: Register 5 updated with 0x00000005.
+
+
+PC is 0x8
+IR is 0x00228313
+Fetch Instruction 0x00228313 from address 0x4
+type is I
+rd is 00110
+rs1 is 00101
+imm is 000000000010
+opr is addi
+EXECUTE: Adding 5 and 2
+MEMORY: No memory operation.
+WRITEBACK: Register 6 updated with 0x00000007.
 
 
 PC is 0xc
-IR is 0xFB9FF0EF
-Fetch Instruction 0xFB9FF0EF from address 0x54
-type is UJ
-rd is 00001
-imm is -0b1001000
-opr is jal
-EXECUTE: Calculating net memory address by adding -72 in jal instruction
+IR is 0x405303B3
+Fetch Instruction 0x405303B3 from address 0x8
+type is R
+rd is 00111
+rs1 is 00110
+rs2 is 00101
+opr is sub
+EXECUTE: Subtracting 7 and 5
 MEMORY: No memory operation.
-WRITEBACK: Register 1 updated with 0x00000058.
+WRITEBACK: Register 7 updated with 0x00000002.
 
 
 PC is 0x10
-IR is 0xFF010113
-Fetch Instruction 0xFF010113 from address 0xc
+IR is 0x100001B7
+Fetch Instruction 0x100001B7 from address 0xc
+type is U
+rd is 00011
+imm is 00010000000000000000000000000000
+opr is lui
+EXECUTE: No execute operationMEMORY: No memory operation.
+WRITEBACK: Register 3 updated with 0x10000000.
+
+
+PC is 0x14
+IR is 0x00018193
+Fetch Instruction 0x00018193 from address 0x10
 type is I
-rd is 00010
-rs1 is 00010
-imm is -0b10000
+rd is 00011
+rs1 is 00011
+imm is 000000000000
 opr is addi
-EXECUTE: Adding 2147483632 and -16
+EXECUTE: Adding 268435456 and 0
 MEMORY: No memory operation.
-WRITEBACK: Register 2 updated with 0x7fffffe0.
+WRITEBACK: Register 3 updated with 0x10000000.
+
+
+PC is 0x18
+IR is 0x0071A023
+Fetch Instruction 0x0071A023 from address 0x14
+type is S
+rs1 is 00011
+rs2 is 00111
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in S-type instructions
+MEMORY: Stored 00000002 into addresses: 268435456 268435457 268435458 268435459.
+
+
+PC is -1
+IR is 0x0071A023
+X----------------X
+Code Ran Successfully
 
 
