@@ -36,6 +36,8 @@ rm=hex(0)
 muxy=hex(0)
 btb={}
 predicted={}
+buffer_for_rd={}
+
 while(1):
     if pc not in instruction_dict and fetch.decrement_pc(pc,16) not in instruction_dict:
         break
