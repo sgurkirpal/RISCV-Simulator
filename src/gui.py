@@ -293,6 +293,7 @@ class Ui_MainWindow(object):
                 self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*(j-1):2*(j)]))
             i+=1
     def loaddata4(self,lis,dicti):
+        self.tableWidget_4.scrollToItem(self.tableWidget_4.item(len(lis), self.clock))
         dic=[]
         for x in range(len(dicti)):
             dic.append(dicti[x])
@@ -340,7 +341,10 @@ class Ui_MainWindow(object):
                     x='D'
                     self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
                     dic[1][0]=-1
-                    y=str(self.tableWidget_4.item(i,self.clock-1))
+                    y=self.tableWidget_4.item(i,self.clock-1)
+                    if(y!=None):
+                        y=y.text()
+                    print("lmaooo",y)
                     if(y==x):
                         self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
@@ -352,6 +356,7 @@ class Ui_MainWindow(object):
                     if(y==x):
                         self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
+        
         print(dic,"hehe",dicti)
                 
 
@@ -606,14 +611,15 @@ class Ui_MainWindow(object):
     def clockadj(self):
         self.textBrowser_6.clear()
         temp1=""
+        temp=5
+        if(self.pipeline):
+            temp=1
         if(self.clock==1):
-            temp1=str(self.clock*5)+" Cycles"
+            temp1=str(self.clock*temp)+" Cycles"
         else:
-            temp1=str(self.clock*5)+ " Cycles"
+            temp1=str(self.clock*temp)+ " Cycles"
         self.textBrowser_6.append(temp1)
     
-
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
