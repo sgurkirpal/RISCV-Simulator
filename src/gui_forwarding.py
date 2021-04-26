@@ -1,5 +1,5 @@
 # main program file
-
+from math import ceil
 import fetch
 import decode
 import execute
@@ -41,15 +41,30 @@ def assemble():
     execute_pc = []
     decode_pc = []
     fetch_pc = []
+    number_of_instructions=0
+    number_of_load_instruction=0
+    number_of_store_instruction=0
+    number_of_control_instructions=0
+    number_of_stall_instructions=0
+    number_of_mispredictions=0
+    number_of_datahazards=0
+    number_of_contolhazards=0
+    number_of_stalls_datahazards=0
+    number_of_stalls_contolhazards=0
+    number_of_alu_instructions=0
     decode_pc.append("0x0")
     control_inst = False
     remove_decode = False
     flowchart_list=[]
     output=""
-    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output]
+    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
+    number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
+    number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions]
     return reg,instruction_dict,data_dict,clock,varlist
+
 def runstep(reg,instruction_dict,data_dict,clock,varlist):
     pc=varlist[0]
+    
     pc_temp=varlist[1]
     decoded_info=varlist[2]
     rz=varlist[3]
@@ -67,9 +82,36 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     val_df_reg=varlist[15]
     flowchart_list=varlist[16]
     output=varlist[17]
+    number_of_instructions=varlist[18]
+    number_of_load_instruction=varlist[19]
+    number_of_store_instruction=varlist[20]
+    number_of_control_instructions=varlist[21]
+    number_of_stall_instructions=varlist[22]
+    number_of_mispredictions=varlist[23]
+    number_of_datahazards=varlist[24]
+    number_of_contolhazards=varlist[25]
+    number_of_stalls_datahazards=varlist[26]
+    number_of_stalls_contolhazards=varlist[27]
+    number_of_alu_instructions=varlist[28]
     output=""
-    if len(write_pc) == 0 and len(mem_pc) == 0 and len(execute_pc) == 0 and len(decode_pc) == 0:
-        varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output]
+    if pc==-1:
+        output+="Number of clock cycles ="+str(clock)+"\n"+\
+    "Total number of instructions executed = "+str(number_of_instructions)+"\n"+\
+    "CPI value calculated = "+str(ceil(clock/number_of_instructions))+"\n"+\
+    "Total number of load/store instructions = " + str(number_of_load_instruction+number_of_store_instruction)+"\n"+\
+    "Number of ALU instructions = "+str(number_of_instructions-number_of_alu_instructions)+"\n"+\
+    "Number of control instructions = "+str(number_of_control_instructions)+"\n"+\
+    "Number of bubbles and stalls in the pipeline = "+str(clock-number_of_instructions)+"\n"+\
+    "Number of data hazards = "+str(number_of_datahazards)+"\n"+\
+    "Number of control hazards = "+str(number_of_mispredictions)+"\n"+\
+    "Number of branch mispredictions = "+ str(number_of_mispredictions)+"\n"+\
+    "Number of stalls due to data hazards = "+str(clock-number_of_instructions-number_of_mispredictions)+"\n"+\
+    "Number of stalls due to control hazards = "+str(number_of_mispredictions)+"\n"
+        return output
+    if (len(write_pc) == 0 and len(mem_pc) == 0 and len(execute_pc) == 0 and len(decode_pc) == 0):
+        varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
+            number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
+            number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions]
         return reg,instruction_dict,data_dict,clock,varlist
     clock += 1
 
@@ -77,6 +119,17 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     if len(write_pc) != 0:
         this_pc = write_pc[0]
         write_pc.pop(0)
+        number_of_instructions+=1
+        opr=decoded_info[this_pc]['opr']
+        
+        if(decoded_info[this_pc]['opr']=='lw' or decoded_info[this_pc]['opr']=='ld' or decoded_info[this_pc]['opr']=='lb' or decoded_info[this_pc]['opr']=='lh'):
+            number_of_load_instruction+=1
+        
+        if(decoded_info[this_pc]['opr']=='sw' or decoded_info[this_pc]['opr']=='sd' or decoded_info[this_pc]['opr']=='sb' or decoded_info[this_pc]['opr']=='sh'):
+            number_of_store_instruction+=1
+        
+        if(opr=='jal' or opr=='jalr' or opr=='beq' or opr=='bne' or opr=='bge' or opr=='blt'):
+            number_of_alu_instructions+=1
 
         if('rd' in decoded_info[this_pc]):
             x = int(decoded_info[this_pc]['rd'], 2)
@@ -85,8 +138,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
                 write_df_reg[x] = 0
 
             if(int(decoded_info[this_pc]['rd'], 2) != 0):
-                reg, temp_string_writeback = Writeback.write_back(
-                    muxy, [decoded_info[this_pc]['type'], decoded_info[this_pc]['opr'], decoded_info[this_pc]['rd']], reg)
+                reg, temp_string_writeback = Writeback.write_back(muxy, [decoded_info[this_pc]['type'], decoded_info[this_pc]['opr'], decoded_info[this_pc]['rd']], reg)
                 output+=temp_string_writeback
 
 
@@ -144,6 +196,8 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
                 if pc_final == btb[this_pc]:
                     pass
                 else:
+                    number_of_mispredictions+=1
+
                     remove_decode = True
                     if pc_final in instruction_dict:
                         decode_pc.append(pc_final)
@@ -154,6 +208,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
                 if pc_final == fetch.increment_pc(this_pc):
                     pass
                 else:
+                    number_of_mispredictions+=1
                     remove_decode = True
                     if pc_final in instruction_dict:
                         decode_pc.append(pc_final)
@@ -187,10 +242,12 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         if(rs1 != '-1' and flg == 1):
             x = int(rs1, 2)
             if(write_df_reg[x] == 1):  # that means data forwarding is required
+                number_of_datahazards+=1
                 reg[x] = val_df_reg[x]  # i add the value stored in the buffer
         if(rs2 != '-1' and flg == 1):
             x = int(rs2, 2)
             if(write_df_reg[x] == 1):  # that means data forwarding is required
+                number_of_datahazards+=1
                 reg[x] = val_df_reg[x]  # i add the value stored in the buffer
 
         if(rd != '-1' and flg == 1):
@@ -203,10 +260,9 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         # print(write_df_reg)
         opr = decoded_info[this_pc]['opr']
         if(opr == 'jal' or opr == 'jalr' or opr == 'beq' or opr == 'bne' or opr == 'bge' or opr == 'blt'):
-            # print("cheee")
+            number_of_control_instructions+=1
             control_inst = True
             if len(decode_pc) != 0:
-
                 decode_pc.pop()
             if this_pc in btb:
                 if btb[this_pc] in instruction_dict:
@@ -219,6 +275,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
 
     print(data_dict)
     print(reg)
-    print(clock)
-    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output]
+    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
+        number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
+        number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions]    
     return reg,instruction_dict,data_dict,clock,varlist

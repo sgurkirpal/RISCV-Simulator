@@ -293,6 +293,7 @@ class Ui_MainWindow(object):
                 self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*(j-1):2*(j)]))
             i+=1
     def loaddata4(self,lis,dicti):
+        print(lis)
         self.tableWidget_4.scrollToItem(self.tableWidget_4.item(len(lis), self.clock))
         dic=[]
         for x in range(len(dicti)):
@@ -459,8 +460,8 @@ class Ui_MainWindow(object):
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
                 self.pc=self.varlist[0]
-                self.outtext=self.varlist[-1]
-                self.bdd=self.varlist[-2]
+                self.outtext=self.varlist[17]
+                self.bdd=self.varlist[16]
                 mem_pc=self.varlist[7]
                 write_pc=self.varlist[8]
                 execute_pc=self.varlist[9]
@@ -477,9 +478,7 @@ class Ui_MainWindow(object):
                 self.clockadj()
                 self.tableWidget_2.clear()
                 self.textBrowser.clear()
-                self.outtext=self.varlist[-3]
-                self.bdd=self.varlist[-2]
-                self.cpc=self.varlist[-1]
+                
                 data=open("output.txt","wt")
                 data.write("")
             else:
@@ -488,17 +487,16 @@ class Ui_MainWindow(object):
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
                 self.pc=self.varlist[0]
-                self.outtext=self.varlist[-1]
-                self.bdd=self.varlist[-2]
+                self.outtext=self.varlist[20]
+                self.bdd=self.varlist[19]
                 mem_pc=self.varlist[7]
                 write_pc=self.varlist[8]
                 execute_pc=self.varlist[9]
                 decode_pc=self.varlist[10]
                 fetch_pc=self.varlist[11]
                 self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
-                
+                print(self.cpc)
                 self.loaddata4(self.bdd,self.cpc)
-                
                 self.textBrowser_3.clear()
                 self.textBrowser_3.append("Pipelined Execution")
                 self.textBrowser_4.clear()
@@ -506,9 +504,6 @@ class Ui_MainWindow(object):
                 self.clockadj()
                 self.tableWidget_2.clear()
                 self.textBrowser.clear()
-                self.outtext=self.varlist[-3]
-                self.bdd=self.varlist[-2]
-                self.cpc=self.varlist[-1]
                 data=open("output.txt","wt")
                 data.write("")
 
@@ -535,8 +530,8 @@ class Ui_MainWindow(object):
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
                     self.pc=self.varlist[0]
-                    self.outtext=self.varlist[-1]
-                    self.bdd=self.varlist[-2]
+                    self.outtext=self.varlist[17]
+                    self.bdd=self.varlist[16]
                     mem_pc=self.varlist[7]
                     write_pc=self.varlist[8]
                     execute_pc=self.varlist[9]
@@ -554,6 +549,11 @@ class Ui_MainWindow(object):
                     data.write(self.outtext)
                     data.write("\n\n")
                 else:
+                    self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    data=open("output.txt",'a')
+                    data.write(self.outtext)
+                    data.write("\n\n")
+                    self.textBrowser.append(self.outtext)
                     return
             else:
                 if(self.pc!=-1):
@@ -562,8 +562,8 @@ class Ui_MainWindow(object):
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
                     self.pc=self.varlist[0]
-                    self.outtext=self.varlist[-1]
-                    self.bdd=self.varlist[-2]
+                    self.outtext=self.varlist[20]
+                    self.bdd=self.varlist[19]
                     mem_pc=self.varlist[7]
                     write_pc=self.varlist[8]
                     execute_pc=self.varlist[9]
@@ -581,6 +581,7 @@ class Ui_MainWindow(object):
                     data.write(self.outtext)
                     data.write("\n\n")
                 else:
+
                     return
         else:
             if(self.pc!=-1):
@@ -626,8 +627,8 @@ class Ui_MainWindow(object):
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
                     self.pc=self.varlist[0]
-                    self.outtext=self.varlist[-1]
-                    self.bdd=self.varlist[-2]
+                    self.outtext=self.varlist[17]
+                    self.bdd=self.varlist[16]
                     mem_pc=self.varlist[7]
                     write_pc=self.varlist[8]
                     execute_pc=self.varlist[9]
@@ -643,6 +644,11 @@ class Ui_MainWindow(object):
                         data.write("X----------------X\nCode Ran Successfully\n")
                     data.write(self.outtext)
                     data.write("\n\n")
+                self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                data=open("output.txt",'a')
+                data.write(self.outtext)
+                data.write("\n\n")
+                self.textBrowser.append(self.outtext)
             else:
                 while(self.pc!=-1):
                     self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
@@ -650,8 +656,8 @@ class Ui_MainWindow(object):
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
                     self.pc=self.varlist[0]
-                    self.outtext=self.varlist[-1]
-                    self.bdd=self.varlist[-2]
+                    self.outtext=self.varlist[20]
+                    self.bdd=self.varlist[19]
                     mem_pc=self.varlist[7]
                     write_pc=self.varlist[8]
                     execute_pc=self.varlist[9]
