@@ -47,7 +47,9 @@ def assemble():
     dummy_val=0
     buffer_memory={}
     new_var=0
-    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var]
+    flowchart_list=[]
+    output=""
+    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
     return reg,instruction_dict,data_dict,clock,varlist
 def runstep(reg,instruction_dict,data_dict,clock,varlist):
     pc=varlist[0]
@@ -69,9 +71,12 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     dummy_val=varlist[16]
     buffer_memory=varlist[17]
     new_var=varlist[18]
+    flowchart_list=varlist[19]
+    output=varlist[20]
+    output=""
     new_var+=4
     if len(write_pc)==0 and len(mem_pc)==0 and len(execute_pc)==0 and len(decode_pc)==0:
-        varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var]
+        varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
     
         return reg,instruction_dict,data_dict,clock,varlist
     clock+=1
@@ -84,12 +89,14 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         if('rd' in decoded_info[this_pc]):
             if(int(decoded_info[this_pc]['rd'],2)!=0):
                 reg,temp_string_writeback=Writeback.write_back(muxy,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr'],decoded_info[this_pc]['rd']],reg)
+                output+=temp_string_writeback
 
     #memory
     if len(mem_pc)!=0:
         this_pc=mem_pc[0]
         mem_pc.pop(0)
         write_pc.append(this_pc)
+
         rm=None
         if 'rs2' in decoded_info[this_pc]:
             rm=reg[int(decoded_info[this_pc]['rs2'],2)]
@@ -103,17 +110,20 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
                 rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
 
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr']],rm,data_dict,pc_temp)
+        output+=temp_string_memory
 
 
     #execute
     if len(execute_pc)!=0:
         this_pc=execute_pc[0]
-
+        for x in decoded_info[this_pc]:
+            output+=str(x)+" is "+str(decoded_info[this_pc][x])+"\n"
         execute_pc.pop(0)
         mem_pc.append(this_pc)
 
         pc_temp=fetch.increment_pc(this_pc)
         rz,pc_final,temp_string_execute=execute.execute(decoded_info[this_pc],reg,pc_temp)
+        output+=temp_string_execute
         rz=hex(rz)
 
         if control_inst:
@@ -142,10 +152,12 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     #decode 
     if(dummy_val>0):
         dummy_val-=4
-        varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var]
+        varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
         return reg,instruction_dict,data_dict,clock,varlist
     if len(decode_pc)!=0:
         this_pc=decode_pc[0]
+        output+="Fetch Instruction "+instruction_dict[this_pc]+" from address "+this_pc+"\n"
+        flowchart_list.append(this_pc)
         decode_pc.pop(0)
         if remove_decode==False:
             execute_pc.append(this_pc)
@@ -153,9 +165,9 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
                 decode_pc.append(fetch.increment_pc(this_pc))
             remove_decode=False
         else:
+            flowchart_list[len(flowchart_list)-1]=-1
             remove_decode=False
-            varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var]
-    
+            varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
             return reg,instruction_dict,data_dict,clock,varlist
         remove_decode=False
         pc_temp=fetch.increment_pc(this_pc)
@@ -200,6 +212,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     print(data_dict)
     print(reg)
     print(clock)
-    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var]
+    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
     
     return reg,instruction_dict,data_dict,clock,varlist
