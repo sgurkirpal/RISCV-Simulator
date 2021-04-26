@@ -292,8 +292,21 @@ class Ui_MainWindow(object):
             for j in range(1,6):
                 self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*(j-1):2*(j)]))
             i+=1
-    def loaddata4(self,dicti,lis):
-        dic=dicti.copy()
+    def loaddata4(self,lis,dicti):
+        dic=[]
+        for x in range(len(dicti)):
+            dic.append(dicti[x])
+        print(dic)
+        if(len(dic[4])==0):
+            dic[4].append(-1)
+        if(len(dic[3])==0):
+            dic[3].append(-1)
+        if(len(dic[2])==0):
+            dic[2].append(-1)
+        if(len(dic[1])==0):
+            dic[1].append(-1)
+        if(len(dic[0])==0):
+            dic[0].append(-1)       
         for i in range(len(lis)):
             if(lis[i]==-1):
                 continue
@@ -302,43 +315,44 @@ class Ui_MainWindow(object):
                     lis[i]=-1
                     x='W'
                     dic[4][0]=-1
-                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
-                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
+                    y=str(self.tableWidget_4.item(i,self.clock-1))
                     if(y==x):
-                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
                 elif(dic[3][0]==lis[i]):
                     x='M'
-                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
                     dic[3][0]=-1
-                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    y=str(self.tableWidget_4.item(i,self.clock-1))
                     if(y==x):
-                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
                 elif(dic[2][0]==lis[i]):
                     x='E'
-                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    y=str(self.tableWidget_4.item(i,self.clock-1))
                     if(y==x):
-                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
-                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
                     dic[2][0]=-1
                 elif(dic[1][0]==lis[i]):
                     x='D'
-                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
                     dic[1][0]=-1
-                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    y=str(self.tableWidget_4.item(i,self.clock-1))
                     if(y==x):
-                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
                 elif(dic[0][0]==lis[i]):
                     x='F'
-                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
                     dic[0][0]=-1
-                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    y=str(self.tableWidget_4.item(i,self.clock-1))
                     if(y==x):
-                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
+        print(dic,"hehe",dicti)
                 
 
     def retranslateUi(self, MainWindow):
@@ -472,17 +486,25 @@ class Ui_MainWindow(object):
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
                 self.pc=self.varlist[0]
-                self.outtext=self.varlist[-3]
+                self.outtext=self.varlist[-1]
                 self.bdd=self.varlist[-2]
-                self.cpc=self.varlist[-1]
-                #self.loaddata4(self.bdd,self.cpc)
+                print(self.varlist)
+                mem_pc=self.varlist[7]
+                write_pc=self.varlist[8]
+                execute_pc=self.varlist[9]
+                decode_pc=self.varlist[10]
+                fetch_pc=self.varlist[11]
+                self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
+                print(self.cpc)
+                self.loaddata4(self.bdd,self.cpc)
+                print(self.cpc)
                 self.clockadj()
-                #self.textBrowser.append(self.outtext)
-                #data=open("output.txt",'a')
+                self.textBrowser.append(self.outtext)
+                data=open("output.txt",'a')
                 if(self.pc==-1):
                     data.write("X----------------X\nCode Ran Successfully\n")
-                #data.write(self.outtext)
-                #data.write("\n\n")
+                data.write(self.outtext)
+                data.write("\n\n")
             else:
                 return
         else:
@@ -528,16 +550,22 @@ class Ui_MainWindow(object):
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
                     self.pc=self.varlist[0]
-                    self.outtext=self.varlist[-3]
+                    self.outtext=self.varlist[-1]
                     self.bdd=self.varlist[-2]
-                    self.cpc=self.varlist[-1]
-                    #self.loaddata4(self.bdd,self.cpc)
+                    mem_pc=self.varlist[7]
+                    write_pc=self.varlist[8]
+                    execute_pc=self.varlist[9]
+                    decode_pc=self.varlist[10]
+                    fetch_pc=self.varlist[11]
+                    self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
+                    self.loaddata4(self.bdd,self.cpc)
                     self.clockadj()
-                    #self.textBrowser.append(self.outtext)
+                    self.textBrowser.append(self.outtext)
                     data=open("output.txt",'a')
                     if(self.pc==-1):
+                        print("X----------------X\nCode Ran Successfully\n")
                         data.write("X----------------X\nCode Ran Successfully\n")
-                    #data.write(self.outtext)
+                    data.write(self.outtext)
                     data.write("\n\n")
         else:
             while(self.pc!=-1):
@@ -569,7 +597,6 @@ class Ui_MainWindow(object):
                 self.textBrowser.append(self.outtext)
                 data=open("output.txt",'a')
                 data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
-                print("Hehe",self.pc)
                 if(self.pc==-1):
                     data.write("X----------------X\nCode Ran Successfully\n")
                 data.write(self.outtext)
