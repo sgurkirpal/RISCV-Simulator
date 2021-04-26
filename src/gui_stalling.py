@@ -40,6 +40,8 @@ def assemble():
     for i in range(32):
         buffer_val_for_rd[i]=-1
     #print(decoded_info["0x0"])
+    if("0x4" in instruction_dict):
+        fetch_pc.append("0x4")
     decode_pc.append("0x0")
     #print("ffffff",buffer_val_for_rd)
     control_inst=False
@@ -195,7 +197,10 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
 
         if(dummy_val==0):
             opr=decoded_info[this_pc]['opr']
-
+            if(len(fetch_pc)!=0):
+                fetch_pc.pop(0)
+            if(hex(int(this_pc,16)+8) in instruction_dict):
+                fetch_pc.append(this_pc)
             if(opr=='jal' or opr=='jalr' or opr=='beq' or opr=='bne' or opr=='bge' or opr=='blt'):
                 control_inst=True
                 

@@ -457,6 +457,18 @@ class Ui_MainWindow(object):
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
+            self.pc=self.varlist[0]
+            self.outtext=self.varlist[-1]
+            self.bdd=self.varlist[-2]
+            mem_pc=self.varlist[7]
+            write_pc=self.varlist[8]
+            execute_pc=self.varlist[9]
+            decode_pc=self.varlist[10]
+            fetch_pc=self.varlist[11]
+            self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
+            
+            self.loaddata4(self.bdd,self.cpc)
+            
             self.textBrowser_3.clear()
             self.textBrowser_3.append("Pipelined Execution")
             self.textBrowser_4.clear()
@@ -469,6 +481,7 @@ class Ui_MainWindow(object):
             self.cpc=self.varlist[-1]
             data=open("output.txt","wt")
             data.write("")
+
         else:
             self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t=gui_main.assemble()
             self.loaddata(self.reg)
@@ -493,16 +506,15 @@ class Ui_MainWindow(object):
                 self.pc=self.varlist[0]
                 self.outtext=self.varlist[-1]
                 self.bdd=self.varlist[-2]
-                print(self.varlist)
                 mem_pc=self.varlist[7]
                 write_pc=self.varlist[8]
                 execute_pc=self.varlist[9]
                 decode_pc=self.varlist[10]
                 fetch_pc=self.varlist[11]
                 self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
-                print(self.cpc)
+                
                 self.loaddata4(self.bdd,self.cpc)
-                print(self.cpc)
+                
                 self.clockadj()
                 self.textBrowser.append(self.outtext)
                 data=open("output.txt",'a')
