@@ -71,7 +71,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     new_var=varlist[18]
     new_var+=4
     if len(write_pc)==0 and len(mem_pc)==0 and len(execute_pc)==0 and len(decode_pc)==0:
-        varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var]
+        varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var]
     
         return reg,instruction_dict,data_dict,clock,varlist
     clock+=1
@@ -90,7 +90,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         this_pc=mem_pc[0]
         mem_pc.pop(0)
         write_pc.append(this_pc)
-
         rm=None
         if 'rs2' in decoded_info[this_pc]:
             rm=reg[int(decoded_info[this_pc]['rs2'],2)]
@@ -157,7 +156,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
             remove_decode=False
             varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var]
     
-        return reg,instruction_dict,data_dict,clock,varlist
+            return reg,instruction_dict,data_dict,clock,varlist
         remove_decode=False
         pc_temp=fetch.increment_pc(this_pc)
 

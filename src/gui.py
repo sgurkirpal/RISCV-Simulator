@@ -434,7 +434,7 @@ class Ui_MainWindow(object):
             subprocess.call([opener, "output.txt"])
     def assembly(self):
         if(self.pipeline):
-            self.reg,self.idi,self.dd,self.clock,self.varlist=gui_main.assemble()
+            self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.assemble()
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
@@ -445,9 +445,9 @@ class Ui_MainWindow(object):
             self.clockadj()
             self.tableWidget_2.clear()
             self.textBrowser.clear()
-            self.outtext=varlist[-3]
-            self.bdd=varlist[-2]
-            self.cpc=varlist[-1]
+            self.outtext=self.varlist[-3]
+            self.bdd=self.varlist[-2]
+            self.cpc=self.varlist[-1]
             data=open("output.txt","wt")
             data.write("")
         else:
@@ -475,14 +475,14 @@ class Ui_MainWindow(object):
                 self.outtext=self.varlist[-3]
                 self.bdd=self.varlist[-2]
                 self.cpc=self.varlist[-1]
-                self.loaddata4(self.bdd,self.cpc)
+                #self.loaddata4(self.bdd,self.cpc)
                 self.clockadj()
-                self.textBrowser.append(self.outtext)
-                data=open("output.txt",'a')
+                #self.textBrowser.append(self.outtext)
+                #data=open("output.txt",'a')
                 if(self.pc==-1):
                     data.write("X----------------X\nCode Ran Successfully\n")
-                data.write(self.outtext)
-                data.write("\n\n")
+                #data.write(self.outtext)
+                #data.write("\n\n")
             else:
                 return
         else:
@@ -531,13 +531,13 @@ class Ui_MainWindow(object):
                     self.outtext=self.varlist[-3]
                     self.bdd=self.varlist[-2]
                     self.cpc=self.varlist[-1]
-                    self.loaddata4(self.bdd,self.cpc)
+                    #self.loaddata4(self.bdd,self.cpc)
                     self.clockadj()
-                    self.textBrowser.append(self.outtext)
+                    #self.textBrowser.append(self.outtext)
                     data=open("output.txt",'a')
                     if(self.pc==-1):
                         data.write("X----------------X\nCode Ran Successfully\n")
-                    data.write(self.outtext)
+                    #data.write(self.outtext)
                     data.write("\n\n")
         else:
             while(self.pc!=-1):
@@ -569,6 +569,7 @@ class Ui_MainWindow(object):
                 self.textBrowser.append(self.outtext)
                 data=open("output.txt",'a')
                 data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
+                print("Hehe",self.pc)
                 if(self.pc==-1):
                     data.write("X----------------X\nCode Ran Successfully\n")
                 data.write(self.outtext)
