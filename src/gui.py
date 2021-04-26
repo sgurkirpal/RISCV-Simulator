@@ -11,7 +11,7 @@ from PyQt5 import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os,sys,subprocess
 import gui_main
-from PyQt5.QtWidgets import QApplication, QDialog, QLabel, QGroupBox, QVBoxLayout, QHBoxLayout, QCheckBox
+from PyQt5.QtWidgets import QApplication, QDialog, QLabel, QGroupBox, QVBoxLayout, QHBoxLayout, QCheckBox, QRadioButton
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QRect
 
@@ -25,6 +25,7 @@ class Ui_MainWindow(object):
     pc_f=0
     pc_t=0
     outtext=0
+    pipeline=0
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1360, 821)
@@ -160,20 +161,20 @@ class Ui_MainWindow(object):
         self.label_11.setObjectName("label_10")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setGeometry(QtCore.QRect(320, 165, 81, 31))
-        self.checkBox = QCheckBox(self.centralwidget)
+        self.checkBox = QPushButton(self.centralwidget)
         self.checkBox.setObjectName(u"checkBox")
         self.checkBox.setGeometry(QRect(980, 80, 82, 17))
         self.checkBox.setFont(QtGui.QFont("sanserif", 11))
-        self.checkBox_2 = QCheckBox(self.centralwidget)
-        self.checkBox_2.setObjectName(u"checkBox")
-        self.checkBox_2.setGeometry(QRect(1180, 120, 82, 17))
-        self.checkBox_2.setFont(QtGui.QFont("sanserif", 11))
-        self.checkBox_3 = QCheckBox(self.centralwidget)
-        self.checkBox_3.setObjectName(u"checkBox")
-        self.checkBox_3.setGeometry(QRect(980, 120, 82, 17))
-        self.checkBox_3.setFont(QtGui.QFont("sanserif", 11))
+        self.radioBox_2 = QRadioButton(self.centralwidget)
+        self.radioBox_2.setObjectName(u"radioBox_2")
+        self.radioBox_2.setGeometry(QRect(1180, 120, 82, 17))
+        self.radioBox_2.setFont(QtGui.QFont("sanserif", 11))
+        self.radioBox_3 = QRadioButton(self.centralwidget)
+        self.radioBox_3.setObjectName(u"radioBox_3")
+        self.radioBox_3.setGeometry(QRect(980, 120, 82, 17))
+        self.radioBox_3.setFont(QtGui.QFont("sanserif", 11))
         self.checkBox_4 = QCheckBox(self.centralwidget)
-        self.checkBox_4.setObjectName(u"checkBox")
+        self.checkBox_4.setObjectName(u"checkBox_4")
         self.checkBox_4.setGeometry(QRect(1180, 80, 82, 17))
         self.checkBox_4.setFont(QtGui.QFont("sanserif", 11))
         self.lineEdit = QLineEdit(self.centralwidget)
@@ -211,7 +212,9 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
+        self.radioBox_2.setHidden(True)
+        self.radioBox_3.setHidden(True)
+        self.checkBox.setStyleSheet("background-color : red")
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.tableWidget.setColumnWidth(0,50)
@@ -227,7 +230,7 @@ class Ui_MainWindow(object):
         self.tableWidget_3.setColumnWidth(1,135)
         self.tableWidget_4 = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_4.setGeometry(QtCore.QRect(960, 330, 381, 471))
-        self.tableWidget_4.setRowCount(100)
+        self.tableWidget_4.setRowCount(2000)
         self.tableWidget_4.setColumnCount(2000)
         self.tableWidget_4.setObjectName("tableWidget_4")
         self.tableWidget_4.setColumnWidth(0,80)
@@ -286,6 +289,55 @@ class Ui_MainWindow(object):
             for j in range(1,6):
                 self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*(j-1):2*(j)]))
             i+=1
+    def loaddata4(self,dicti,lis):
+        dic=dicti.copy()
+        for i in range(len(lis)):
+            if(lis[i]==-1):
+                continue
+            else:
+                if(dic[4][0]==lis[i]):
+                    lis[i]=-1
+                    x='W'
+                    dic[4][0]=-1
+                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    if(y==x):
+                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        break
+                elif(dic[3][0]==lis[i]):
+                    x='M'
+                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    dic[3][0]=-1
+                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    if(y==x):
+                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        break
+                elif(dic[2][0]==lis[i]):
+                    x='E'
+                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    if(y==x):
+                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        break
+                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    dic[2][0]=-1
+                elif(dic[1][0]==lis[i]):
+                    x='D'
+                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    dic[1][0]=-1
+                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    if(y==x):
+                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        break
+                elif(dic[0][0]==lis[i]):
+                    x='F'
+                    self.tableWidget_4.setItem(i,self.cycle,QtWidgets.QTableWidgetItem(x))
+                    dic[0][0]=-1
+                    y=str(self.tableWidget_4.item(i,self.cycle-1))
+                    if(y==x):
+                        self.tableWidget_4.item(i,self.cycle).setBackground(QtGui.QColor(0,100,100))
+                        break
+                
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -304,8 +356,8 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "PC :"))
         self.label_6.setText(_translate("MainWindow", "IR:"))
         self.checkBox.setText(_translate("MainWindow", u"Pipelined Execution", None))
-        self.checkBox_2.setText(_translate("MainWindow", u"Stalling", None))
-        self.checkBox_3.setText(_translate("MainWindow", u"Data Forwarding", None))
+        self.radioBox_2.setText(_translate("MainWindow", u"Stalling", None))
+        self.radioBox_3.setText(_translate("MainWindow", u"Data Forwarding", None))
         self.checkBox_4.setText(_translate("MainWindow", u"Print Pipeline Registers", None))
         
         self.label_7.setText(_translate("MainWindow", "Instructions"))
@@ -330,8 +382,8 @@ class Ui_MainWindow(object):
         self.label_10.adjustSize()
         self.label_11.adjustSize()
         self.checkBox.adjustSize()
-        self.checkBox_2.adjustSize()
-        self.checkBox_3.adjustSize()
+        self.radioBox_2.adjustSize()
+        self.radioBox_3.adjustSize()
         self.checkBox_4.adjustSize()
         self.pushButton_7.adjustSize()
         self.pushButton_2.clicked.connect(lambda: self.opendata())
@@ -340,7 +392,18 @@ class Ui_MainWindow(object):
         self.pushButton_6.clicked.connect(lambda: self.assembly())
         self.pushButton_5.clicked.connect(lambda: self.step())
         self.pushButton_3.clicked.connect(lambda: self.run())
-
+        self.checkBox.clicked.connect(lambda: self.pipelining())
+    def pipelining(self):
+        if(self.pipeline):
+            self.pipeline=0
+            self.radioBox_2.setHidden(True)
+            self.radioBox_3.setHidden(True)
+            self.checkBox.setStyleSheet("background-color : red")
+        else:
+            self.radioBox_2.setHidden(False)
+            self.radioBox_3.setHidden(False)
+            self.pipeline=1
+            self.checkBox.setStyleSheet("background-color : green")
 
     def opendata(self):
         try:
@@ -367,97 +430,166 @@ class Ui_MainWindow(object):
             opener = "open" if sys.platform == "darwin" else "xdg-open"
             subprocess.call([opener, "output.txt"])
     def assembly(self):
-        self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t=gui_main.assemble()
-        self.loaddata(self.reg)
-        self.loaddata2(self.idi)
-        self.loaddata3(self.dd)
-        self.textBrowser_3.clear()
-        self.textBrowser_3.append(self.pc)
-        self.textBrowser_4.clear()
-        self.clockadj()
-        self.tableWidget_2.clear()
-        self.textBrowser.clear()
-        data=open("output.txt","wt")
-        data.write("")
+        if(self.pipeline):
+            self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t=gui_main.assemble()
+            self.loaddata(self.reg)
+            self.loaddata2(self.idi)
+            self.loaddata3(self.dd)
+            self.textBrowser_3.clear()
+            self.textBrowser_3.append("Pipelined Execution")
+            self.textBrowser_4.clear()
+            self.textBrowser_4.append("Pipelined Execution")
+            self.clockadj()
+            self.tableWidget_2.clear()
+            self.textBrowser.clear()
+            data=open("output.txt","wt")
+            data.write("")
+        else:
+            self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t=gui_main.assemble()
+            self.loaddata(self.reg)
+            self.loaddata2(self.idi)
+            self.loaddata3(self.dd)
+            self.textBrowser_3.clear()
+            self.textBrowser_3.append(self.pc)
+            self.textBrowser_4.clear()
+            self.clockadj()
+            self.tableWidget_2.clear()
+            self.textBrowser.clear()
+            data=open("output.txt","wt")
+            data.write("")
 
     def step(self):
-        if(self.pc!=-1):
-            num=int(self.pc,16)
-            temp_pc=self.pc
-            self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
-            self.loaddata(self.reg)
-            self.loaddata2(self.idi)
-            self.loaddata3(self.dd)
+        if(self.pipeline):
             if(self.pc!=-1):
-                self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
-                self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
-                self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
+                num=int(self.pc,16)
+                temp_pc=self.pc
+                self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                self.loaddata(self.reg)
+                self.loaddata2(self.idi)
+                self.loaddata3(self.dd)
+                self.loaddata4(self.bdd,self.cpc)
+                if(self.pc!=-1):
+                    
+                    self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
+                else:
+                    num=int(temp_pc,16)
+                    self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
+                    self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
+                    self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
+                self.clockadj()
+                self.textBrowser.append(self.outtext)
+                data=open("output.txt",'a')
+                data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
+                if(self.pc==-1):
+                    data.write("X----------------X\nCode Ran Successfully\n")
+                data.write(self.outtext)
+                data.write("\n\n")
             else:
-                num=int(temp_pc,16)
-                self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
-                self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
-                self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
-
-            self.textBrowser_3.clear()
-            if(self.pc!=-1):
-                self.textBrowser_3.append(str(self.pc))
-            else:
-                self.textBrowser_3.append("Completed")
-            self.textBrowser_4.clear()
-            self.textBrowser_4.append(self.ir)
-            self.clockadj()
-            self.textBrowser.append(self.outtext)
-            data=open("output.txt",'a')
-            data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
-            if(self.pc==-1):
-                data.write("X----------------X\nCode Ran Successfully\n")
-            data.write(self.outtext)
-            data.write("\n\n")
+                return
         else:
-            return
-    def run(self):
-        while(self.pc!=-1):
-            num=int(self.pc,16)
-            temp_pc=self.pc
-            self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
-            self.loaddata(self.reg)
-            self.loaddata2(self.idi)
-            self.loaddata3(self.dd)
             if(self.pc!=-1):
-                self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
-                self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
-                self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
-            else:
-                num=int(temp_pc,16)
-                
-                self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
-                self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
-                self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
-            self.textBrowser_3.clear()
+                num=int(self.pc,16)
+                temp_pc=self.pc
+                self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                self.loaddata(self.reg)
+                self.loaddata2(self.idi)
+                self.loaddata3(self.dd)
+                if(self.pc!=-1):
+                    self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
+                    self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
+                    self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
+                else:
+                    num=int(temp_pc,16)
+                    self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
+                    self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
+                    self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
 
-            if(self.pc!=-1):
-                self.textBrowser_3.append(str(self.pc))
+                self.textBrowser_3.clear()
+                if(self.pc!=-1):
+                    self.textBrowser_3.append(str(self.pc))
+                else:
+                    self.textBrowser_3.append("Completed")
+                self.textBrowser_4.clear()
+                self.textBrowser_4.append(self.ir)
+                self.clockadj()
+                self.textBrowser.append(self.outtext)
+                data=open("output.txt",'a')
+                data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
+                if(self.pc==-1):
+                    data.write("X----------------X\nCode Ran Successfully\n")
+                data.write(self.outtext)
+                data.write("\n\n")
             else:
-                self.textBrowser_3.append("Completed")
-            self.textBrowser_4.clear()
-            self.textBrowser_4.append(self.ir)
-            self.clockadj()
-            self.textBrowser.append(self.outtext)
-            data=open("output.txt",'a')
-            data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
-            if(self.pc==-1):
-                data.write("X----------------X\nCode Ran Successfully\n")
-            data.write(self.outtext)
-            data.write("\n\n")
+                return
+    def run(self):
+        if(self.pipeline):
+                while(self.pc!=-1):
+                    num=int(self.pc,16)
+                    temp_pc=self.pc
+                    self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                    self.loaddata(self.reg)
+                    self.loaddata2(self.idi)
+                    self.loaddata3(self.dd)
+                    if(self.pc!=-1):
+                        
+                        self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
+                    else:
+                        num=int(temp_pc,16)
+                        
+                        self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
+                        self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
+                        self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
+                    self.clockadj()
+                    self.textBrowser.append(self.outtext)
+                    data=open("output.txt",'a')
+                    data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
+                    if(self.pc==-1):
+                        data.write("X----------------X\nCode Ran Successfully\n")
+                    data.write(self.outtext)
+                    data.write("\n\n")
+        else:
+            while(self.pc!=-1):
+                num=int(self.pc,16)
+                temp_pc=self.pc
+                self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                self.loaddata(self.reg)
+                self.loaddata2(self.idi)
+                self.loaddata3(self.dd)
+                if(self.pc!=-1):
+                    self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
+                    self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
+                    self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
+                else:
+                    num=int(temp_pc,16)
+                    
+                    self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
+                    self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
+                    self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
+                self.textBrowser_3.clear()
+
+                if(self.pc!=-1):
+                    self.textBrowser_3.append(str(self.pc))
+                else:
+                    self.textBrowser_3.append("Completed")
+                self.textBrowser_4.clear()
+                self.textBrowser_4.append(self.ir)
+                self.clockadj()
+                self.textBrowser.append(self.outtext)
+                data=open("output.txt",'a')
+                data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
+                if(self.pc==-1):
+                    data.write("X----------------X\nCode Ran Successfully\n")
+                data.write(self.outtext)
+                data.write("\n\n")
         
 
     def clockadj(self):
         self.textBrowser_6.clear()
         temp1=""
         if(self.clock==1):
-            temp1=str(self.clock)+" Cycle"
+            temp1=str(self.clock*5)+" Cycles"
         else:
-            temp1=str(self.clock)+ " Cycles"
+            temp1=str(self.clock*5)+ " Cycles"
         self.textBrowser_6.append(temp1)
     
 
