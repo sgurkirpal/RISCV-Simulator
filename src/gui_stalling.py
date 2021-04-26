@@ -51,7 +51,20 @@ def assemble():
     new_var=0
     flowchart_list=[]
     output=""
-    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
+    number_of_instructions=0
+    number_of_load_instruction=0
+    number_of_store_instruction=0
+    number_of_control_instructions=0
+    number_of_stall_instructions=0
+    number_of_mispredictions=0
+    number_of_datahazards=0
+    number_of_contolhazards=0
+    number_of_stalls_datahazards=0
+    number_of_stalls_contolhazards=0
+    number_of_alu_instructions=0
+    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
+        number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
+        number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions]
     return reg,instruction_dict,data_dict,clock,varlist
 def runstep(reg,instruction_dict,data_dict,clock,varlist):
     pc=varlist[0]
@@ -76,10 +89,22 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     flowchart_list=varlist[19]
     output=varlist[20]
     output=""
+    number_of_instructions=varlist[21]
+    number_of_load_instruction=varlist[22]
+    number_of_store_instruction=varlist[23]
+    number_of_control_instructions=varlist[24]
+    number_of_stall_instructions=varlist[25]
+    number_of_mispredictions=varlist[26]
+    number_of_datahazards=varlist[27]
+    number_of_contolhazards=varlist[28]
+    number_of_stalls_datahazards=varlist[29]
+    number_of_stalls_contolhazards=varlist[30]
+    number_of_alu_instructions=varlist[31]
     new_var+=4
     if len(write_pc)==0 and len(mem_pc)==0 and len(execute_pc)==0 and len(decode_pc)==0:
-        varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
-    
+        varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
+                number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
+                number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions]    
         return reg,instruction_dict,data_dict,clock,varlist
     clock+=1
 
@@ -87,7 +112,14 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     if len(write_pc)!=0:
         this_pc=write_pc[0]
         write_pc.pop(0)
-
+        number_of_instructions+=1
+        opr=decoded_info[this_pc]['opr']
+        if(decoded_info[this_pc]['opr']=='lw' or decoded_info[this_pc]['opr']=='ld' or decoded_info[this_pc]['opr']=='lb' or decoded_info[this_pc]['opr']=='lh'):
+            number_of_load_instruction+=1
+        if(decoded_info[this_pc]['opr']=='sw' or decoded_info[this_pc]['opr']=='sd' or decoded_info[this_pc]['opr']=='sb' or decoded_info[this_pc]['opr']=='sh'):
+            number_of_store_instruction+=1
+        if(opr=='jal' or opr=='jalr' or opr=='beq' or opr=='bne' or opr=='bge' or opr=='blt'):
+            number_of_alu_instructions+=1
         if('rd' in decoded_info[this_pc]):
             if(int(decoded_info[this_pc]['rd'],2)!=0):
                 reg,temp_string_writeback=Writeback.write_back(muxy,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr'],decoded_info[this_pc]['rd']],reg)
@@ -132,8 +164,10 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
             control_inst=False
             if this_pc in btb:
                 if pc_final==btb[this_pc]:
+                    output+="Prediction Successful ! for pc, "+this_pc+"\n"
                     pass
                 else:
+                    output+="Prediction MisMatched ! for pc, "+this_pc+"\n"
                     remove_decode=True
                     if pc_final in instruction_dict:
                         decode_pc.append(pc_final)
@@ -143,8 +177,10 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
             else:
                 btb[this_pc]=pc_final
                 if pc_final==fetch.increment_pc(this_pc):
+                    output+="Prediction Successful ! for pc, "+this_pc+"\n"
                     pass
                 else:
+                    output+="Prediction MisMatched ! for pc, "+this_pc+"\n"
                     remove_decode=True
                     if pc_final in instruction_dict:
                         decode_pc.append(pc_final)
@@ -153,8 +189,11 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
 
     #decode 
     if(dummy_val>0):
+        number_of_stall_instructions+=1
         dummy_val-=4
-        varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
+        varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
+            number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
+            number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions]
         return reg,instruction_dict,data_dict,clock,varlist
     if len(decode_pc)!=0:
         this_pc=decode_pc[0]
@@ -167,6 +206,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
                 decode_pc.append(fetch.increment_pc(this_pc))
             remove_decode=False
         else:
+            output+="pc "+this_pc+" is flushed because of prediction mismatched\n"
             flowchart_list[len(flowchart_list)-1]=-1
             remove_decode=False
             varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output]
@@ -190,6 +230,8 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         #if stalling I am again adding the decode instruction in decode queue
 
         if(dummy_val!=0):
+            number_of_datahazards+=1
+            number_of_stall_instructions+=1
             execute_pc.pop()
             if fetch.increment_pc(this_pc) in instruction_dict:
                 decode_pc.pop()
@@ -202,6 +244,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
             if(hex(int(this_pc,16)+8) in instruction_dict):
                 fetch_pc.append(this_pc)
             if(opr=='jal' or opr=='jalr' or opr=='beq' or opr=='bne' or opr=='bge' or opr=='blt'):
+                number_of_control_instructions+=1
                 control_inst=True
                 
                 if len(decode_pc)!=0:
