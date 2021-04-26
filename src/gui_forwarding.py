@@ -57,9 +57,10 @@ def assemble():
     remove_decode = False
     flowchart_list=[]
     output=""
+    buffers={}
     varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
     number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
-    number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions]
+    number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
     return reg,instruction_dict,data_dict,clock,varlist
 
 def runstep(reg,instruction_dict,data_dict,clock,varlist):
@@ -93,6 +94,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     number_of_stalls_datahazards=varlist[26]
     number_of_stalls_contolhazards=varlist[27]
     number_of_alu_instructions=varlist[28]
+    buffers=varlist[29]
     output=""
     if pc==-1:
         output+="Number of clock cycles ="+str(clock)+"\n"+\
@@ -107,7 +109,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     "Number of branch mispredictions = "+ str(number_of_mispredictions)+"\n"+\
     "Number of stalls due to data hazards = "+str(clock-number_of_instructions-number_of_mispredictions)+"\n"+\
     "Number of stalls due to control hazards = "+str(number_of_mispredictions)+"\n"
-        return output
     if (len(write_pc) == 0 and len(mem_pc) == 0 and len(execute_pc) == 0 and len(decode_pc) == 0):
         varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
             number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
@@ -165,7 +166,13 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
 
         muxy, data_dict, temp_string_memory = memory.memory(
             0x0, rz, [decoded_info[this_pc]['type'], decoded_info[this_pc]['opr']], rm, data_dict, pc_temp)
+        if this_pc not in buffers:
+            buffers[this_pc]={}
+            buffers[this_pc]['mem']=muxy
+        else:
+            buffers[this_pc]['exe']=muxy
         output+=temp_string_memory
+
 
     # execute
     if len(execute_pc) != 0:
@@ -183,6 +190,11 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         rz = hex(rz)
         buffer_exec = rz
         rd = decoded_info[this_pc].get('rd', '-1')
+        if this_pc not in buffers:
+            buffers[this_pc]={}
+            buffers[this_pc]['exe']=rz
+        else:
+            buffers[this_pc]['exe']=rz
         if(rd != '-1'):
             x = int(rd, 2)
             val_df_reg[x] = rz
@@ -234,7 +246,11 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
 
         pc_temp = fetch.increment_pc(this_pc)
         decoded_info[this_pc] = decode.decode(instruction_register)
-        
+        if this_pc not in buffers:
+            buffers[this_pc]={}
+            buffers[this_pc]['dec']=decoded_info[this_pc]
+        else:
+            buffers[this_pc]['dec']=decoded_info[this_pc]
 
         rd = decoded_info[this_pc].get('rd', '-1')
         rs1 = decoded_info[this_pc].get('rs1', '-1')
