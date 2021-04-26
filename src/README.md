@@ -1,4 +1,4 @@
-# RISCV-Simulator
+# RISCV-Simulator Phase 2 
 
 =============================================
 Functional Simulator for RISC Processor
@@ -27,7 +27,10 @@ RISCV-Simulator
       |- gui.py
       |- gui_main.py(containing whole code to run on gui window)
       |- data.mc
-      |- makefile 
+      |- makefile
+	  |- gui_stalling
+	  |- gui_forwarding
+	  |- output.txt
   |- doc
       |
       |- design-doc.docx
@@ -59,6 +62,20 @@ How to run
 	|
 	| >>>>Click on run button
 	|	-And the whole code will get executed
+	| 
+	|
+	|
+	| >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	CONTROL KNOBS
+	| PIPELINE EXECUTION
+	| --when you select this button
+	------code will execute with pipeline
+	| -------two buttons will appear
+	----Data Forwarding(when you select this option data hazards will be solved using data forwarding)
+	----Stalling(when you select this option, data hazards will be solved using stalling)
+	| --when you don't select this button
+	-----your code will execute without pipeline
+	|
 	|_ _(Without Gui-on terminal)-
 	|	|
 	|	|
@@ -109,5 +126,29 @@ Register view
 Memory view
 --Shows value of memory byte by byte 
  
+Print pipeline Register
+--All the pipeline registers will be printed by selecting this option
 
+1-Bit Branch Predictor:-
+--Hit(when prediction matches with the actual result) 
+--Miss(when prediction doesn't match with the actual result)
+
+
+Block diagram of Instructions
+So basically it's a rectangle 
+---
+	--1st row means first instruction which will get executed
+	--2nd row means 2nd instruction which will get executed in the code
+---
+	--1st column shows which part of which instruction get executed in the first cycle
+	--similarly 2nd column shows which part of which instruction will get executed in the 2nd cycle
+
+for eg:- in the first cycle fetch of 1st instruction will occur
+in the second cycle decode of first instruction and fetch of second instruction will occur
+
+then block diagram will be:- 
+
+	1	2
+1	F	D
+2		F
 
