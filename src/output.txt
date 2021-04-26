@@ -1,80 +1,91 @@
 PC is 0x4
-IR is 0x00500293
-Fetch Instruction 0x00500293 from address 0x0
-type is I
-rd is 00101
-rs1 is 00000
-imm is 000000000101
-opr is addi
-EXECUTE: Adding 0 and 5
-MEMORY: No memory operation.
-WRITEBACK: Register 5 updated with 0x00000005.
-
-
-PC is 0x8
-IR is 0x00228313
-Fetch Instruction 0x00228313 from address 0x4
-type is I
-rd is 00110
-rs1 is 00101
-imm is 000000000010
-opr is addi
-EXECUTE: Adding 5 and 2
-MEMORY: No memory operation.
-WRITEBACK: Register 6 updated with 0x00000007.
-
-
-PC is 0xc
-IR is 0x405303B3
-Fetch Instruction 0x405303B3 from address 0x8
-type is R
-rd is 00111
-rs1 is 00110
-rs2 is 00101
-opr is sub
-EXECUTE: Subtracting 7 and 5
-MEMORY: No memory operation.
-WRITEBACK: Register 7 updated with 0x00000002.
-
-
-PC is 0x10
-IR is 0x100001B7
-Fetch Instruction 0x100001B7 from address 0xc
+IR is 0x10000237
+Fetch Instruction 0x10000237 from address 0x0
 type is U
-rd is 00011
+rd is 00100
 imm is 00010000000000000000000000000000
 opr is lui
 EXECUTE: No execute operationMEMORY: No memory operation.
-WRITEBACK: Register 3 updated with 0x10000000.
+WRITEBACK: Register 4 updated with 0x10000000.
 
 
-PC is 0x14
-IR is 0x00018193
-Fetch Instruction 0x00018193 from address 0x10
+PC is 0x8
+IR is 0x00020213
+Fetch Instruction 0x00020213 from address 0x4
 type is I
-rd is 00011
-rs1 is 00011
+rd is 00100
+rs1 is 00100
 imm is 000000000000
 opr is addi
 EXECUTE: Adding 268435456 and 0
 MEMORY: No memory operation.
-WRITEBACK: Register 3 updated with 0x10000000.
+WRITEBACK: Register 4 updated with 0x10000000.
+
+
+PC is 0xc
+IR is 0x100002B7
+Fetch Instruction 0x100002B7 from address 0x8
+type is U
+rd is 00101
+imm is 00010000000000000000000000000000
+opr is lui
+EXECUTE: No execute operationMEMORY: No memory operation.
+WRITEBACK: Register 5 updated with 0x10000000.
+
+
+PC is 0x10
+IR is 0x00428293
+Fetch Instruction 0x00428293 from address 0xc
+type is I
+rd is 00101
+rs1 is 00101
+imm is 000000000100
+opr is addi
+EXECUTE: Adding 268435456 and 4
+MEMORY: No memory operation.
+WRITEBACK: Register 5 updated with 0x10000004.
+
+
+PC is 0x14
+IR is 0x00600313
+Fetch Instruction 0x00600313 from address 0x10
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000110
+opr is addi
+EXECUTE: Adding 0 and 6
+MEMORY: No memory operation.
+WRITEBACK: Register 6 updated with 0x00000006.
 
 
 PC is 0x18
-IR is 0x0071A023
-Fetch Instruction 0x0071A023 from address 0x14
+IR is 0x0062A023
+Fetch Instruction 0x0062A023 from address 0x14
 type is S
-rs1 is 00011
-rs2 is 00111
+rs1 is 00101
+rs2 is 00110
 imm is 000000000000
 opr is sw
-EXECUTE: Calculating net memory address by adding 268435456 and 0 in S-type instructions
-MEMORY: Stored 00000002 into addresses: 268435456 268435457 268435458 268435459.
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in S-type instructions
+MEMORY: Stored 00000006 into addresses: 268435460 268435461 268435462 268435463.
+
+
+PC is 0x1c
+IR is 0x00422203
+Fetch Instruction 0x00422203 from address 0x18
+type is I
+rd is 00100
+rs1 is 00100
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+WRITEBACK: Register 4 updated with 0x00000006.
 
 
 PC is -1
-IR is 0x0071A023
+IR is 0x00422203
 X----------------X
 Code Ran Successfully
 
