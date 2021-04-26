@@ -10,7 +10,7 @@
 from PyQt5 import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os,sys,subprocess
-import gui_main,gui_stalling
+import gui_main,gui_stalling,gui_forwarding
 from PyQt5.QtWidgets import QApplication, QDialog, QLabel, QGroupBox, QVBoxLayout, QHBoxLayout, QCheckBox, QRadioButton
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QRect
@@ -453,34 +453,64 @@ class Ui_MainWindow(object):
             subprocess.call([opener, "output.txt"])
     def assembly(self):
         if(self.pipeline):
-            self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.assemble()
-            self.loaddata(self.reg)
-            self.loaddata2(self.idi)
-            self.loaddata3(self.dd)
-            self.pc=self.varlist[0]
-            self.outtext=self.varlist[-1]
-            self.bdd=self.varlist[-2]
-            mem_pc=self.varlist[7]
-            write_pc=self.varlist[8]
-            execute_pc=self.varlist[9]
-            decode_pc=self.varlist[10]
-            fetch_pc=self.varlist[11]
-            self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
-            
-            self.loaddata4(self.bdd,self.cpc)
-            
-            self.textBrowser_3.clear()
-            self.textBrowser_3.append("Pipelined Execution")
-            self.textBrowser_4.clear()
-            self.textBrowser_4.append("Pipelined Execution")
-            self.clockadj()
-            self.tableWidget_2.clear()
-            self.textBrowser.clear()
-            self.outtext=self.varlist[-3]
-            self.bdd=self.varlist[-2]
-            self.cpc=self.varlist[-1]
-            data=open("output.txt","wt")
-            data.write("")
+            if(self.radioBox_3.isChecked()):
+                self.reg,self.idi,self.dd,self.clock,self.varlist=gui_forwarding.assemble()
+                self.loaddata(self.reg)
+                self.loaddata2(self.idi)
+                self.loaddata3(self.dd)
+                self.pc=self.varlist[0]
+                self.outtext=self.varlist[-1]
+                self.bdd=self.varlist[-2]
+                mem_pc=self.varlist[7]
+                write_pc=self.varlist[8]
+                execute_pc=self.varlist[9]
+                decode_pc=self.varlist[10]
+                fetch_pc=self.varlist[11]
+                self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
+                
+                self.loaddata4(self.bdd,self.cpc)
+                
+                self.textBrowser_3.clear()
+                self.textBrowser_3.append("Pipelined Execution")
+                self.textBrowser_4.clear()
+                self.textBrowser_4.append("Pipelined Execution")
+                self.clockadj()
+                self.tableWidget_2.clear()
+                self.textBrowser.clear()
+                self.outtext=self.varlist[-3]
+                self.bdd=self.varlist[-2]
+                self.cpc=self.varlist[-1]
+                data=open("output.txt","wt")
+                data.write("")
+            else:
+                self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.assemble()
+                self.loaddata(self.reg)
+                self.loaddata2(self.idi)
+                self.loaddata3(self.dd)
+                self.pc=self.varlist[0]
+                self.outtext=self.varlist[-1]
+                self.bdd=self.varlist[-2]
+                mem_pc=self.varlist[7]
+                write_pc=self.varlist[8]
+                execute_pc=self.varlist[9]
+                decode_pc=self.varlist[10]
+                fetch_pc=self.varlist[11]
+                self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
+                
+                self.loaddata4(self.bdd,self.cpc)
+                
+                self.textBrowser_3.clear()
+                self.textBrowser_3.append("Pipelined Execution")
+                self.textBrowser_4.clear()
+                self.textBrowser_4.append("Pipelined Execution")
+                self.clockadj()
+                self.tableWidget_2.clear()
+                self.textBrowser.clear()
+                self.outtext=self.varlist[-3]
+                self.bdd=self.varlist[-2]
+                self.cpc=self.varlist[-1]
+                data=open("output.txt","wt")
+                data.write("")
 
         else:
             self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t=gui_main.assemble()
@@ -498,32 +528,60 @@ class Ui_MainWindow(object):
 
     def step(self):
         if(self.pipeline):
-            if(self.pc!=-1):
-                self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
-                self.loaddata(self.reg)
-                self.loaddata2(self.idi)
-                self.loaddata3(self.dd)
-                self.pc=self.varlist[0]
-                self.outtext=self.varlist[-1]
-                self.bdd=self.varlist[-2]
-                mem_pc=self.varlist[7]
-                write_pc=self.varlist[8]
-                execute_pc=self.varlist[9]
-                decode_pc=self.varlist[10]
-                fetch_pc=self.varlist[11]
-                self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
-                
-                self.loaddata4(self.bdd,self.cpc)
-                
-                self.clockadj()
-                self.textBrowser.append(self.outtext)
-                data=open("output.txt",'a')
-                if(self.pc==-1):
-                    data.write("X----------------X\nCode Ran Successfully\n")
-                data.write(self.outtext)
-                data.write("\n\n")
+            if(self.radioBox_3.isChecked()):
+                if(self.pc!=-1):
+                    self.reg,self.idi,self.dd,self.clock,self.varlist=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    self.loaddata(self.reg)
+                    self.loaddata2(self.idi)
+                    self.loaddata3(self.dd)
+                    self.pc=self.varlist[0]
+                    self.outtext=self.varlist[-1]
+                    self.bdd=self.varlist[-2]
+                    mem_pc=self.varlist[7]
+                    write_pc=self.varlist[8]
+                    execute_pc=self.varlist[9]
+                    decode_pc=self.varlist[10]
+                    fetch_pc=self.varlist[11]
+                    self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
+                    
+                    self.loaddata4(self.bdd,self.cpc)
+                    
+                    self.clockadj()
+                    self.textBrowser.append(self.outtext)
+                    data=open("output.txt",'a')
+                    if(self.pc==-1):
+                        data.write("X----------------X\nCode Ran Successfully\n")
+                    data.write(self.outtext)
+                    data.write("\n\n")
+                else:
+                    return
             else:
-                return
+                if(self.pc!=-1):
+                    self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    self.loaddata(self.reg)
+                    self.loaddata2(self.idi)
+                    self.loaddata3(self.dd)
+                    self.pc=self.varlist[0]
+                    self.outtext=self.varlist[-1]
+                    self.bdd=self.varlist[-2]
+                    mem_pc=self.varlist[7]
+                    write_pc=self.varlist[8]
+                    execute_pc=self.varlist[9]
+                    decode_pc=self.varlist[10]
+                    fetch_pc=self.varlist[11]
+                    self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
+                    
+                    self.loaddata4(self.bdd,self.cpc)
+                    
+                    self.clockadj()
+                    self.textBrowser.append(self.outtext)
+                    data=open("output.txt",'a')
+                    if(self.pc==-1):
+                        data.write("X----------------X\nCode Ran Successfully\n")
+                    data.write(self.outtext)
+                    data.write("\n\n")
+                else:
+                    return
         else:
             if(self.pc!=-1):
                 num=int(self.pc,16)
@@ -561,6 +619,31 @@ class Ui_MainWindow(object):
                 return
     def run(self):
         if(self.pipeline):
+            if(self.radioBox_3.isChecked()):
+                while(self.pc!=-1):
+                    self.reg,self.idi,self.dd,self.clock,self.varlist=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    self.loaddata(self.reg)
+                    self.loaddata2(self.idi)
+                    self.loaddata3(self.dd)
+                    self.pc=self.varlist[0]
+                    self.outtext=self.varlist[-1]
+                    self.bdd=self.varlist[-2]
+                    mem_pc=self.varlist[7]
+                    write_pc=self.varlist[8]
+                    execute_pc=self.varlist[9]
+                    decode_pc=self.varlist[10]
+                    fetch_pc=self.varlist[11]
+                    self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
+                    self.loaddata4(self.bdd,self.cpc)
+                    self.clockadj()
+                    self.textBrowser.append(self.outtext)
+                    data=open("output.txt",'a')
+                    if(self.pc==-1):
+                        print("X----------------X\nCode Ran Successfully\n")
+                        data.write("X----------------X\nCode Ran Successfully\n")
+                    data.write(self.outtext)
+                    data.write("\n\n")
+            else:
                 while(self.pc!=-1):
                     self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
                     self.loaddata(self.reg)

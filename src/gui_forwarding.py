@@ -220,5 +220,5 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     print(data_dict)
     print(reg)
     print(clock)
-    varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output]
+    varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output]
     return reg,instruction_dict,data_dict,clock,varlist
