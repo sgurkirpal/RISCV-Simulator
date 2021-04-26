@@ -10,7 +10,7 @@
 from PyQt5 import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os,sys,subprocess
-import gui_main
+import gui_main,gui_stalling
 from PyQt5.QtWidgets import QApplication, QDialog, QLabel, QGroupBox, QVBoxLayout, QHBoxLayout, QCheckBox, QRadioButton
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QRect
@@ -27,6 +27,8 @@ class Ui_MainWindow(object):
     outtext=0
     pipeline=0
     varlist=[]
+    bdd=[]
+    cpc=[]
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1360, 821)
@@ -443,6 +445,9 @@ class Ui_MainWindow(object):
             self.clockadj()
             self.tableWidget_2.clear()
             self.textBrowser.clear()
+            self.outtext=varlist[-3]
+            self.bdd=varlist[-2]
+            self.cpc=varlist[-1]
             data=open("output.txt","wt")
             data.write("")
         else:
@@ -462,23 +467,18 @@ class Ui_MainWindow(object):
     def step(self):
         if(self.pipeline):
             if(self.pc!=-1):
-                self.reg,self.idi,self.dd,self.clock,self.varlist=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
+                self.pc=self.varlist[0]
+                self.outtext=self.varlist[-3]
+                self.bdd=self.varlist[-2]
+                self.cpc=self.varlist[-1]
                 self.loaddata4(self.bdd,self.cpc)
-                if(self.pc!=-1):
-                    
-                    self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
-                else:
-                    num=int(temp_pc,16)
-                    self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
-                    self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
-                    self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
                 self.clockadj()
                 self.textBrowser.append(self.outtext)
                 data=open("output.txt",'a')
-                data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
                 if(self.pc==-1):
                     data.write("X----------------X\nCode Ran Successfully\n")
                 data.write(self.outtext)
@@ -523,24 +523,18 @@ class Ui_MainWindow(object):
     def run(self):
         if(self.pipeline):
                 while(self.pc!=-1):
-                    num=int(self.pc,16)
-                    temp_pc=self.pc
-                    self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                    self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
                     self.loaddata(self.reg)
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
-                    if(self.pc!=-1):
-                        self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
-                    else:
-                        num=int(temp_pc,16)
-                        
-                        self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
-                        self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
-                        self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
+                    self.pc=self.varlist[0]
+                    self.outtext=self.varlist[-3]
+                    self.bdd=self.varlist[-2]
+                    self.cpc=self.varlist[-1]
+                    self.loaddata4(self.bdd,self.cpc)
                     self.clockadj()
                     self.textBrowser.append(self.outtext)
                     data=open("output.txt",'a')
-                    data.write("PC is "+str(self.pc)+"\nIR is "+str(self.ir)+"\n")
                     if(self.pc==-1):
                         data.write("X----------------X\nCode Ran Successfully\n")
                     data.write(self.outtext)
