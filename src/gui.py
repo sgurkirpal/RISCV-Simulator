@@ -26,6 +26,7 @@ class Ui_MainWindow(object):
     pc_t=0
     outtext=0
     pipeline=0
+    varlist=[]
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1360, 821)
@@ -431,7 +432,7 @@ class Ui_MainWindow(object):
             subprocess.call([opener, "output.txt"])
     def assembly(self):
         if(self.pipeline):
-            self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t=gui_main.assemble()
+            self.reg,self.idi,self.dd,self.clock,self.varlist=gui_main.assemble()
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
@@ -461,9 +462,7 @@ class Ui_MainWindow(object):
     def step(self):
         if(self.pipeline):
             if(self.pc!=-1):
-                num=int(self.pc,16)
-                temp_pc=self.pc
-                self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                self.reg,self.idi,self.dd,self.clock,self.varlist=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
@@ -531,7 +530,6 @@ class Ui_MainWindow(object):
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
                     if(self.pc!=-1):
-                        
                         self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
                     else:
                         num=int(temp_pc,16)
