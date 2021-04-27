@@ -65,7 +65,7 @@ How to run
 	| 
 	|
 	|
-	| >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	| 
 	CONTROL KNOBS
 	| PIPELINE EXECUTION
 	| --when you select this button
@@ -75,6 +75,14 @@ How to run
 	----Stalling(when you select this option, data hazards will be solved using stalling)
 	| --when you don't select this button
 	-----your code will execute without pipeline
+	|
+	|
+	|
+	|
+	PRINT PIPELINE REGISTER
+	|- after adding any pc value into it, buffer values for that instruction will be printed
+	|-if we check the checkbox "PRINT ALL PRINT REGISTER" , and press the button "PRINT PIPELINE REGISTER",
+  	|	all of the buffers will get printed at the end of output.
 	|
 	|_ _(Without Gui-on terminal)-
 	|	|
@@ -152,3 +160,6 @@ then block diagram will be:-
 1	F	D
 2		F
 
+--all the outputs which we have to print will get printed in the end in output file
+--if we check the checkbox "PRINT ALL PRINT REGISTER" , and press the button "PRINT PIPELINE REGISTER",
+  all of the buffers will get printed at the end of output.

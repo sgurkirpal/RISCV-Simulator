@@ -293,12 +293,12 @@ class Ui_MainWindow(object):
                 self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*(j-1):2*(j)]))
             i+=1
     def loaddata4(self,lis,dicti):
-        print(lis)
+        
         self.tableWidget_4.scrollToItem(self.tableWidget_4.item(len(lis), self.clock))
         dic=[]
         for x in range(len(dicti)):
             dic.append(dicti[x])
-        print(dic)
+        
         if(len(dic[4])==0):
             dic[4].append(-1)
         if(len(dic[3])==0):
@@ -345,7 +345,7 @@ class Ui_MainWindow(object):
                     y=self.tableWidget_4.item(i,self.clock-1)
                     if(y!=None):
                         y=y.text()
-                    print("lmaooo",y)
+                    
                     if(y==x):
                         self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
@@ -358,7 +358,7 @@ class Ui_MainWindow(object):
                         self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
         
-        print(dic,"hehe",dicti)
+
                 
 
     def retranslateUi(self, MainWindow):
@@ -410,12 +410,39 @@ class Ui_MainWindow(object):
         self.checkBox_4.adjustSize()
         self.pushButton_7.adjustSize()
         self.pushButton_2.clicked.connect(lambda: self.opendata())
+        self.pushButton_7.clicked.connect(lambda: self.buffers())
         self.pushButton.clicked.connect(lambda: self.guihelp())
         self.pushButton_4.clicked.connect(lambda: self.outputlog())
         self.pushButton_6.clicked.connect(lambda: self.assembly())
         self.pushButton_5.clicked.connect(lambda: self.step())
         self.pushButton_3.clicked.connect(lambda: self.run())
         self.checkBox.clicked.connect(lambda: self.pipelining())
+    def buffers(self):
+        tempx=""
+        nice=self.varlist[-1]
+        keys=self.lineEdit.text()
+        if(nice.get(str(keys),-1)!=-1):
+            for x in nice[str(keys)]:
+                tempx+=(str(x)+" is "+str(nice[str(keys)][x])+"\n")
+        else:
+            tempx="This Instruction does not exist\n"
+        data=open("output.txt",'a')
+        data.write(tempx)
+        data.write("\n\n")
+        self.textBrowser.append(tempx)
+        if(self.checkBox_4.isChecked()):
+            tempx=""
+            for x in nice:
+                for y in nice[x]:
+                    tempx+=(str(y)+" is "+str(nice[x][y])+"\n")
+            data=open("output.txt",'a')
+            data.write(tempx)
+            data.write("\n\n")
+            self.textBrowser.append(tempx)
+
+
+        
+
     def pipelining(self):
         if(self.pipeline):
             self.pipeline=0
@@ -495,7 +522,7 @@ class Ui_MainWindow(object):
                 decode_pc=self.varlist[10]
                 fetch_pc=self.varlist[11]
                 self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
-                print(self.cpc)
+                
                 self.loaddata4(self.bdd,self.cpc)
                 self.textBrowser_3.clear()
                 self.textBrowser_3.append("Pipelined Execution")
@@ -581,7 +608,11 @@ class Ui_MainWindow(object):
                     data.write(self.outtext)
                     data.write("\n\n")
                 else:
-
+                    self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    data=open("output.txt",'a')
+                    data.write(self.outtext)
+                    data.write("\n\n")
+                    self.textBrowser.append(self.outtext)
                     return
         else:
             if(self.pc!=-1):
@@ -617,6 +648,11 @@ class Ui_MainWindow(object):
                 data.write(self.outtext)
                 data.write("\n\n")
             else:
+                self.outtext=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                data=open("output.txt",'a')
+                data.write(self.outtext)
+                data.write("\n\n")
+                self.textBrowser.append(self.outtext)
                 return
     def run(self):
         if(self.pipeline):
@@ -640,7 +676,7 @@ class Ui_MainWindow(object):
                     self.textBrowser.append(self.outtext)
                     data=open("output.txt",'a')
                     if(self.pc==-1):
-                        print("X----------------X\nCode Ran Successfully\n")
+                        
                         data.write("X----------------X\nCode Ran Successfully\n")
                     data.write(self.outtext)
                     data.write("\n\n")
@@ -669,10 +705,15 @@ class Ui_MainWindow(object):
                     self.textBrowser.append(self.outtext)
                     data=open("output.txt",'a')
                     if(self.pc==-1):
-                        print("X----------------X\nCode Ran Successfully\n")
+                        
                         data.write("X----------------X\nCode Ran Successfully\n")
                     data.write(self.outtext)
                     data.write("\n\n")
+                self.outtext=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                data=open("output.txt",'a')
+                data.write(self.outtext)
+                data.write("\n\n")
+                self.textBrowser.append(self.outtext)
         else:
             while(self.pc!=-1):
                 num=int(self.pc,16)
