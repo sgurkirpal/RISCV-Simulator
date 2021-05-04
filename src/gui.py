@@ -293,7 +293,7 @@ class Ui_MainWindow(object):
                 self.tableWidget_2.setItem(i,j,QtWidgets.QTableWidgetItem(temp1[2*(j-1):2*(j)]))
             i+=1
     def loaddata4(self,lis,dicti):
-        
+        self.clock+=1
         self.tableWidget_4.scrollToItem(self.tableWidget_4.item(len(lis), self.clock))
         dic=[]
         for x in range(len(dicti)):
@@ -308,7 +308,9 @@ class Ui_MainWindow(object):
         if(len(dic[1])==0):
             dic[1].append(-1)
         if(len(dic[0])==0):
-            dic[0].append(-1)       
+            dic[0].append(-1)      
+        print(dic)
+        print(lis)
         for i in range(len(lis)):
             if(lis[i]==-1):
                 continue
@@ -340,15 +342,21 @@ class Ui_MainWindow(object):
                     dic[2][0]=-1
                 elif(dic[1][0]==lis[i]):
                     x='D'
-                    self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
-                    dic[1][0]=-1
-                    y=self.tableWidget_4.item(i,self.clock-1)
-                    if(y!=None):
-                        y=y.text()
                     
-                    if(y==x):
-                        self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
-                        break
+                    if(i==0):
+                        self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
+                        dic[1][0]=-1
+                        self.tableWidget_4.setItem(i,self.clock-1,QtWidgets.QTableWidgetItem("F"))
+                    else:
+                        self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
+                        dic[1][0]=-1
+                        y=self.tableWidget_4.item(i,self.clock-1)
+                        if(y!=None):
+                            y=y.text()
+                        
+                        if(y==x):
+                            self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
+                            break
                 elif(dic[0][0]==lis[i]):
                     x='F'
                     self.tableWidget_4.setItem(i,self.clock,QtWidgets.QTableWidgetItem(x))
@@ -357,7 +365,7 @@ class Ui_MainWindow(object):
                     if(y==x):
                         self.tableWidget_4.item(i,self.clock).setBackground(QtGui.QColor(0,100,100))
                         break
-        
+        self.clock-=1
 
                 
 
@@ -482,13 +490,14 @@ class Ui_MainWindow(object):
     def assembly(self):
         if(self.pipeline):
             if(self.radioBox_3.isChecked()):
+                self.tableWidget_4.clear()
                 self.reg,self.idi,self.dd,self.clock,self.varlist=gui_forwarding.assemble()
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
                 self.pc=self.varlist[0]
                 self.outtext=self.varlist[17]
-                self.bdd=self.varlist[16]
+                self.bdd=self.varlist[19]
                 mem_pc=self.varlist[7]
                 write_pc=self.varlist[8]
                 execute_pc=self.varlist[9]
@@ -510,6 +519,7 @@ class Ui_MainWindow(object):
                 data.write("")
             else:
                 self.reg,self.idi,self.dd,self.clock,self.varlist=gui_stalling.assemble()
+                self.tableWidget_4.clear()
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
@@ -541,6 +551,7 @@ class Ui_MainWindow(object):
             self.loaddata3(self.dd)
             self.textBrowser_3.clear()
             self.textBrowser_3.append(self.pc)
+            self.tableWidget_4.clear()
             self.textBrowser_4.clear()
             self.clockadj()
             self.tableWidget_2.clear()

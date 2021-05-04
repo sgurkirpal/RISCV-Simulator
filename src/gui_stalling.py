@@ -51,7 +51,7 @@ def assemble():
     dummy_val=0
     buffer_memory={}
     new_var=0
-    flowchart_list=[]
+    flowchart_list=["0x0","0x4"]
     output=""
     number_of_instructions=0
     number_of_load_instruction=0
