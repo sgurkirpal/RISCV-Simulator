@@ -181,6 +181,8 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         rz,pc_final,temp_string_execute=execute.execute(decoded_info[this_pc],reg,pc_temp)
         output+=temp_string_execute
         rz=hex(rz)
+        #print(this_pc,end=" ")
+        #print(rz)
         if this_pc not in buffers:
             buffers[this_pc]={}
             buffers[this_pc]['exe']=rz

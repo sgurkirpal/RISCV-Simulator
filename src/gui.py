@@ -309,8 +309,6 @@ class Ui_MainWindow(object):
             dic[1].append(-1)
         if(len(dic[0])==0):
             dic[0].append(-1)      
-        print(dic)
-        print(lis)
         for i in range(len(lis)):
             if(lis[i]==-1):
                 continue
@@ -497,7 +495,7 @@ class Ui_MainWindow(object):
                 self.loaddata3(self.dd)
                 self.pc=self.varlist[0]
                 self.outtext=self.varlist[17]
-                self.bdd=self.varlist[19]
+                self.bdd=self.varlist[16]
                 mem_pc=self.varlist[7]
                 write_pc=self.varlist[8]
                 execute_pc=self.varlist[9]

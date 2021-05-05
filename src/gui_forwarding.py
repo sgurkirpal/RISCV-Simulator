@@ -184,11 +184,14 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         mem_pc.append(this_pc)
 
         pc_temp = fetch.increment_pc(this_pc)
-
+        #print('\n\n\n')
+        #print(reg,val_df_reg)
         rz, pc_final, temp_string_execute = execute.execute(
-            decoded_info[this_pc], reg, pc_temp)
+            decoded_info[this_pc], reg, pc_temp,val_df_reg)
         output+=temp_string_execute
         rz = hex(rz)
+        #print(this_pc,end=" ")
+        #print(rz)
         buffer_exec = rz
         rd = decoded_info[this_pc].get('rd', '-1')
         if this_pc not in buffers:
@@ -203,6 +206,8 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
                 val_df_reg[x] = 0
             if(decoded_info[this_pc]['opr'] == 'lw'):
                 val_df_reg[x] = data_dict[rz]
+        #print(reg)
+        #print(val_df_reg)
         if control_inst:
             control_inst = False
             if this_pc in btb:
