@@ -63,7 +63,7 @@ def cacheinitialization():
 
 
 #instruction cache dict is exactly same as memory cache dict
-def instruction_initialization(no_of_blocks,no_of_sets,k,blocksize,cachesize0):
+def instruction_initialization(no_of_sets,k,blocksize):
     InstructionCacheDict={}
     for i in range(no_of_sets):
         InstructionCacheDict[i]=[]
@@ -74,3 +74,4 @@ def instruction_initialization(no_of_blocks,no_of_sets,k,blocksize,cachesize0):
             InstructionCacheDict[i][j].append(-1)
             for _ in range(blocksize):
                 InstructionCacheDict[i].append(-1)
+    return InstructionCacheDict
