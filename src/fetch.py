@@ -31,3 +31,46 @@ def fetch_file(mc_file):
             dict_data[words[0]]=words[1]
         
     return dict_text,dict_data
+
+def cacheinitialization():
+    print("Enter the value for cachesize(in Bytes only)")
+    cachesize=int(input())
+    print("Enter the value for blocksize(in Bytes only)")
+    blocksize=int(input())
+    print("Enter number of ways for SA")
+    k=int(input())
+    memorycachedict={}
+    no_of_blocks=(cachesize//blocksize)
+    no_of_sets=no_of_blocks//k
+    
+    #memorycachedict is a dictionary which contains k elements
+    # where each element is a separate list
+    # syntax of list is such that l[0]=1 means it is filled
+    # l[1]=tag bit
+    # l[2]= cycle no. in which that tag value is changed
+    # l[3:3+blocksize]=contains all the data bytes
+
+    for i in range(no_of_sets):
+        memorycachedict[i]=[]
+        for j in range(k):
+            memorycachedict[i].append([])
+            memorycachedict[i][j].append(0)
+            memorycachedict[i][j].append(-1)
+            memorycachedict[i][j].append(-1)
+            for _ in range(blocksize):
+                memorycachedict[i].append(-1)
+    return no_of_blocks,no_of_sets,memorycachedict,k,blocksize,cachesize
+
+
+#instruction cache dict is exactly same as memory cache dict
+def instruction_initialization(no_of_blocks,no_of_sets,k,blocksize,cachesize0):
+    InstructionCacheDict={}
+    for i in range(no_of_sets):
+        InstructionCacheDict[i]=[]
+        for j in range(k):
+            InstructionCacheDict[i].append([])
+            InstructionCacheDict[i][j].append(0)
+            InstructionCacheDict[i][j].append(-1)
+            InstructionCacheDict[i][j].append(-1)
+            for _ in range(blocksize):
+                InstructionCacheDict[i].append(-1)
