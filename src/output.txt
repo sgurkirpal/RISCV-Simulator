@@ -1,866 +1,3691 @@
-Fetch Instruction 0x07B00293 from address 0x0
+Fetch Instruction 0x10000217 from address 0x0
 
 
+type is U
+rd is 00100
+imm is 00010000000000000000000000000000
+opr is auipc
+EXECUTE: PC added to 268435456
+Fetch Instruction 0x00020213 from address 0x4
+
+
+MEMORY: No memory operation.
+type is I
+rd is 00100
+rs1 is 00100
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 268435456 and 0
+Fetch Instruction 0x10000297 from address 0x8
+
+
+WRITEBACK: Register 4 updated with 0x10000000.
+MEMORY: No memory operation.
+type is U
+rd is 00101
+imm is 00010000000000000000000000000000
+opr is auipc
+EXECUTE: PC added to 268435456
+Fetch Instruction 0x01428293 from address 0xc
+
+
+WRITEBACK: Register 4 updated with 0x10000000.
+MEMORY: No memory operation.
 type is I
 rd is 00101
-rs1 is 00000
-imm is 000001111011
+rs1 is 00101
+imm is 000000010100
 opr is addi
-EXECUTE: Adding 0 and 123
-Fetch Instruction 0x01300213 from address 0x4
+EXECUTE: Adding 268435464 and 20
+Fetch Instruction 0x0002A183 from address 0x10
 
 
+WRITEBACK: Register 5 updated with 0x10000008.
 MEMORY: No memory operation.
 type is I
-rd is 00100
-rs1 is 00000
-imm is 000000010011
+rd is 00011
+rs1 is 00101
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435484 and 0 in Load instructions
+Fetch Instruction 0xFFF18113 from address 0x14
+
+
+WRITEBACK: Register 5 updated with 0x1000001c.
+MEMORY: Loaded values from addresses: 268435484 268435485 268435486 268435487.
+type is I
+rd is 00010
+rs1 is 00011
+imm is -0b1
 opr is addi
-EXECUTE: Adding 0 and 19
-Fetch Instruction 0x0480006F from address 0x8
+EXECUTE: Adding 7 and -1
+Fetch Instruction 0x00000593 from address 0x18
 
 
-WRITEBACK: Register 5 updated with 0x0000007b.
+WRITEBACK: Register 3 updated with 0x00000007.
 MEMORY: No memory operation.
-type is UJ
-rd is 00000
-imm is 00000000000000000000000001001000
-opr is jal
-EXECUTE: Calculating net memory address by adding 72 in jal instruction
-Fetch Instruction 0xFF010113 from address 0xc
-pc 0xc is flushed because of prediction mismatched
+type is I
+rd is 01011
+rs1 is 00000
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 0 and 0
+Fetch Instruction 0x00200B13 from address 0x1c
 
 
-WRITEBACK: Register 4 updated with 0x00000013.
+WRITEBACK: Register 2 updated with 0x00000006.
 MEMORY: No memory operation.
-Fetch Instruction 0x00500313 from address 0x50
+type is I
+rd is 10110
+rs1 is 00000
+imm is 000000000010
+opr is addi
+EXECUTE: Adding 0 and 2
+Fetch Instruction 0x00000313 from address 0x20
+
+
+WRITEBACK: Register 11 updated with 0x00000000.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 0 and 0
+Fetch Instruction 0x01631433 from address 0x24
+
+
+WRITEBACK: Register 22 updated with 0x00000002.
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 0 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+WRITEBACK: Register 6 updated with 0x00000000.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 0 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000000.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000000.
+MEMORY: Loaded values from addresses: 268435456 268435457 268435458 268435459.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000A.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 42 is greater than 10 hence, pc incremented. 
+Fetch Instruction 0x0093A223 from address 0x38
+pc 0x38 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0x0000002a.
+MEMORY: No memory operation.
+Fetch Instruction 0x00130313 from address 0x40
 
 
 type is I
 rd is 00110
-rs1 is 00000
-imm is 000000000101
-opr is addi
-EXECUTE: Adding 0 and 5
-Fetch Instruction 0xFB9FF0EF from address 0x54
-
-
-MEMORY: No memory operation.
-type is UJ
-rd is 00001
-imm is -0b1001000
-opr is jal
-EXECUTE: Calculating net memory address by adding -72 in jal instruction
-Fetch Instruction 0xFF010113 from address 0xc
-
-
-WRITEBACK: Register 6 updated with 0x00000005.
-MEMORY: No memory operation.
-type is I
-rd is 00010
-rs1 is 00010
-imm is -0b10000
-opr is addi
-EXECUTE: Adding 2147483632 and -16
-Fetch Instruction 0x00112023 from address 0x10
-
-
-WRITEBACK: Register 1 updated with 0x00000058.
-MEMORY: No memory operation.
-type is S
-rs1 is 00010
-rs2 is 00001
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483616 and 0 in S-type instructions
-Fetch Instruction 0x00612223 from address 0x14
-
-
-WRITEBACK: Register 2 updated with 0x7fffffe0.
-MEMORY: Stored 00000058 into addresses: 2147483616 2147483617 2147483618 2147483619.
-type is S
-rs1 is 00010
-rs2 is 00110
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483616 and 4 in S-type instructions
-Fetch Instruction 0x00512423 from address 0x18
-
-
-MEMORY: Stored 00000005 into addresses: 2147483620 2147483621 2147483622 2147483623.
-type is S
-rs1 is 00010
-rs2 is 00101
-imm is 000000001000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483616 and 8 in S-type instructions
-Fetch Instruction 0x00412623 from address 0x1c
-
-
-MEMORY: Stored 0000007b into addresses: 2147483624 2147483625 2147483626 2147483627.
-type is S
-rs1 is 00010
-rs2 is 00100
-imm is 000000001100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483616 and 12 in S-type instructions
-Fetch Instruction 0x00100213 from address 0x20
-
-
-MEMORY: Stored 00000013 into addresses: 2147483628 2147483629 2147483630 2147483631.
-type is I
-rd is 00100
-rs1 is 00000
+rs1 is 00110
 imm is 000000000001
 opr is addi
 EXECUTE: Adding 0 and 1
-Fetch Instruction 0x00620663 from address 0x24
+Fetch Instruction 0x00230463 from address 0x44
 
 
 MEMORY: No memory operation.
 type is SB
-rs1 is 00100
-rs2 is 00110
-imm is 0000000001100
-opr is beq
-EXECUTE: 1 and 5 are not equal, hence, pc not updated. 
-Fetch Instruction 0xFFF30313 from address 0x28
-
-
-WRITEBACK: Register 4 updated with 0x00000001.
-MEMORY: No memory operation.
-type is I
-rd is 00110
 rs1 is 00110
-imm is -0b1
-opr is addi
-EXECUTE: Adding 5 and -1
-Fetch Instruction 0xFE1FF0EF from address 0x2c
-
-
-MEMORY: No memory operation.
-type is UJ
-rd is 00001
-imm is -0b100000
-opr is jal
-EXECUTE: Calculating net memory address by adding -32 in jal instruction
-Fetch Instruction 0x01010113 from address 0x30
-pc 0x30 is flushed because of prediction mismatched
-
-
-WRITEBACK: Register 6 updated with 0x00000004.
-MEMORY: No memory operation.
-Fetch Instruction 0xFF010113 from address 0xc
-
-
-WRITEBACK: Register 1 updated with 0x00000030.
-type is I
-rd is 00010
-rs1 is 00010
-imm is -0b10000
-opr is addi
-EXECUTE: Adding 2147483616 and -16
-Fetch Instruction 0x00112023 from address 0x10
-
-
-MEMORY: No memory operation.
-type is S
-rs1 is 00010
-rs2 is 00001
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483600 and 0 in S-type instructions
-Fetch Instruction 0x00612223 from address 0x14
-
-
-WRITEBACK: Register 2 updated with 0x7fffffd0.
-MEMORY: Stored 00000030 into addresses: 2147483600 2147483601 2147483602 2147483603.
-type is S
-rs1 is 00010
-rs2 is 00110
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483600 and 4 in S-type instructions
-Fetch Instruction 0x00512423 from address 0x18
-
-
-MEMORY: Stored 00000004 into addresses: 2147483604 2147483605 2147483606 2147483607.
-type is S
-rs1 is 00010
-rs2 is 00101
-imm is 000000001000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483600 and 8 in S-type instructions
-Fetch Instruction 0x00412623 from address 0x1c
-
-
-MEMORY: Stored 0000007b into addresses: 2147483608 2147483609 2147483610 2147483611.
-type is S
-rs1 is 00010
-rs2 is 00100
-imm is 000000001100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483600 and 12 in S-type instructions
-Fetch Instruction 0x00100213 from address 0x20
-
-
-MEMORY: Stored 00000001 into addresses: 2147483612 2147483613 2147483614 2147483615.
-type is I
-rd is 00100
-rs1 is 00000
-imm is 000000000001
-opr is addi
-EXECUTE: Adding 0 and 1
-Fetch Instruction 0x00620663 from address 0x24
-
-
-MEMORY: No memory operation.
-type is SB
-rs1 is 00100
-rs2 is 00110
-imm is 0000000001100
+rs2 is 00010
+imm is 0000000001000
 opr is beq
-EXECUTE: 1 and 4 are not equal, hence, pc not updated. 
-Fetch Instruction 0xFFF30313 from address 0x28
-
-
-WRITEBACK: Register 4 updated with 0x00000001.
-MEMORY: No memory operation.
-type is I
-rd is 00110
-rs1 is 00110
-imm is -0b1
-opr is addi
-EXECUTE: Adding 4 and -1
-Fetch Instruction 0xFE1FF0EF from address 0x2c
-
-
-MEMORY: No memory operation.
-type is UJ
-rd is 00001
-imm is -0b100000
-opr is jal
-EXECUTE: Calculating net memory address by adding -32 in jal instruction
-Fetch Instruction 0xFF010113 from address 0xc
-
-
-WRITEBACK: Register 6 updated with 0x00000003.
-MEMORY: No memory operation.
-type is I
-rd is 00010
-rs1 is 00010
-imm is -0b10000
-opr is addi
-EXECUTE: Adding 2147483600 and -16
-Fetch Instruction 0x00112023 from address 0x10
-
-
-WRITEBACK: Register 1 updated with 0x00000030.
-MEMORY: No memory operation.
-type is S
-rs1 is 00010
-rs2 is 00001
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483584 and 0 in S-type instructions
-Fetch Instruction 0x00612223 from address 0x14
-
-
-WRITEBACK: Register 2 updated with 0x7fffffc0.
-MEMORY: Stored 00000030 into addresses: 2147483584 2147483585 2147483586 2147483587.
-type is S
-rs1 is 00010
-rs2 is 00110
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483584 and 4 in S-type instructions
-Fetch Instruction 0x00512423 from address 0x18
-
-
-MEMORY: Stored 00000003 into addresses: 2147483588 2147483589 2147483590 2147483591.
-type is S
-rs1 is 00010
-rs2 is 00101
-imm is 000000001000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483584 and 8 in S-type instructions
-Fetch Instruction 0x00412623 from address 0x1c
-
-
-MEMORY: Stored 0000007b into addresses: 2147483592 2147483593 2147483594 2147483595.
-type is S
-rs1 is 00010
-rs2 is 00100
-imm is 000000001100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483584 and 12 in S-type instructions
-Fetch Instruction 0x00100213 from address 0x20
-
-
-MEMORY: Stored 00000001 into addresses: 2147483596 2147483597 2147483598 2147483599.
-type is I
-rd is 00100
-rs1 is 00000
-imm is 000000000001
-opr is addi
-EXECUTE: Adding 0 and 1
-Fetch Instruction 0x00620663 from address 0x24
-
-
-MEMORY: No memory operation.
-type is SB
-rs1 is 00100
-rs2 is 00110
-imm is 0000000001100
-opr is beq
-EXECUTE: 1 and 3 are not equal, hence, pc not updated. 
-Fetch Instruction 0xFFF30313 from address 0x28
-
-
-WRITEBACK: Register 4 updated with 0x00000001.
-MEMORY: No memory operation.
-type is I
-rd is 00110
-rs1 is 00110
-imm is -0b1
-opr is addi
-EXECUTE: Adding 3 and -1
-Fetch Instruction 0xFE1FF0EF from address 0x2c
-
-
-MEMORY: No memory operation.
-type is UJ
-rd is 00001
-imm is -0b100000
-opr is jal
-EXECUTE: Calculating net memory address by adding -32 in jal instruction
-Fetch Instruction 0xFF010113 from address 0xc
-
-
-WRITEBACK: Register 6 updated with 0x00000002.
-MEMORY: No memory operation.
-type is I
-rd is 00010
-rs1 is 00010
-imm is -0b10000
-opr is addi
-EXECUTE: Adding 2147483584 and -16
-Fetch Instruction 0x00112023 from address 0x10
-
-
-WRITEBACK: Register 1 updated with 0x00000030.
-MEMORY: No memory operation.
-type is S
-rs1 is 00010
-rs2 is 00001
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483568 and 0 in S-type instructions
-Fetch Instruction 0x00612223 from address 0x14
-
-
-WRITEBACK: Register 2 updated with 0x7fffffb0.
-MEMORY: Stored 00000030 into addresses: 2147483568 2147483569 2147483570 2147483571.
-type is S
-rs1 is 00010
-rs2 is 00110
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483568 and 4 in S-type instructions
-Fetch Instruction 0x00512423 from address 0x18
-
-
-MEMORY: Stored 00000002 into addresses: 2147483572 2147483573 2147483574 2147483575.
-type is S
-rs1 is 00010
-rs2 is 00101
-imm is 000000001000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483568 and 8 in S-type instructions
-Fetch Instruction 0x00412623 from address 0x1c
-
-
-MEMORY: Stored 0000007b into addresses: 2147483576 2147483577 2147483578 2147483579.
-type is S
-rs1 is 00010
-rs2 is 00100
-imm is 000000001100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483568 and 12 in S-type instructions
-Fetch Instruction 0x00100213 from address 0x20
-
-
-MEMORY: Stored 00000001 into addresses: 2147483580 2147483581 2147483582 2147483583.
-type is I
-rd is 00100
-rs1 is 00000
-imm is 000000000001
-opr is addi
-EXECUTE: Adding 0 and 1
-Fetch Instruction 0x00620663 from address 0x24
-
-
-MEMORY: No memory operation.
-type is SB
-rs1 is 00100
-rs2 is 00110
-imm is 0000000001100
-opr is beq
-EXECUTE: 1 and 2 are not equal, hence, pc not updated. 
-Fetch Instruction 0xFFF30313 from address 0x28
-
-
-WRITEBACK: Register 4 updated with 0x00000001.
-MEMORY: No memory operation.
-type is I
-rd is 00110
-rs1 is 00110
-imm is -0b1
-opr is addi
-EXECUTE: Adding 2 and -1
-Fetch Instruction 0xFE1FF0EF from address 0x2c
-
-
-MEMORY: No memory operation.
-type is UJ
-rd is 00001
-imm is -0b100000
-opr is jal
-EXECUTE: Calculating net memory address by adding -32 in jal instruction
-Fetch Instruction 0xFF010113 from address 0xc
+EXECUTE: 1 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
 
 
 WRITEBACK: Register 6 updated with 0x00000001.
 MEMORY: No memory operation.
-type is I
-rd is 00010
-rs1 is 00010
-imm is -0b10000
-opr is addi
-EXECUTE: Adding 2147483568 and -16
-Fetch Instruction 0x00112023 from address 0x10
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x00158593 from address 0x4c
+pc 0x4c is flushed because of prediction mismatched
 
 
-WRITEBACK: Register 1 updated with 0x00000030.
 MEMORY: No memory operation.
-type is S
-rs1 is 00010
-rs2 is 00001
+Fetch Instruction 0x01631433 from address 0x24
+
+
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 1 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 4 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000004.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
 imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483552 and 0 in S-type instructions
-Fetch Instruction 0x00612223 from address 0x14
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
 
 
-WRITEBACK: Register 2 updated with 0x7fffffa0.
-MEMORY: Stored 00000030 into addresses: 2147483552 2147483553 2147483554 2147483555.
+WRITEBACK: Register 7 updated with 0x10000004.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 35 is not greater than 42 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0x00000023.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
 type is S
-rs1 is 00010
-rs2 is 00110
+rs1 is 00111
+rs2 is 01001
 imm is 000000000100
 opr is sw
-EXECUTE: Calculating net memory address by adding 2147483552 and 4 in S-type instructions
-Fetch Instruction 0x00512423 from address 0x18
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
 
 
-MEMORY: Stored 00000001 into addresses: 2147483556 2147483557 2147483558 2147483559.
+MEMORY: Stored 0000002a into addresses: 268435464 268435465 268435466 268435467.
 type is S
-rs1 is 00010
-rs2 is 00101
-imm is 000000001000
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
 opr is sw
-EXECUTE: Calculating net memory address by adding 2147483552 and 8 in S-type instructions
-Fetch Instruction 0x00412623 from address 0x1c
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
 
 
-MEMORY: Stored 0000007b into addresses: 2147483560 2147483561 2147483562 2147483563.
-type is S
-rs1 is 00010
-rs2 is 00100
-imm is 000000001100
-opr is sw
-EXECUTE: Calculating net memory address by adding 2147483552 and 12 in S-type instructions
-Fetch Instruction 0x00100213 from address 0x20
-
-
-MEMORY: Stored 00000001 into addresses: 2147483564 2147483565 2147483566 2147483567.
+MEMORY: Stored 00000023 into addresses: 268435460 268435461 268435462 268435463.
 type is I
-rd is 00100
-rs1 is 00000
+rd is 00110
+rs1 is 00110
 imm is 000000000001
 opr is addi
-EXECUTE: Adding 0 and 1
-Fetch Instruction 0x00620663 from address 0x24
+EXECUTE: Adding 1 and 1
+Fetch Instruction 0x00230463 from address 0x44
 
 
 MEMORY: No memory operation.
 type is SB
-rs1 is 00100
-rs2 is 00110
-imm is 0000000001100
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
 opr is beq
-EXECUTE: 1 and 1 are equal, hence, pc incremented. 
-Fetch Instruction 0xFFF30313 from address 0x28
-pc 0x28 is flushed because of prediction mismatched
-
-
-WRITEBACK: Register 4 updated with 0x00000001.
-MEMORY: No memory operation.
-Fetch Instruction 0x01010113 from address 0x30
-
-
-type is I
-rd is 00010
-rs1 is 00010
-imm is 000000010000
-opr is addi
-EXECUTE: Adding 2147483552 and 16
-Fetch Instruction 0x00030293 from address 0x34
-
-
-MEMORY: No memory operation.
-type is I
-rd is 00101
-rs1 is 00110
-imm is 000000000000
-opr is addi
-EXECUTE: Adding 1 and 0
-Fetch Instruction 0x00412303 from address 0x38
-
-
-WRITEBACK: Register 2 updated with 0x7fffffb0.
-MEMORY: No memory operation.
-type is I
-rd is 00110
-rs1 is 00010
-imm is 000000000100
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483568 and 4 in Load instructions
-Fetch Instruction 0x00012083 from address 0x3c
-
-
-WRITEBACK: Register 5 updated with 0x00000001.
-MEMORY: Loaded values from addresses: 2147483572 2147483573 2147483574 2147483575.
-type is I
-rd is 00001
-rs1 is 00010
-imm is 000000000000
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483568 and 0 in Load instructions
-Fetch Instruction 0x02628333 from address 0x40
+EXECUTE: 2 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
 
 
 WRITEBACK: Register 6 updated with 0x00000002.
-MEMORY: Loaded values from addresses: 2147483568 2147483569 2147483570 2147483571.
-type is R
-rd is 00110
-rs1 is 00101
-rs2 is 00110
-opr is mul
-EXECUTE: Multiplication of 1 and 2
-Fetch Instruction 0x00812283 from address 0x44
-
-
-WRITEBACK: Register 1 updated with 0x00000030.
 MEMORY: No memory operation.
-type is I
-rd is 00101
-rs1 is 00010
-imm is 000000001000
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483568 and 8 in Load instructions
-Fetch Instruction 0x00C12203 from address 0x48
-
-
-WRITEBACK: Register 6 updated with 0x00000002.
-MEMORY: Loaded values from addresses: 2147483576 2147483577 2147483578 2147483579.
-type is I
-rd is 00100
-rs1 is 00010
-imm is 000000001100
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483568 and 12 in Load instructions
-Fetch Instruction 0x00008067 from address 0x4c
-
-
-WRITEBACK: Register 5 updated with 0x0000007b.
-MEMORY: Loaded values from addresses: 2147483580 2147483581 2147483582 2147483583.
-type is I
+type is UJ
 rd is 00000
-rs1 is 00001
-imm is 000000000000
-opr is jalr
-EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
-Fetch Instruction 0x00500313 from address 0x50
-pc 0x50 is flushed because of prediction mismatched
-
-
-WRITEBACK: Register 4 updated with 0x00000001.
-MEMORY: No memory operation.
-Fetch Instruction 0x01010113 from address 0x30
-
-
-type is I
-rd is 00010
-rs1 is 00010
-imm is 000000010000
-opr is addi
-EXECUTE: Adding 2147483568 and 16
-Fetch Instruction 0x00030293 from address 0x34
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
 
 
 MEMORY: No memory operation.
-type is I
-rd is 00101
+type is R
+rd is 01000
 rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 2 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 8 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000008.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
 imm is 000000000000
-opr is addi
-EXECUTE: Adding 2 and 0
-Fetch Instruction 0x00412303 from address 0x38
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
 
 
-WRITEBACK: Register 2 updated with 0x7fffffc0.
+WRITEBACK: Register 7 updated with 0x10000008.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000003a.
 MEMORY: No memory operation.
 type is I
 rd is 00110
-rs1 is 00010
-imm is 000000000100
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483584 and 4 in Load instructions
-Fetch Instruction 0x00012083 from address 0x3c
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 2 and 1
+Fetch Instruction 0x00230463 from address 0x44
 
 
-WRITEBACK: Register 5 updated with 0x00000002.
-MEMORY: Loaded values from addresses: 2147483588 2147483589 2147483590 2147483591.
-type is I
-rd is 00001
-rs1 is 00010
-imm is 000000000000
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483584 and 0 in Load instructions
-Fetch Instruction 0x02628333 from address 0x40
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 3 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
 
 
 WRITEBACK: Register 6 updated with 0x00000003.
-MEMORY: Loaded values from addresses: 2147483584 2147483585 2147483586 2147483587.
-type is R
-rd is 00110
-rs1 is 00101
-rs2 is 00110
-opr is mul
-EXECUTE: Multiplication of 2 and 3
-Fetch Instruction 0x00812283 from address 0x44
-
-
-WRITEBACK: Register 1 updated with 0x00000030.
 MEMORY: No memory operation.
-type is I
-rd is 00101
-rs1 is 00010
-imm is 000000001000
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483584 and 8 in Load instructions
-Fetch Instruction 0x00C12203 from address 0x48
-
-
-WRITEBACK: Register 6 updated with 0x00000006.
-MEMORY: Loaded values from addresses: 2147483592 2147483593 2147483594 2147483595.
-type is I
-rd is 00100
-rs1 is 00010
-imm is 000000001100
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483584 and 12 in Load instructions
-Fetch Instruction 0x00008067 from address 0x4c
-
-
-WRITEBACK: Register 5 updated with 0x0000007b.
-MEMORY: Loaded values from addresses: 2147483596 2147483597 2147483598 2147483599.
-type is I
+type is UJ
 rd is 00000
-rs1 is 00001
-imm is 000000000000
-opr is jalr
-EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
-Fetch Instruction 0x01010113 from address 0x30
-
-
-WRITEBACK: Register 4 updated with 0x00000001.
-MEMORY: No memory operation.
-type is I
-rd is 00010
-rs1 is 00010
-imm is 000000010000
-opr is addi
-EXECUTE: Adding 2147483584 and 16
-Fetch Instruction 0x00030293 from address 0x34
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
 
 
 MEMORY: No memory operation.
-type is I
-rd is 00101
+type is R
+rd is 01000
 rs1 is 00110
-imm is 000000000000
-opr is addi
-EXECUTE: Adding 6 and 0
-Fetch Instruction 0x00412303 from address 0x38
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 3 by 2
+Fetch Instruction 0x004403B3 from address 0x28
 
 
-WRITEBACK: Register 2 updated with 0x7fffffd0.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 12 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x0000000c.
 MEMORY: No memory operation.
 type is I
-rd is 00110
-rs1 is 00010
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x1000000c.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 01010
+rs1 is 00111
 imm is 000000000100
 opr is lw
-EXECUTE: Calculating net memory address by adding 2147483600 and 4 in Load instructions
-Fetch Instruction 0x00012083 from address 0x3c
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
 
 
-WRITEBACK: Register 5 updated with 0x00000006.
-MEMORY: Loaded values from addresses: 2147483604 2147483605 2147483606 2147483607.
-type is I
-rd is 00001
-rs1 is 00010
+WRITEBACK: Register 9 updated with 0x0000003a.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 15 is not greater than 58 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0x0000000F.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000003a into addresses: 268435472 268435473 268435474 268435475.
+type is S
+rs1 is 00111
+rs2 is 01010
 imm is 000000000000
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483600 and 0 in Load instructions
-Fetch Instruction 0x02628333 from address 0x40
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored 0000000F into addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 3 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 4 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
 
 
 WRITEBACK: Register 6 updated with 0x00000004.
-MEMORY: Loaded values from addresses: 2147483600 2147483601 2147483602 2147483603.
-type is R
-rd is 00110
-rs1 is 00101
-rs2 is 00110
-opr is mul
-EXECUTE: Multiplication of 6 and 4
-Fetch Instruction 0x00812283 from address 0x44
-
-
-WRITEBACK: Register 1 updated with 0x00000030.
 MEMORY: No memory operation.
-type is I
-rd is 00101
-rs1 is 00010
-imm is 000000001000
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483600 and 8 in Load instructions
-Fetch Instruction 0x00C12203 from address 0x48
-
-
-WRITEBACK: Register 6 updated with 0x00000018.
-MEMORY: Loaded values from addresses: 2147483608 2147483609 2147483610 2147483611.
-type is I
-rd is 00100
-rs1 is 00010
-imm is 000000001100
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483600 and 12 in Load instructions
-Fetch Instruction 0x00008067 from address 0x4c
-
-
-WRITEBACK: Register 5 updated with 0x0000007b.
-MEMORY: Loaded values from addresses: 2147483612 2147483613 2147483614 2147483615.
-type is I
+type is UJ
 rd is 00000
-rs1 is 00001
-imm is 000000000000
-opr is jalr
-EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
-Fetch Instruction 0x01010113 from address 0x30
-
-
-WRITEBACK: Register 4 updated with 0x00000001.
-MEMORY: No memory operation.
-type is I
-rd is 00010
-rs1 is 00010
-imm is 000000010000
-opr is addi
-EXECUTE: Adding 2147483600 and 16
-Fetch Instruction 0x00030293 from address 0x34
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
 
 
 MEMORY: No memory operation.
-type is I
-rd is 00101
+type is R
+rd is 01000
 rs1 is 00110
-imm is 000000000000
-opr is addi
-EXECUTE: Adding 24 and 0
-Fetch Instruction 0x00412303 from address 0x38
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 4 by 2
+Fetch Instruction 0x004403B3 from address 0x28
 
 
-WRITEBACK: Register 2 updated with 0x7fffffe0.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 16 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000010.
 MEMORY: No memory operation.
 type is I
-rd is 00110
-rs1 is 00010
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000010.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is I
+rd is 01010
+rs1 is 00111
 imm is 000000000100
 opr is lw
-EXECUTE: Calculating net memory address by adding 2147483616 and 4 in Load instructions
-Fetch Instruction 0x00012083 from address 0x3c
+EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
 
 
-WRITEBACK: Register 5 updated with 0x00000018.
-MEMORY: Loaded values from addresses: 2147483620 2147483621 2147483622 2147483623.
-type is I
-rd is 00001
-rs1 is 00010
+WRITEBACK: Register 9 updated with 0x0000003a.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483628 is not greater than 58 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xffffffec.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435472 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000003a into addresses: 268435476 268435477 268435478 268435479.
+type is S
+rs1 is 00111
+rs2 is 01010
 imm is 000000000000
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483616 and 0 in Load instructions
-Fetch Instruction 0x02628333 from address 0x40
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435472 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored ffffffec into addresses: 268435472 268435473 268435474 268435475.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 4 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 5 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
 
 
 WRITEBACK: Register 6 updated with 0x00000005.
-MEMORY: Loaded values from addresses: 2147483616 2147483617 2147483618 2147483619.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
 type is R
-rd is 00110
-rs1 is 00101
-rs2 is 00110
-opr is mul
-EXECUTE: Multiplication of 24 and 5
-Fetch Instruction 0x00812283 from address 0x44
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 5 by 2
+Fetch Instruction 0x004403B3 from address 0x28
 
 
-WRITEBACK: Register 1 updated with 0x00000058.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 20 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000014.
 MEMORY: No memory operation.
 type is I
-rd is 00101
-rs1 is 00010
-imm is 000000001000
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483616 and 8 in Load instructions
-Fetch Instruction 0x00C12203 from address 0x48
-
-
-WRITEBACK: Register 6 updated with 0x00000078.
-MEMORY: Loaded values from addresses: 2147483624 2147483625 2147483626 2147483627.
-type is I
-rd is 00100
-rs1 is 00010
-imm is 000000001100
-opr is lw
-EXECUTE: Calculating net memory address by adding 2147483616 and 12 in Load instructions
-Fetch Instruction 0x00008067 from address 0x4c
-
-
-WRITEBACK: Register 5 updated with 0x0000007b.
-MEMORY: Loaded values from addresses: 2147483628 2147483629 2147483630 2147483631.
-type is I
-rd is 00000
-rs1 is 00001
+rd is 01001
+rs1 is 00111
 imm is 000000000000
-opr is jalr
-EXECUTE: Calculating net memory address by adding 88 and 0 in jalr instruction
-Fetch Instruction 0x01010113 from address 0x30
-pc 0x30 is flushed because of prediction mismatched
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
 
 
-WRITEBACK: Register 4 updated with 0x00000013.
+WRITEBACK: Register 7 updated with 0x10000014.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000003a.
+MEMORY: Loaded values from addresses: 268435480 268435481 268435482 268435483.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483637 is not greater than 58 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xfffffff5.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435476 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000003a into addresses: 268435480 268435481 268435482 268435483.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435476 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored fffffff5 into addresses: 268435476 268435477 268435478 268435479.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+pc 0x48 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 6 updated with 0x00000006.
+MEMORY: No memory operation.
+Fetch Instruction 0x00158593 from address 0x4c
+
+
+type is I
+rd is 01011
+rs1 is 01011
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+Fetch Instruction 0x00258463 from address 0x50
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 01011
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 1 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFCDFF06F from address 0x54
+
+
+WRITEBACK: Register 11 updated with 0x00000001.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b110100
+opr is jal
+EXECUTE: Calculating net memory address by adding -52 in jal instruction
+Fetch Instruction 0x00000313 from address 0x20
+
+
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 0 and 0
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 0 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+WRITEBACK: Register 6 updated with 0x00000000.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 0 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000000.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000000.
+MEMORY: Loaded values from addresses: 268435456 268435457 268435458 268435459.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000A.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 35 is greater than 10 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x00000023.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 1 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000001.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 1 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 4 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000004.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000004.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x00000023.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000002a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 1 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 2 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000002.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 2 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 8 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000008.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000008.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 15 is not greater than 42 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0x0000000F.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000002a into addresses: 268435468 268435469 268435470 268435471.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored 0000000F into addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 2 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 3 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000003.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 3 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 12 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x0000000c.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x1000000c.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483628 is not greater than 42 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xffffffec.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000002a into addresses: 268435472 268435473 268435474 268435475.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored ffffffec into addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 3 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 4 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000004.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 4 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 16 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000010.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000010.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483637 is not greater than 42 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xfffffff5.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435472 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000002a into addresses: 268435476 268435477 268435478 268435479.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435472 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored fffffff5 into addresses: 268435472 268435473 268435474 268435475.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 4 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 5 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000005.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 5 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 20 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000014.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000014.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435480 268435481 268435482 268435483.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000003a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+pc 0x48 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 6 updated with 0x00000006.
+MEMORY: No memory operation.
+Fetch Instruction 0x00158593 from address 0x4c
+
+
+type is I
+rd is 01011
+rs1 is 01011
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 1 and 1
+Fetch Instruction 0x00258463 from address 0x50
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 01011
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 2 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFCDFF06F from address 0x54
+
+
+WRITEBACK: Register 11 updated with 0x00000002.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b110100
+opr is jal
+EXECUTE: Calculating net memory address by adding -52 in jal instruction
+Fetch Instruction 0x00000313 from address 0x20
+
+
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 0 and 0
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 0 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+WRITEBACK: Register 6 updated with 0x00000000.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 0 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000000.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000000.
+MEMORY: Loaded values from addresses: 268435456 268435457 268435458 268435459.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000A.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 35 is greater than 10 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x00000023.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 1 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000001.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 1 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 4 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000004.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000004.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x00000023.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 15 is not greater than 35 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0x0000000F.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 00000023 into addresses: 268435464 268435465 268435466 268435467.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored 0000000F into addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 1 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 2 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000002.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 2 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 8 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000008.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000008.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x00000023.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483628 is not greater than 35 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xffffffec.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 00000023 into addresses: 268435468 268435469 268435470 268435471.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored ffffffec into addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 2 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 3 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000003.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 3 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 12 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x0000000c.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x1000000c.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x00000023.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483637 is not greater than 35 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xfffffff5.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 00000023 into addresses: 268435472 268435473 268435474 268435475.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored fffffff5 into addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 3 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 4 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000004.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 4 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 16 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000010.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000010.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x00000023.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000002a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 4 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 5 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000005.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 5 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 20 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000014.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000014.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435480 268435481 268435482 268435483.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000003a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+pc 0x48 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 6 updated with 0x00000006.
+MEMORY: No memory operation.
+Fetch Instruction 0x00158593 from address 0x4c
+
+
+type is I
+rd is 01011
+rs1 is 01011
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 2 and 1
+Fetch Instruction 0x00258463 from address 0x50
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 01011
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 3 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFCDFF06F from address 0x54
+
+
+WRITEBACK: Register 11 updated with 0x00000003.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b110100
+opr is jal
+EXECUTE: Calculating net memory address by adding -52 in jal instruction
+Fetch Instruction 0x00000313 from address 0x20
+
+
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 0 and 0
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 0 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+WRITEBACK: Register 6 updated with 0x00000000.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 0 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000000.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000000.
+MEMORY: Loaded values from addresses: 268435456 268435457 268435458 268435459.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000A.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 15 is greater than 10 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000000F.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 1 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000001.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 1 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 4 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000004.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000004.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000F.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483628 is not greater than 15 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xffffffec.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000000F into addresses: 268435464 268435465 268435466 268435467.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored ffffffec into addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 1 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 2 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000002.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 2 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 8 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000008.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000008.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000F.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483637 is not greater than 15 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xfffffff5.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000000F into addresses: 268435468 268435469 268435470 268435471.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored fffffff5 into addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 2 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 3 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000003.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 3 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 12 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x0000000c.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x1000000c.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000F.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 35 is greater than 15 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x00000023.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 3 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 4 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000004.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 4 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 16 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000010.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000010.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x00000023.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000002a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 4 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 5 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000005.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 5 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 20 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000014.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000014.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435480 268435481 268435482 268435483.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000003a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+pc 0x48 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 6 updated with 0x00000006.
+MEMORY: No memory operation.
+Fetch Instruction 0x00158593 from address 0x4c
+
+
+type is I
+rd is 01011
+rs1 is 01011
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 3 and 1
+Fetch Instruction 0x00258463 from address 0x50
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 01011
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 4 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFCDFF06F from address 0x54
+
+
+WRITEBACK: Register 11 updated with 0x00000004.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b110100
+opr is jal
+EXECUTE: Calculating net memory address by adding -52 in jal instruction
+Fetch Instruction 0x00000313 from address 0x20
+
+
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 0 and 0
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 0 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+WRITEBACK: Register 6 updated with 0x00000000.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 0 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000000.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000000.
+MEMORY: Loaded values from addresses: 268435456 268435457 268435458 268435459.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000A.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483628 is not greater than 10 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xffffffec.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000000A into addresses: 268435460 268435461 268435462 268435463.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored ffffffec into addresses: 268435456 268435457 268435458 268435459.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 1 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000001.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 1 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 4 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000004.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000004.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000A.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483637 is not greater than 10 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xfffffff5.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored 0000000A into addresses: 268435464 268435465 268435466 268435467.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored fffffff5 into addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 1 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 2 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000002.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 2 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 8 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000008.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000008.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000A.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 15 is greater than 10 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000000F.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 2 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 3 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000003.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 3 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 12 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x0000000c.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x1000000c.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000F.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 35 is greater than 15 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x00000023.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 3 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 4 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000004.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 4 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 16 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000010.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000010.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x00000023.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000002a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 4 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 5 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000005.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 5 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 20 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000014.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000014.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435480 268435481 268435482 268435483.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000003a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+pc 0x48 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 6 updated with 0x00000006.
+MEMORY: No memory operation.
+Fetch Instruction 0x00158593 from address 0x4c
+
+
+type is I
+rd is 01011
+rs1 is 01011
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 4 and 1
+Fetch Instruction 0x00258463 from address 0x50
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 01011
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 5 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFCDFF06F from address 0x54
+
+
+WRITEBACK: Register 11 updated with 0x00000005.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b110100
+opr is jal
+EXECUTE: Calculating net memory address by adding -52 in jal instruction
+Fetch Instruction 0x00000313 from address 0x20
+
+
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 0 and 0
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 0 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+WRITEBACK: Register 6 updated with 0x00000000.
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 0 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000000.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000000.
+MEMORY: Loaded values from addresses: 268435456 268435457 268435458 268435459.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0xffffffec.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: -2147483637 is not greater than -2147483628 hence, pc not updated. 
+Fetch Instruction 0x00130313 from address 0x40
+pc 0x40 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 10 updated with 0xfffffff5.
+MEMORY: No memory operation.
+Fetch Instruction 0x0093A223 from address 0x38
+
+
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in S-type instructions
+Fetch Instruction 0x00A3A023 from address 0x3c
+
+
+MEMORY: Stored ffffffec into addresses: 268435460 268435461 268435462 268435463.
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in S-type instructions
+Fetch Instruction 0x00130313 from address 0x40
+
+
+MEMORY: Stored fffffff5 into addresses: 268435456 268435457 268435458 268435459.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 1 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000001.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 1 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 4 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000004.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000004.
+MEMORY: Loaded values from addresses: 268435460 268435461 268435462 268435463.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0xffffffec.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 10 is greater than -2147483628 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000000A.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 1 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 2 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000002.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 2 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 8 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000008.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000008.
+MEMORY: Loaded values from addresses: 268435464 268435465 268435466 268435467.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000A.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 15 is greater than 10 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000000F.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 2 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 3 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000003.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 3 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 12 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x0000000c.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x1000000c.
+MEMORY: Loaded values from addresses: 268435468 268435469 268435470 268435471.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000000F.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 35 is greater than 15 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x00000023.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 3 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 4 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000004.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 4 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 16 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000010.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000010.
+MEMORY: Loaded values from addresses: 268435472 268435473 268435474 268435475.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x00000023.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000002a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 4 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 5 and 6 are not equal, hence, pc not updated. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+
+
+WRITEBACK: Register 6 updated with 0x00000005.
+MEMORY: No memory operation.
+type is UJ
+rd is 00000
+imm is -0b100100
+opr is jal
+EXECUTE: Calculating net memory address by adding -36 in jal instruction
+Fetch Instruction 0x01631433 from address 0x24
+
+
+MEMORY: No memory operation.
+type is R
+rd is 01000
+rs1 is 00110
+rs2 is 10110
+opr is sll
+EXECUTE: Shift left of 5 by 2
+Fetch Instruction 0x004403B3 from address 0x28
+
+
+MEMORY: No memory operation.
+type is R
+rd is 00111
+rs1 is 01000
+rs2 is 00100
+opr is add
+EXECUTE: Adding 20 and 268435456
+Fetch Instruction 0x0003A483 from address 0x2c
+
+
+WRITEBACK: Register 8 updated with 0x00000014.
+MEMORY: No memory operation.
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
+Fetch Instruction 0x0043A503 from address 0x30
+
+
+WRITEBACK: Register 7 updated with 0x10000014.
+MEMORY: Loaded values from addresses: 268435476 268435477 268435478 268435479.
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 4 in Load instructions
+Fetch Instruction 0x00955663 from address 0x34
+
+
+WRITEBACK: Register 9 updated with 0x0000002a.
+MEMORY: Loaded values from addresses: 268435480 268435481 268435482 268435483.
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
+Fetch Instruction 0x00130313 from address 0x40
+
+
+WRITEBACK: Register 10 updated with 0x0000003a.
+MEMORY: No memory operation.
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+Fetch Instruction 0x00230463 from address 0x44
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+Fetch Instruction 0xFDDFF06F from address 0x48
+pc 0x48 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 6 updated with 0x00000006.
+MEMORY: No memory operation.
+Fetch Instruction 0x00158593 from address 0x4c
+
+
+type is I
+rd is 01011
+rs1 is 01011
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+Fetch Instruction 0x00258463 from address 0x50
+
+
+MEMORY: No memory operation.
+type is SB
+rs1 is 01011
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+Fetch Instruction 0xFCDFF06F from address 0x54
+pc 0x54 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 11 updated with 0x00000006.
 MEMORY: No memory operation.
 
 
@@ -870,17 +3695,17 @@ X----------------X
 Code Ran Successfully
 
 
-Number of clock cycles =88
-Total number of instructions executed = 80
-CPI value calculated = 1.1
-Total number of load/store instructions = 36
-Number of ALU instructions = 65
-Number of control instructions = 15
-Number of bubbles and stalls in the pipeline = 8
-Number of data hazards = 27
-Number of control hazards = 6
-Number of branch mispredictions = 6
+Number of clock cycles =370
+Total number of instructions executed = 343
+CPI value calculated = 1.0787172011661808
+Total number of load/store instructions = 103
+Number of ALU instructions = 230
+Number of control instructions = 113
+Number of bubbles and stalls in the pipeline = 27
+Number of data hazards = 232
+Number of control hazards = 25
+Number of branch mispredictions = 25
 Number of stalls due to data hazards = 2
-Number of stalls due to control hazards = 6
+Number of stalls due to control hazards = 25
 
 
