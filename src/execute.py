@@ -139,11 +139,19 @@ def execute(d,reg,pc_temp,val_df_reg=None):
         if 'rs1' in d:
             if int(d['rs1'],2) in val_df_reg:
                 #print("yoyo")
-                rs1=int(val_df_reg[int(d['rs1'],2)],16)
+                #print(val_df_reg[int(d['rs1'],2)])
+                if(val_df_reg[int(d['rs1'],2)]==0):
+                    pass
+                else:
+                    rs1=int(val_df_reg[int(d['rs1'],2)],16)
         if 'rs2' in d and 'rs2' in val_df_reg:
             if int(d['rs2'],2) in val_df_reg:
                 #print("nono")
-                rs1=int(val_df_reg[int(d['rs2'],2)],16)
+                #print(val_df_reg[int(d['rs2'],2)])
+                if(val_df_reg[int(d['rs2'],2)]==0):
+                    pass
+                else:
+                    rs1=int(val_df_reg[int(d['rs2'],2)],16)
     if(d['type']=='R'):
         l=[d['opr'],rs1,rs2]
         return R_type(l,pc_temp,output)

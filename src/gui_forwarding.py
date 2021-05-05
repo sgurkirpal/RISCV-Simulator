@@ -184,14 +184,10 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
         mem_pc.append(this_pc)
 
         pc_temp = fetch.increment_pc(this_pc)
-        #print('\n\n\n')
-        #print(reg,val_df_reg)
         rz, pc_final, temp_string_execute = execute.execute(
             decoded_info[this_pc], reg, pc_temp,val_df_reg)
         output+=temp_string_execute
         rz = hex(rz)
-        #print(this_pc,end=" ")
-        #print(rz)
         buffer_exec = rz
         rd = decoded_info[this_pc].get('rd', '-1')
         if this_pc not in buffers:
@@ -204,10 +200,26 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
             val_df_reg[x] = rz
             if(x == 0):
                 val_df_reg[x] = 0
+            am="0x"
             if(decoded_info[this_pc]['opr'] == 'lw'):
-                val_df_reg[x] = data_dict[rz]
-        #print(reg)
-        #print(val_df_reg)
+                rz_temp=int(rz,16)
+                if(hex(rz_temp+3) in data_dict):
+                    am+=data_dict[hex(rz_temp+3)][2:]
+                else:
+                    am+='00'
+                if(hex(rz_temp+2) in data_dict):
+                    am+=data_dict[hex(rz_temp+2)][2:]
+                else:
+                    am+='00'
+                if(hex(rz_temp+1) in data_dict):
+                    am+=data_dict[hex(rz_temp+1)][2:]
+                else:
+                    am+='00'
+                if(hex(rz_temp) in data_dict):
+                    am+=data_dict[hex(rz_temp)][2:]
+                else:
+                    am+='00'
+                val_df_reg[x] = am
         if control_inst:
             control_inst = False
             if this_pc in btb:
@@ -247,6 +259,12 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
                 decode_pc.append(fetch.increment_pc(this_pc))
         else:
             flowchart_list[len(flowchart_list)-1]=-1
+            output+="pc "+str(this_pc)+" is flushed because of prediction mismatched\n"
+            remove_decode=False
+            varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
+                number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
+                number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]    
+            return reg,instruction_dict,data_dict,clock,varlist
         remove_decode = False
         instruction_register = instruction_dict[this_pc]
 
