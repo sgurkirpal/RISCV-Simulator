@@ -90,7 +90,6 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         rz=int(rz,16)
         muxy='0x'
         am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
-        print(type(am))
         if(len(am)==3):
             muxy+='0'+am[2]
         else:
@@ -106,7 +105,6 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         else:
             muxy+=am[2:4]
         am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
-        print(am)
         if(len(am)==3):
             muxy+='0'+am[2]
         else:
@@ -180,4 +178,6 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     #print(reg,data_dict)
     print(total_access,hit,miss,"done")
     cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access]
+    print("\n\n\n\n")
+    print(memory_cache_dict)
     return instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register,clock,output,cache_list
