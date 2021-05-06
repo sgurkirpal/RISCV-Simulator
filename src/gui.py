@@ -632,8 +632,11 @@ class Ui_MainWindow(object):
         if(self.pipeline):
             if(self.radioBox_3.isChecked()):
                 self.tableWidget_4.clear()
-                print("***********************")
-                self.reg,self.idi,self.dd,self.clock,self.varlist=gui_forwarding.assemble()
+                self.cachesize=int(self.lineEdit_2.text())
+                self.blocksize=int(self.lineEdit_3.text())
+                self.sa_ways=int(self.lineEdit_4.text())
+                self.input_list=[self.cachesize,self.blocksize,self.sa_ways]
+                self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list=gui_forwarding.assemble(self.input_list)
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
@@ -713,7 +716,7 @@ class Ui_MainWindow(object):
         if(self.pipeline):
             if(self.radioBox_3.isChecked()):
                 if(self.pc!=-1):
-                    self.reg,self.idi,self.dd,self.clock,self.varlist=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list)
                     self.loaddata(self.reg)
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
@@ -737,7 +740,7 @@ class Ui_MainWindow(object):
                     data.write(self.outtext)
                     data.write("\n\n")
                 else:
-                    self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list)
                     data=open("output.txt",'a')
                     data.write(self.outtext)
                     data.write("\n\n")
@@ -769,7 +772,7 @@ class Ui_MainWindow(object):
                     data.write(self.outtext)
                     data.write("\n\n")
                 else:
-                    self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list)
                     data=open("output.txt",'a')
                     data.write(self.outtext)
                     data.write("\n\n")
@@ -819,7 +822,7 @@ class Ui_MainWindow(object):
         if(self.pipeline):
             if(self.radioBox_3.isChecked()):
                 while(self.pc!=-1):
-                    self.reg,self.idi,self.dd,self.clock,self.varlist=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                    self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list)
                     self.loaddata(self.reg)
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
@@ -841,7 +844,7 @@ class Ui_MainWindow(object):
                         data.write("X----------------X\nCode Ran Successfully\n")
                     data.write(self.outtext)
                     data.write("\n\n")
-                self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
+                self.outtext=gui_forwarding.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list)
                 data=open("output.txt",'a')
                 data.write(self.outtext)
                 data.write("\n\n")
