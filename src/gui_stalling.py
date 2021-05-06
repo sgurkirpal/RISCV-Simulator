@@ -228,7 +228,8 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist):
     if len(decode_pc)!=0:
         this_pc=decode_pc[0]
         output+="Fetch Instruction "+str(instruction_dict[this_pc])+" from address "+str(this_pc)+"\n"
-        flowchart_list.append(this_pc)
+        if(this_pc!='0x0' and this_pc!='0x4'):
+            flowchart_list.append(this_pc)
         decode_pc.pop(0)
         if remove_decode==False:
             execute_pc.append(this_pc)

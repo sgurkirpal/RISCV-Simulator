@@ -29,9 +29,6 @@ class Ui_MainWindow(object):
     varlist=[]
     bdd=[]
     cpc=[]
-    cachesize=0
-    blocksize=0
-    sa_ways=0
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1360, 821)
@@ -186,15 +183,6 @@ class Ui_MainWindow(object):
         self.lineEdit = QLineEdit(self.centralwidget)
         self.lineEdit.setObjectName(u"lineEdit")
         self.lineEdit.setGeometry(QRect(1000, 180, 91, 21))
-        self.lineEdit_2 = QLineEdit(self.centralwidget)
-        self.lineEdit_2.setObjectName(u"lineEdit")
-        self.lineEdit_2.setGeometry(QRect(1000, 200, 91, 21))
-        self.lineEdit_3 = QLineEdit(self.centralwidget)
-        self.lineEdit_3.setObjectName(u"lineEdit")
-        self.lineEdit_3.setGeometry(QRect(1000, 220, 91, 21))
-        self.lineEdit_4 = QLineEdit(self.centralwidget)
-        self.lineEdit_4.setObjectName(u"lineEdit")
-        self.lineEdit_4.setGeometry(QRect(1000, 240, 91, 21))
         self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_7.setGeometry(QtCore.QRect(1150, 180, 91, 28))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -308,6 +296,7 @@ class Ui_MainWindow(object):
         self.clock+=1
         self.tableWidget_4.scrollToItem(self.tableWidget_4.item(len(lis), self.clock))
         dic=[]
+
         for x in range(len(dicti)):
             dic.append(dicti[x])
         
@@ -320,7 +309,9 @@ class Ui_MainWindow(object):
         if(len(dic[1])==0):
             dic[1].append(-1)
         if(len(dic[0])==0):
-            dic[0].append(-1)      
+            dic[0].append(-1)     
+        print(lis)
+        print(dicti) 
         for i in range(len(lis)):
             if(lis[i]==-1):
                 continue
@@ -555,9 +546,6 @@ class Ui_MainWindow(object):
                 data.write("")
 
         else:
-            self.cachesize=self.lineEdit_2.text()
-            self.blocksize=self.lineEdit_3.text()
-            self.sa_ways=self.lineEdit_4.text()
             self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t,self.cache_list=gui_main.assemble()
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
