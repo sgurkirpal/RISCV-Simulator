@@ -1,12 +1,4 @@
-PC is 0x4
-IR is 0x10000217
-Fetch Instruction 0x10000217 from address 0x00000000
-type is U
-rd is 00100
-imm is 00010000000000000000000000000000
-opr is auipc
-EXECUTE: PC added to 268435456
-WRITEBACK: Register 4 updated with 0x10000000.
+Fetch Instruction 0x0500006F from address 0x00000000
 
 
 PC is 0x8
@@ -3714,35 +3706,19 @@ IR is 0xFDDFF06F
 Fetch Instruction 0xFDDFF06F from address 0x00000048
 type is UJ
 rd is 00000
-imm is -0b100100
+imm is 00000000000000000000000001010000
 opr is jal
-EXECUTE: Calculating net memory address by adding -36 in jal instruction
+EXECUTE: Calculating net memory address by adding 80 in jal instruction
+Prediction MisMatched ! for pc, 0x00000000
+Fetch Instruction 0xFF810113 from address 0x00000004
+pc 0x00000004 is flushed because of prediction mismatched
 
 
-PC is 0x28
-IR is 0x01631433
-Fetch Instruction 0x01631433 from address 0x00000024
-type is R
-rd is 01000
-rs1 is 00110
-rs2 is 10110
-opr is sll
-EXECUTE: Shift left of 5 by 2
-WRITEBACK: Register 8 updated with 0x00000014.
 
 
-PC is 0x2c
-IR is 0x004403B3
-Fetch Instruction 0x004403B3 from address 0x00000028
-type is R
-rd is 00111
-rs1 is 01000
-rs2 is 00100
-opr is add
-EXECUTE: Adding 20 and 268435456
-WRITEBACK: Register 7 updated with 0x10000014.
 
 
+<<<<<<< HEAD
 PC is 0x30
 IR is 0x0003A483
 Fetch Instruction 0x0003A483 from address 0x0000002c
@@ -3826,7 +3802,107 @@ EXECUTE: 6 and 6 are equal, hence, pc incremented.
 
 PC is -1
 IR is 0x00258463
+||||||| parent of ead6b9f8fccd (updated)
+PC is 0x30
+IR is 0x0003A483
+Fetch Instruction 0x0003A483 from address 0x0000002c
+type is I
+rd is 01001
+rs1 is 00111
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
+WRITEBACK: Register 9 updated with 0xffffffec.
+
+
+PC is 0x34
+IR is 0x0043A503
+Fetch Instruction 0x0043A503 from address 0x00000030
+type is I
+rd is 01010
+rs1 is 00111
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 268435476 and 4 in Load instructions
+WRITEBACK: Register 10 updated with 0x00fffff5.
+
+
+PC is 0x40
+IR is 0x00955663
+Fetch Instruction 0x00955663 from address 0x00000034
+type is SB
+rs1 is 01010
+rs2 is 01001
+imm is 0000000001100
+opr is bge
+EXECUTE: 16777205 is greater than -2147483628 hence, pc incremented. 
+
+
+PC is 0x44
+IR is 0x00130313
+Fetch Instruction 0x00130313 from address 0x00000040
+type is I
+rd is 00110
+rs1 is 00110
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+WRITEBACK: Register 6 updated with 0x00000006.
+
+
+PC is 0x4c
+IR is 0x00230463
+Fetch Instruction 0x00230463 from address 0x00000044
+type is SB
+rs1 is 00110
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+
+
+PC is 0x50
+IR is 0x00158593
+Fetch Instruction 0x00158593 from address 0x0000004c
+type is I
+rd is 01011
+rs1 is 01011
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 5 and 1
+WRITEBACK: Register 11 updated with 0x00000006.
+
+
+PC is 0x58
+IR is 0x00258463
+Fetch Instruction 0x00258463 from address 0x00000050
+type is SB
+rs1 is 01011
+rs2 is 00010
+imm is 0000000001000
+opr is beq
+EXECUTE: 6 and 6 are equal, hence, pc incremented. 
+
+
+PC is -1
+IR is 0x00258463
+=======
+>>>>>>> ead6b9f8fccd (updated)
 X----------------X
 Code Ran Successfully
+
+
+Number of clock cycles =4
+Total number of instructions executed = 1
+CPI value calculated = 4.0
+Total number of load/store instructions = 0
+Number of ALU instructions = 0
+Number of control instructions = 1
+Number of bubbles and stalls in the pipeline = 3
+Number of data hazards = 0
+Number of control hazards = 1
+Number of branch mispredictions = 1
+Number of stalls due to data hazards = 2
+Number of stalls due to control hazards = 1
 
 

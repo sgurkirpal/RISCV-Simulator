@@ -5,12 +5,16 @@ def increment_pc(pc):   #takes a hex string as input and returns a hex string wi
     pc_int=int(pc,16)
     new_pc=pc_int + 0x4
     new_pc=hex(new_pc)
+    new_pc=str(new_pc)
+    new_pc="0x"+(10-len(new_pc))*'0'+new_pc[2:]
     return str(new_pc)
 
 def decrement_pc(pc,index):
     pc_int=int(pc,16)
     new_pc=pc_int - index
     new_pc=hex(new_pc)
+    new_pc=str(new_pc)
+    new_pc="0x"+(10-len(new_pc))*'0'+new_pc[2:]
     return str(new_pc)
 
 def fetch_file(mc_file):
