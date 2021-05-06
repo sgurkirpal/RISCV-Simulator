@@ -138,7 +138,6 @@ def lru_policy(l):
     return val
 
 def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,clockcycle,hit,miss):
-    print(memorycachedict)
     values={}
     values=address_conversion(memory_address,block_size,no_of_sets)
     for i in range(len(memorycachedict[values['index']])):
@@ -146,12 +145,8 @@ def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory
             hit+=1
             return memorycachedict[values['index']][i][3+values['block_offset']],memorycachedict,hit,miss
     val=lru_policy(memorycachedict[values['index']])
-    print(values)
-    print(val)
-    print("aditii adifiiti")
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
     miss+=1
-    print(memorycachedict)
     return memorycachedict[values['index']][val][3+values['block_offset']],memorycachedict,hit,miss
 
 

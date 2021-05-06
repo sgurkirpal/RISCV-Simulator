@@ -49,9 +49,9 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     hit=cache_list[6]
     miss=cache_list[7]
     total_access=cache_list[8]
-    #Ins_hit=cache_list[9]
-    #Ins_miss=cache_list[10]
-    #Ins_access=cache_list[11]
+    Ins_hit=cache_list[9]
+    Ins_miss=cache_list[10]
+    Ins_access=cache_list[11]
     output=""
     pc="0x"+(10-len(pc))*'0'+pc[2:]
     if pc not in instruction_dict:
@@ -59,9 +59,9 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access]
         return instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register,clock,output,cache_list
     clock+=1
-    total_access+=1
+    Ins_access+=1
     print("Instruction dict")
-    instruction_register,hit,miss=fetch.retrievingmachinecode(pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock,hit,miss)
+    instruction_register,Ins_hit,Ins_miss=fetch.retrievingmachinecode(pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock,Ins_hit,Ins_miss)
     #instruction_register=instruction_dict[pc]
     pc_temp=fetch.increment_pc(pc)
     decoded_info=decode.decode(instruction_register)
@@ -86,7 +86,7 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
             rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
     
     if(decoded_info['opr']=='lw'):
-        total_access+=1
+        total_access+=4
         rz=int(rz,16)
         muxy='0x'
         am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
@@ -126,7 +126,7 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
                 muxy+='000000'+am[2:4]
 
     elif(decoded_info['opr']=='lh'):
-        total_access+=1
+        total_access+=2
         rz=int(rz,16)
         muxy='0x'
         am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
@@ -145,7 +145,7 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
                 muxy='0x0000'+muxy[2:]
         
     elif(decoded_info['opr']=='sw'):
-        total_access+=1
+        total_access+=4
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
         rz=int(rz,16)
         rm=str(rm)
@@ -155,7 +155,7 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss)
     
     elif(decoded_info['opr']=='sh'):
-        total_access+=1
+        total_access+=2
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
         rz=int(rz,16)
         rm=str(rm)
@@ -179,5 +179,5 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     pc=pc_final
     #print(reg,data_dict)
     print(total_access,hit,miss,"done")
-    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access]
+    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access]
     return instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register,clock,output,cache_list
