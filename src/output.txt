@@ -1,0 +1,1853 @@
+<<<<<<< HEAD
+||||||| parent of c8a6d2b33d3e (updated)
+PC is 0x00000004
+IR is 0x07B00293
+Fetch Instruction 0x07B00293 from address 0x00000000
+type is I
+rd is 00101
+rs1 is 00000
+imm is 000001111011
+opr is addi
+EXECUTE: Adding 0 and 123
+WRITEBACK: Register 5 updated with 0x0000007b.
+
+
+PC is 0x00000008
+IR is 0x01300213
+Fetch Instruction 0x01300213 from address 0x00000004
+type is I
+rd is 00100
+rs1 is 00000
+imm is 000000010011
+opr is addi
+EXECUTE: Adding 0 and 19
+WRITEBACK: Register 4 updated with 0x00000013.
+
+
+PC is 0x00000050
+IR is 0x0480006F
+Fetch Instruction 0x0480006F from address 0x00000008
+type is UJ
+rd is 00000
+imm is 00000000000000000000000001001000
+opr is jal
+EXECUTE: Calculating net memory address by adding 72 in jal instruction
+
+
+PC is 0x00000054
+IR is 0x00500313
+Fetch Instruction 0x00500313 from address 0x00000050
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000101
+opr is addi
+EXECUTE: Adding 0 and 5
+WRITEBACK: Register 6 updated with 0x00000005.
+
+
+PC is 0x0000000c
+IR is 0xFB9FF0EF
+Fetch Instruction 0xFB9FF0EF from address 0x00000054
+type is UJ
+rd is 00001
+imm is -0b1001000
+opr is jal
+EXECUTE: Calculating net memory address by adding -72 in jal instruction
+WRITEBACK: Register 1 updated with 0x00000058.
+
+
+PC is 0x00000010
+IR is 0xFF010113
+Fetch Instruction 0xFF010113 from address 0x0000000c
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483632 and -16
+WRITEBACK: Register 2 updated with 0x7fffffe0.
+
+
+PC is 0x00000014
+IR is 0x00112023
+Fetch Instruction 0x00112023 from address 0x00000010
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483616 and 0 in S-type instructions
+
+
+PC is 0x00000018
+IR is 0x00612223
+Fetch Instruction 0x00612223 from address 0x00000014
+type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483616 and 4 in S-type instructions
+
+
+PC is 0x0000001c
+IR is 0x00512423
+Fetch Instruction 0x00512423 from address 0x00000018
+type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483616 and 8 in S-type instructions
+
+
+PC is 0x00000020
+IR is 0x00412623
+Fetch Instruction 0x00412623 from address 0x0000001c
+type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483616 and 12 in S-type instructions
+
+
+PC is 0x00000024
+IR is 0x00100213
+Fetch Instruction 0x00100213 from address 0x00000020
+type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+WRITEBACK: Register 4 updated with 0x00000001.
+
+
+PC is 0x00000028
+IR is 0x00620663
+Fetch Instruction 0x00620663 from address 0x00000024
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 5 are not equal, hence, pc not updated. 
+
+
+PC is 0x0000002c
+IR is 0xFFF30313
+Fetch Instruction 0xFFF30313 from address 0x00000028
+type is I
+rd is 00110
+rs1 is 00110
+imm is -0b1
+opr is addi
+EXECUTE: Adding 5 and -1
+WRITEBACK: Register 6 updated with 0x00000004.
+
+
+PC is 0x0000000c
+IR is 0xFE1FF0EF
+Fetch Instruction 0xFE1FF0EF from address 0x0000002c
+type is UJ
+rd is 00001
+imm is -0b100000
+opr is jal
+EXECUTE: Calculating net memory address by adding -32 in jal instruction
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+PC is 0x00000010
+IR is 0xFF010113
+Fetch Instruction 0xFF010113 from address 0x0000000c
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483616 and -16
+WRITEBACK: Register 2 updated with 0x7fffffd0.
+
+
+PC is 0x00000014
+IR is 0x00112023
+Fetch Instruction 0x00112023 from address 0x00000010
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483600 and 0 in S-type instructions
+
+
+PC is 0x00000018
+IR is 0x00612223
+Fetch Instruction 0x00612223 from address 0x00000014
+type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483600 and 4 in S-type instructions
+
+
+PC is 0x0000001c
+IR is 0x00512423
+Fetch Instruction 0x00512423 from address 0x00000018
+type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483600 and 8 in S-type instructions
+
+
+PC is 0x00000020
+IR is 0x00412623
+Fetch Instruction 0x00412623 from address 0x0000001c
+type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483600 and 12 in S-type instructions
+
+
+PC is 0x00000024
+IR is 0x00100213
+Fetch Instruction 0x00100213 from address 0x00000020
+type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+WRITEBACK: Register 4 updated with 0x00000001.
+
+
+PC is 0x00000028
+IR is 0x00620663
+Fetch Instruction 0x00620663 from address 0x00000024
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 4 are not equal, hence, pc not updated. 
+
+
+PC is 0x0000002c
+IR is 0xFFF30313
+Fetch Instruction 0xFFF30313 from address 0x00000028
+type is I
+rd is 00110
+rs1 is 00110
+imm is -0b1
+opr is addi
+EXECUTE: Adding 4 and -1
+WRITEBACK: Register 6 updated with 0x00000003.
+
+
+PC is 0x0000000c
+IR is 0xFE1FF0EF
+Fetch Instruction 0xFE1FF0EF from address 0x0000002c
+type is UJ
+rd is 00001
+imm is -0b100000
+opr is jal
+EXECUTE: Calculating net memory address by adding -32 in jal instruction
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+PC is 0x00000010
+IR is 0xFF010113
+Fetch Instruction 0xFF010113 from address 0x0000000c
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483600 and -16
+WRITEBACK: Register 2 updated with 0x7fffffc0.
+
+
+PC is 0x00000014
+IR is 0x00112023
+Fetch Instruction 0x00112023 from address 0x00000010
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483584 and 0 in S-type instructions
+
+
+PC is 0x00000018
+IR is 0x00612223
+Fetch Instruction 0x00612223 from address 0x00000014
+type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483584 and 4 in S-type instructions
+
+
+PC is 0x0000001c
+IR is 0x00512423
+Fetch Instruction 0x00512423 from address 0x00000018
+type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483584 and 8 in S-type instructions
+
+
+PC is 0x00000020
+IR is 0x00412623
+Fetch Instruction 0x00412623 from address 0x0000001c
+type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483584 and 12 in S-type instructions
+
+
+PC is 0x00000024
+IR is 0x00100213
+Fetch Instruction 0x00100213 from address 0x00000020
+type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+WRITEBACK: Register 4 updated with 0x00000001.
+
+
+PC is 0x00000028
+IR is 0x00620663
+Fetch Instruction 0x00620663 from address 0x00000024
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 3 are not equal, hence, pc not updated. 
+
+
+PC is 0x0000002c
+IR is 0xFFF30313
+Fetch Instruction 0xFFF30313 from address 0x00000028
+type is I
+rd is 00110
+rs1 is 00110
+imm is -0b1
+opr is addi
+EXECUTE: Adding 3 and -1
+WRITEBACK: Register 6 updated with 0x00000002.
+
+
+PC is 0x0000000c
+IR is 0xFE1FF0EF
+Fetch Instruction 0xFE1FF0EF from address 0x0000002c
+type is UJ
+rd is 00001
+imm is -0b100000
+opr is jal
+EXECUTE: Calculating net memory address by adding -32 in jal instruction
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+PC is 0x00000010
+IR is 0xFF010113
+Fetch Instruction 0xFF010113 from address 0x0000000c
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483584 and -16
+WRITEBACK: Register 2 updated with 0x7fffffb0.
+
+
+PC is 0x00000014
+IR is 0x00112023
+Fetch Instruction 0x00112023 from address 0x00000010
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483568 and 0 in S-type instructions
+
+
+PC is 0x00000018
+IR is 0x00612223
+Fetch Instruction 0x00612223 from address 0x00000014
+type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483568 and 4 in S-type instructions
+
+
+PC is 0x0000001c
+IR is 0x00512423
+Fetch Instruction 0x00512423 from address 0x00000018
+type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483568 and 8 in S-type instructions
+
+
+PC is 0x00000020
+IR is 0x00412623
+Fetch Instruction 0x00412623 from address 0x0000001c
+type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483568 and 12 in S-type instructions
+
+
+PC is 0x00000024
+IR is 0x00100213
+Fetch Instruction 0x00100213 from address 0x00000020
+type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+WRITEBACK: Register 4 updated with 0x00000001.
+
+
+PC is 0x00000028
+IR is 0x00620663
+Fetch Instruction 0x00620663 from address 0x00000024
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 2 are not equal, hence, pc not updated. 
+
+
+PC is 0x0000002c
+IR is 0xFFF30313
+Fetch Instruction 0xFFF30313 from address 0x00000028
+type is I
+rd is 00110
+rs1 is 00110
+imm is -0b1
+opr is addi
+EXECUTE: Adding 2 and -1
+WRITEBACK: Register 6 updated with 0x00000001.
+
+
+PC is 0x0000000c
+IR is 0xFE1FF0EF
+Fetch Instruction 0xFE1FF0EF from address 0x0000002c
+type is UJ
+rd is 00001
+imm is -0b100000
+opr is jal
+EXECUTE: Calculating net memory address by adding -32 in jal instruction
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+PC is 0x00000010
+IR is 0xFF010113
+Fetch Instruction 0xFF010113 from address 0x0000000c
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483568 and -16
+WRITEBACK: Register 2 updated with 0x7fffffa0.
+
+
+PC is 0x00000014
+IR is 0x00112023
+Fetch Instruction 0x00112023 from address 0x00000010
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483552 and 0 in S-type instructions
+
+
+PC is 0x00000018
+IR is 0x00612223
+Fetch Instruction 0x00612223 from address 0x00000014
+type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483552 and 4 in S-type instructions
+
+
+PC is 0x0000001c
+IR is 0x00512423
+Fetch Instruction 0x00512423 from address 0x00000018
+type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483552 and 8 in S-type instructions
+
+
+PC is 0x00000020
+IR is 0x00412623
+Fetch Instruction 0x00412623 from address 0x0000001c
+type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483552 and 12 in S-type instructions
+
+
+PC is 0x00000024
+IR is 0x00100213
+Fetch Instruction 0x00100213 from address 0x00000020
+type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+WRITEBACK: Register 4 updated with 0x00000001.
+
+
+PC is 0x00000030
+IR is 0x00620663
+Fetch Instruction 0x00620663 from address 0x00000024
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 1 are equal, hence, pc incremented. 
+
+
+PC is 0x00000034
+IR is 0x01010113
+Fetch Instruction 0x01010113 from address 0x00000030
+type is I
+rd is 00010
+rs1 is 00010
+imm is 000000010000
+opr is addi
+EXECUTE: Adding 2147483552 and 16
+WRITEBACK: Register 2 updated with 0x7fffffb0.
+
+
+PC is 0x00000038
+IR is 0x00030293
+Fetch Instruction 0x00030293 from address 0x00000034
+type is I
+rd is 00101
+rs1 is 00110
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 1 and 0
+WRITEBACK: Register 5 updated with 0x00000001.
+
+
+PC is 0x0000003c
+IR is 0x00412303
+Fetch Instruction 0x00412303 from address 0x00000038
+type is I
+rd is 00110
+rs1 is 00010
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483568 and 4 in Load instructions
+WRITEBACK: Register 6 updated with 0x00000002.
+
+
+PC is 0x00000040
+IR is 0x00012083
+Fetch Instruction 0x00012083 from address 0x0000003c
+type is I
+rd is 00001
+rs1 is 00010
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483568 and 0 in Load instructions
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+PC is 0x00000044
+IR is 0x02628333
+Fetch Instruction 0x02628333 from address 0x00000040
+type is R
+rd is 00110
+rs1 is 00101
+rs2 is 00110
+opr is mul
+EXECUTE: Multiplication of 1 and 2
+WRITEBACK: Register 6 updated with 0x00000002.
+
+
+PC is 0x00000048
+IR is 0x00812283
+Fetch Instruction 0x00812283 from address 0x00000044
+type is I
+rd is 00101
+rs1 is 00010
+imm is 000000001000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483568 and 8 in Load instructions
+WRITEBACK: Register 5 updated with 0x0000007b.
+
+
+PC is 0x0000004c
+IR is 0x00C12203
+Fetch Instruction 0x00C12203 from address 0x00000048
+type is I
+rd is 00100
+rs1 is 00010
+imm is 000000001100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483568 and 12 in Load instructions
+WRITEBACK: Register 4 updated with 0x00000001.
+
+
+PC is 0x00000030
+IR is 0x00008067
+Fetch Instruction 0x00008067 from address 0x0000004c
+type is I
+rd is 00000
+rs1 is 00001
+imm is 000000000000
+opr is jalr
+EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
+
+
+PC is 0x00000034
+IR is 0x01010113
+Fetch Instruction 0x01010113 from address 0x00000030
+type is I
+rd is 00010
+rs1 is 00010
+imm is 000000010000
+opr is addi
+EXECUTE: Adding 2147483568 and 16
+WRITEBACK: Register 2 updated with 0x7fffffc0.
+
+
+PC is 0x00000038
+IR is 0x00030293
+Fetch Instruction 0x00030293 from address 0x00000034
+type is I
+rd is 00101
+rs1 is 00110
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 2 and 0
+WRITEBACK: Register 5 updated with 0x00000002.
+
+
+PC is 0x0000003c
+IR is 0x00412303
+Fetch Instruction 0x00412303 from address 0x00000038
+type is I
+rd is 00110
+rs1 is 00010
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483584 and 4 in Load instructions
+WRITEBACK: Register 6 updated with 0x00000003.
+
+
+PC is 0x00000040
+IR is 0x00012083
+Fetch Instruction 0x00012083 from address 0x0000003c
+type is I
+rd is 00001
+rs1 is 00010
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483584 and 0 in Load instructions
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+PC is 0x00000044
+IR is 0x02628333
+Fetch Instruction 0x02628333 from address 0x00000040
+type is R
+rd is 00110
+rs1 is 00101
+rs2 is 00110
+opr is mul
+EXECUTE: Multiplication of 2 and 3
+WRITEBACK: Register 6 updated with 0x00000006.
+
+
+PC is 0x00000048
+IR is 0x00812283
+Fetch Instruction 0x00812283 from address 0x00000044
+type is I
+rd is 00101
+rs1 is 00010
+imm is 000000001000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483584 and 8 in Load instructions
+WRITEBACK: Register 5 updated with 0x0000007b.
+
+
+PC is 0x0000004c
+IR is 0x00C12203
+Fetch Instruction 0x00C12203 from address 0x00000048
+type is I
+rd is 00100
+rs1 is 00010
+imm is 000000001100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483584 and 12 in Load instructions
+WRITEBACK: Register 4 updated with 0x00000001.
+
+
+PC is 0x00000030
+IR is 0x00008067
+Fetch Instruction 0x00008067 from address 0x0000004c
+type is I
+rd is 00000
+rs1 is 00001
+imm is 000000000000
+opr is jalr
+EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
+
+
+PC is 0x00000034
+IR is 0x01010113
+Fetch Instruction 0x01010113 from address 0x00000030
+type is I
+rd is 00010
+rs1 is 00010
+imm is 000000010000
+opr is addi
+EXECUTE: Adding 2147483584 and 16
+WRITEBACK: Register 2 updated with 0x7fffffd0.
+
+
+PC is 0x00000038
+IR is 0x00030293
+Fetch Instruction 0x00030293 from address 0x00000034
+type is I
+rd is 00101
+rs1 is 00110
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 6 and 0
+WRITEBACK: Register 5 updated with 0x00000006.
+
+
+PC is 0x0000003c
+IR is 0x00412303
+Fetch Instruction 0x00412303 from address 0x00000038
+type is I
+rd is 00110
+rs1 is 00010
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483600 and 4 in Load instructions
+WRITEBACK: Register 6 updated with 0x00000004.
+
+
+PC is 0x00000040
+IR is 0x00012083
+Fetch Instruction 0x00012083 from address 0x0000003c
+type is I
+rd is 00001
+rs1 is 00010
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483600 and 0 in Load instructions
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+PC is 0x00000044
+IR is 0x02628333
+Fetch Instruction 0x02628333 from address 0x00000040
+type is R
+rd is 00110
+rs1 is 00101
+rs2 is 00110
+opr is mul
+EXECUTE: Multiplication of 6 and 4
+WRITEBACK: Register 6 updated with 0x00000018.
+
+
+PC is 0x00000048
+IR is 0x00812283
+Fetch Instruction 0x00812283 from address 0x00000044
+type is I
+rd is 00101
+rs1 is 00010
+imm is 000000001000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483600 and 8 in Load instructions
+WRITEBACK: Register 5 updated with 0x0000007b.
+
+
+PC is 0x0000004c
+IR is 0x00C12203
+Fetch Instruction 0x00C12203 from address 0x00000048
+type is I
+rd is 00100
+rs1 is 00010
+imm is 000000001100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483600 and 12 in Load instructions
+WRITEBACK: Register 4 updated with 0x00000001.
+
+
+PC is 0x00000030
+IR is 0x00008067
+Fetch Instruction 0x00008067 from address 0x0000004c
+type is I
+rd is 00000
+rs1 is 00001
+imm is 000000000000
+opr is jalr
+EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
+
+
+PC is 0x00000034
+IR is 0x01010113
+Fetch Instruction 0x01010113 from address 0x00000030
+type is I
+rd is 00010
+rs1 is 00010
+imm is 000000010000
+opr is addi
+EXECUTE: Adding 2147483600 and 16
+WRITEBACK: Register 2 updated with 0x7fffffe0.
+
+
+PC is 0x00000038
+IR is 0x00030293
+Fetch Instruction 0x00030293 from address 0x00000034
+type is I
+rd is 00101
+rs1 is 00110
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 24 and 0
+WRITEBACK: Register 5 updated with 0x00000018.
+
+
+PC is 0x0000003c
+IR is 0x00412303
+Fetch Instruction 0x00412303 from address 0x00000038
+type is I
+rd is 00110
+rs1 is 00010
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483616 and 4 in Load instructions
+WRITEBACK: Register 6 updated with 0x00000005.
+
+
+PC is 0x00000040
+IR is 0x00012083
+Fetch Instruction 0x00012083 from address 0x0000003c
+type is I
+rd is 00001
+rs1 is 00010
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483616 and 0 in Load instructions
+WRITEBACK: Register 1 updated with 0x00000058.
+
+
+PC is 0x00000044
+IR is 0x02628333
+Fetch Instruction 0x02628333 from address 0x00000040
+type is R
+rd is 00110
+rs1 is 00101
+rs2 is 00110
+opr is mul
+EXECUTE: Multiplication of 24 and 5
+WRITEBACK: Register 6 updated with 0x00000078.
+
+
+PC is 0x00000048
+IR is 0x00812283
+Fetch Instruction 0x00812283 from address 0x00000044
+type is I
+rd is 00101
+rs1 is 00010
+imm is 000000001000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483616 and 8 in Load instructions
+WRITEBACK: Register 5 updated with 0x0000007b.
+
+
+PC is 0x0000004c
+IR is 0x00C12203
+Fetch Instruction 0x00C12203 from address 0x00000048
+type is I
+rd is 00100
+rs1 is 00010
+imm is 000000001100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483616 and 12 in Load instructions
+WRITEBACK: Register 4 updated with 0x00000013.
+
+
+PC is 0x00000058
+IR is 0x00008067
+Fetch Instruction 0x00008067 from address 0x0000004c
+type is I
+rd is 00000
+rs1 is 00001
+imm is 000000000000
+opr is jalr
+EXECUTE: Calculating net memory address by adding 88 and 0 in jalr instruction
+
+
+PC is -1
+IR is 0x00008067
+X----------------X
+Code Ran Successfully
+
+
+=======
+INSTRUCTION_CACHE: It's a MISS at set number- 0
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 0 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 0 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 0 with tag- 0Fetch Instruction 0x07B00293 from address 0x00000000
+
+
+type is I
+rd is 00101
+rs1 is 00000
+imm is 000001111011
+opr is addi
+EXECUTE: Adding 0 and 123
+INSTRUCTION_CACHE: It's a MISS at set number- 1
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 1 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 1 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 1 with tag- 0Fetch Instruction 0x01300213 from address 0x00000004
+
+
+type is I
+rd is 00100
+rs1 is 00000
+imm is 000000010011
+opr is addi
+EXECUTE: Adding 0 and 19
+INSTRUCTION_CACHE: It's a MISS at set number- 2
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 2 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 2 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 2 with tag- 0Fetch Instruction 0x0480006F from address 0x00000008
+
+
+WRITEBACK: Register 5 updated with 0x0000007b.
+type is UJ
+rd is 00000
+imm is 00000000000000000000000001001000
+opr is jal
+EXECUTE: Calculating net memory address by adding 72 in jal instruction
+Prediction MisMatched ! for pc, 0x00000008
+INSTRUCTION_CACHE: It's a MISS at set number- 3
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0Fetch Instruction 0xFF010113 from address 0x0000000c
+pc 0x0000000c is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 4 updated with 0x00000013.
+INSTRUCTION_CACHE: It's a MISS at set number- 20
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 20 with tag- 5INSTRUCTION_CACHE: It's a HIT at set number- 20 with tag- 5INSTRUCTION_CACHE: It's a HIT at set number- 20 with tag- 5Fetch Instruction 0x00500313 from address 0x00000050
+
+
+type is I
+rd is 00110
+rs1 is 00000
+imm is 000000000101
+opr is addi
+EXECUTE: Adding 0 and 5
+INSTRUCTION_CACHE: It's a MISS at set number- 21
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 21 with tag- 5INSTRUCTION_CACHE: It's a HIT at set number- 21 with tag- 5INSTRUCTION_CACHE: It's a HIT at set number- 21 with tag- 5Fetch Instruction 0xFB9FF0EF from address 0x00000054
+
+
+type is UJ
+rd is 00001
+imm is -0b1001000
+opr is jal
+EXECUTE: Calculating net memory address by adding -72 in jal instruction
+Prediction MisMatched ! for pc, 0x00000054
+INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0Fetch Instruction 0xFF010113 from address 0x0000000c
+
+
+WRITEBACK: Register 6 updated with 0x00000005.
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483632 and -16
+INSTRUCTION_CACHE: It's a MISS at set number- 4
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+WRITEBACK: Register 1 updated with 0x00000058.
+
+
+WRITEBACK: Register 2 updated with 0x7fffffe0.
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483616 and 0 in S-type instructions
+INSTRUCTION_CACHE: It's a MISS at set number- 5
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1Fetch Instruction 0x00612223 from address 0x00000014
+
+
+CACHE: It's a MISS at set number- 24
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 24 with tag- 134217726CACHE: It's a HIT at set number- 24 with tag- 134217726CACHE: It's a HIT at set number- 24 with tag- 134217726type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483616 and 4 in S-type instructions
+INSTRUCTION_CACHE: It's a MISS at set number- 6
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1Fetch Instruction 0x00512423 from address 0x00000018
+
+
+CACHE: It's a MISS at set number- 25
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 25 with tag- 134217726CACHE: It's a HIT at set number- 25 with tag- 134217726CACHE: It's a HIT at set number- 25 with tag- 134217726type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483616 and 8 in S-type instructions
+INSTRUCTION_CACHE: It's a MISS at set number- 7
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1Fetch Instruction 0x00412623 from address 0x0000001c
+
+
+CACHE: It's a MISS at set number- 26
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 26 with tag- 134217726CACHE: It's a HIT at set number- 26 with tag- 134217726CACHE: It's a HIT at set number- 26 with tag- 134217726type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483616 and 12 in S-type instructions
+INSTRUCTION_CACHE: It's a MISS at set number- 8
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2Fetch Instruction 0x00100213 from address 0x00000020
+
+
+CACHE: It's a MISS at set number- 27
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 27 with tag- 134217726CACHE: It's a HIT at set number- 27 with tag- 134217726CACHE: It's a HIT at set number- 27 with tag- 134217726type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+INSTRUCTION_CACHE: It's a MISS at set number- 9
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+
+
+WRITEBACK: Register 4 updated with 0x00000001.
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 5 are not equal, hence, pc not updated. 
+Prediction Successful ! for pc, 0x00000024
+INSTRUCTION_CACHE: It's a MISS at set number- 10
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2Fetch Instruction 0xFFF30313 from address 0x00000028
+
+
+type is I
+rd is 00110
+rs1 is 00110
+imm is -0b1
+opr is addi
+EXECUTE: Adding 5 and -1
+INSTRUCTION_CACHE: It's a MISS at set number- 11
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2Fetch Instruction 0xFE1FF0EF from address 0x0000002c
+
+
+type is UJ
+rd is 00001
+imm is -0b100000
+opr is jal
+EXECUTE: Calculating net memory address by adding -32 in jal instruction
+Prediction MisMatched ! for pc, 0x0000002c
+INSTRUCTION_CACHE: It's a MISS at set number- 12
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3Fetch Instruction 0x01010113 from address 0x00000030
+pc 0x00000030 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 6 updated with 0x00000004.
+INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0Fetch Instruction 0xFF010113 from address 0x0000000c
+
+
+WRITEBACK: Register 1 updated with 0x00000030.
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483616 and -16
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+
+
+WRITEBACK: Register 2 updated with 0x7fffffd0.
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483600 and 0 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1Fetch Instruction 0x00612223 from address 0x00000014
+
+
+CACHE: It's a MISS at set number- 20
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 20 with tag- 134217725CACHE: It's a HIT at set number- 20 with tag- 134217725CACHE: It's a HIT at set number- 20 with tag- 134217725type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483600 and 4 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1Fetch Instruction 0x00512423 from address 0x00000018
+
+
+CACHE: It's a MISS at set number- 21
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 21 with tag- 134217725CACHE: It's a HIT at set number- 21 with tag- 134217725CACHE: It's a HIT at set number- 21 with tag- 134217725type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483600 and 8 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1Fetch Instruction 0x00412623 from address 0x0000001c
+
+
+CACHE: It's a MISS at set number- 22
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 22 with tag- 134217725CACHE: It's a HIT at set number- 22 with tag- 134217725CACHE: It's a HIT at set number- 22 with tag- 134217725type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483600 and 12 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2Fetch Instruction 0x00100213 from address 0x00000020
+
+
+CACHE: It's a MISS at set number- 23
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 23 with tag- 134217725CACHE: It's a HIT at set number- 23 with tag- 134217725CACHE: It's a HIT at set number- 23 with tag- 134217725type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+
+
+WRITEBACK: Register 4 updated with 0x00000001.
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 4 are not equal, hence, pc not updated. 
+Prediction Successful ! for pc, 0x00000024
+INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2Fetch Instruction 0xFFF30313 from address 0x00000028
+
+
+type is I
+rd is 00110
+rs1 is 00110
+imm is -0b1
+opr is addi
+EXECUTE: Adding 4 and -1
+INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2Fetch Instruction 0xFE1FF0EF from address 0x0000002c
+
+
+type is UJ
+rd is 00001
+imm is -0b100000
+opr is jal
+EXECUTE: Calculating net memory address by adding -32 in jal instruction
+Prediction Successful ! for pc, 0x0000002c
+INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0Fetch Instruction 0xFF010113 from address 0x0000000c
+
+
+WRITEBACK: Register 6 updated with 0x00000003.
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483600 and -16
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+WRITEBACK: Register 2 updated with 0x7fffffc0.
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483584 and 0 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1Fetch Instruction 0x00612223 from address 0x00000014
+
+
+CACHE: It's a MISS at set number- 16
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 16 with tag- 134217724CACHE: It's a HIT at set number- 16 with tag- 134217724CACHE: It's a HIT at set number- 16 with tag- 134217724type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483584 and 4 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1Fetch Instruction 0x00512423 from address 0x00000018
+
+
+CACHE: It's a MISS at set number- 17
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 17 with tag- 134217724CACHE: It's a HIT at set number- 17 with tag- 134217724CACHE: It's a HIT at set number- 17 with tag- 134217724type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483584 and 8 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1Fetch Instruction 0x00412623 from address 0x0000001c
+
+
+CACHE: It's a MISS at set number- 18
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 18 with tag- 134217724CACHE: It's a HIT at set number- 18 with tag- 134217724CACHE: It's a HIT at set number- 18 with tag- 134217724type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483584 and 12 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2Fetch Instruction 0x00100213 from address 0x00000020
+
+
+CACHE: It's a MISS at set number- 19
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 19 with tag- 134217724CACHE: It's a HIT at set number- 19 with tag- 134217724CACHE: It's a HIT at set number- 19 with tag- 134217724type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+
+
+WRITEBACK: Register 4 updated with 0x00000001.
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 3 are not equal, hence, pc not updated. 
+Prediction Successful ! for pc, 0x00000024
+INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2Fetch Instruction 0xFFF30313 from address 0x00000028
+
+
+type is I
+rd is 00110
+rs1 is 00110
+imm is -0b1
+opr is addi
+EXECUTE: Adding 3 and -1
+INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2Fetch Instruction 0xFE1FF0EF from address 0x0000002c
+
+
+type is UJ
+rd is 00001
+imm is -0b100000
+opr is jal
+EXECUTE: Calculating net memory address by adding -32 in jal instruction
+Prediction Successful ! for pc, 0x0000002c
+INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0Fetch Instruction 0xFF010113 from address 0x0000000c
+
+
+WRITEBACK: Register 6 updated with 0x00000002.
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483584 and -16
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+WRITEBACK: Register 2 updated with 0x7fffffb0.
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483568 and 0 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1Fetch Instruction 0x00612223 from address 0x00000014
+
+
+CACHE: It's a MISS at set number- 12
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 12 with tag- 134217723CACHE: It's a HIT at set number- 12 with tag- 134217723CACHE: It's a HIT at set number- 12 with tag- 134217723type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483568 and 4 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1Fetch Instruction 0x00512423 from address 0x00000018
+
+
+CACHE: It's a MISS at set number- 13
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 13 with tag- 134217723CACHE: It's a HIT at set number- 13 with tag- 134217723CACHE: It's a HIT at set number- 13 with tag- 134217723type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483568 and 8 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1Fetch Instruction 0x00412623 from address 0x0000001c
+
+
+CACHE: It's a MISS at set number- 14
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 14 with tag- 134217723CACHE: It's a HIT at set number- 14 with tag- 134217723CACHE: It's a HIT at set number- 14 with tag- 134217723type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483568 and 12 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2Fetch Instruction 0x00100213 from address 0x00000020
+
+
+CACHE: It's a MISS at set number- 15
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 15 with tag- 134217723CACHE: It's a HIT at set number- 15 with tag- 134217723CACHE: It's a HIT at set number- 15 with tag- 134217723type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+
+
+WRITEBACK: Register 4 updated with 0x00000001.
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 2 are not equal, hence, pc not updated. 
+Prediction Successful ! for pc, 0x00000024
+INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2Fetch Instruction 0xFFF30313 from address 0x00000028
+
+
+type is I
+rd is 00110
+rs1 is 00110
+imm is -0b1
+opr is addi
+EXECUTE: Adding 2 and -1
+INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 11 with tag- 2Fetch Instruction 0xFE1FF0EF from address 0x0000002c
+
+
+type is UJ
+rd is 00001
+imm is -0b100000
+opr is jal
+EXECUTE: Calculating net memory address by adding -32 in jal instruction
+Prediction Successful ! for pc, 0x0000002c
+INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0INSTRUCTION_CACHE: It's a HIT at set number- 3 with tag- 0Fetch Instruction 0xFF010113 from address 0x0000000c
+
+
+WRITEBACK: Register 6 updated with 0x00000001.
+type is I
+rd is 00010
+rs1 is 00010
+imm is -0b10000
+opr is addi
+EXECUTE: Adding 2147483568 and -16
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+WRITEBACK: Register 1 updated with 0x00000030.
+
+
+WRITEBACK: Register 2 updated with 0x7fffffa0.
+INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 4 with tag- 1Fetch Instruction 0x00112023 from address 0x00000010
+
+
+type is S
+rs1 is 00010
+rs2 is 00001
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483552 and 0 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 5 with tag- 1Fetch Instruction 0x00612223 from address 0x00000014
+
+
+CACHE: It's a MISS at set number- 8
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 8 with tag- 134217722CACHE: It's a HIT at set number- 8 with tag- 134217722CACHE: It's a HIT at set number- 8 with tag- 134217722type is S
+rs1 is 00010
+rs2 is 00110
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483552 and 4 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 6 with tag- 1Fetch Instruction 0x00512423 from address 0x00000018
+
+
+CACHE: It's a MISS at set number- 9
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 9 with tag- 134217722CACHE: It's a HIT at set number- 9 with tag- 134217722CACHE: It's a HIT at set number- 9 with tag- 134217722type is S
+rs1 is 00010
+rs2 is 00101
+imm is 000000001000
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483552 and 8 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1INSTRUCTION_CACHE: It's a HIT at set number- 7 with tag- 1Fetch Instruction 0x00412623 from address 0x0000001c
+
+
+CACHE: It's a MISS at set number- 10
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 10 with tag- 134217722CACHE: It's a HIT at set number- 10 with tag- 134217722CACHE: It's a HIT at set number- 10 with tag- 134217722type is S
+rs1 is 00010
+rs2 is 00100
+imm is 000000001100
+opr is sw
+EXECUTE: Calculating net memory address by adding 2147483552 and 12 in S-type instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 8 with tag- 2Fetch Instruction 0x00100213 from address 0x00000020
+
+
+CACHE: It's a MISS at set number- 11
+So, block at offset 0 is replaced using LRU.CACHE: It's a HIT at set number- 11 with tag- 134217722CACHE: It's a HIT at set number- 11 with tag- 134217722CACHE: It's a HIT at set number- 11 with tag- 134217722type is I
+rd is 00100
+rs1 is 00000
+imm is 000000000001
+opr is addi
+EXECUTE: Adding 0 and 1
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+
+
+WRITEBACK: Register 4 updated with 0x00000001.
+INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 9 with tag- 2Fetch Instruction 0x00620663 from address 0x00000024
+
+
+type is SB
+rs1 is 00100
+rs2 is 00110
+imm is 0000000001100
+opr is beq
+EXECUTE: 1 and 1 are equal, hence, pc incremented. 
+Prediction MisMatched ! for pc, 0x00000024
+INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2INSTRUCTION_CACHE: It's a HIT at set number- 10 with tag- 2Fetch Instruction 0xFFF30313 from address 0x00000028
+pc 0x00000028 is flushed because of prediction mismatched
+
+
+INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3Fetch Instruction 0x01010113 from address 0x00000030
+
+
+type is I
+rd is 00010
+rs1 is 00010
+imm is 000000010000
+opr is addi
+EXECUTE: Adding 2147483552 and 16
+INSTRUCTION_CACHE: It's a MISS at set number- 13
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3Fetch Instruction 0x00030293 from address 0x00000034
+
+
+type is I
+rd is 00101
+rs1 is 00110
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 1 and 0
+INSTRUCTION_CACHE: It's a MISS at set number- 14
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3Fetch Instruction 0x00412303 from address 0x00000038
+
+
+WRITEBACK: Register 2 updated with 0x7fffffb0.
+type is I
+rd is 00110
+rs1 is 00010
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483568 and 4 in Load instructions
+INSTRUCTION_CACHE: It's a MISS at set number- 15
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3Fetch Instruction 0x00012083 from address 0x0000003c
+
+
+WRITEBACK: Register 5 updated with 0x00000001.
+CACHE: It's a HIT at set number- 13 with tag- 134217723CACHE: It's a HIT at set number- 13 with tag- 134217723CACHE: It's a HIT at set number- 13 with tag- 134217723CACHE: It's a HIT at set number- 13 with tag- 134217723type is I
+rd is 00001
+rs1 is 00010
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483568 and 0 in Load instructions
+INSTRUCTION_CACHE: It's a MISS at set number- 16
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4Fetch Instruction 0x02628333 from address 0x00000040
+
+
+WRITEBACK: Register 6 updated with 0x00000002.
+CACHE: It's a HIT at set number- 12 with tag- 134217723CACHE: It's a HIT at set number- 12 with tag- 134217723CACHE: It's a HIT at set number- 12 with tag- 134217723CACHE: It's a HIT at set number- 12 with tag- 134217723type is R
+rd is 00110
+rs1 is 00101
+rs2 is 00110
+opr is mul
+EXECUTE: Multiplication of 1 and 2
+INSTRUCTION_CACHE: It's a MISS at set number- 17
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4Fetch Instruction 0x00812283 from address 0x00000044
+
+
+WRITEBACK: Register 1 updated with 0x00000030.
+type is I
+rd is 00101
+rs1 is 00010
+imm is 000000001000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483568 and 8 in Load instructions
+INSTRUCTION_CACHE: It's a MISS at set number- 18
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4Fetch Instruction 0x00C12203 from address 0x00000048
+
+
+WRITEBACK: Register 6 updated with 0x00000002.
+CACHE: It's a HIT at set number- 14 with tag- 134217723CACHE: It's a HIT at set number- 14 with tag- 134217723CACHE: It's a HIT at set number- 14 with tag- 134217723CACHE: It's a HIT at set number- 14 with tag- 134217723type is I
+rd is 00100
+rs1 is 00010
+imm is 000000001100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483568 and 12 in Load instructions
+INSTRUCTION_CACHE: It's a MISS at set number- 19
+So, block at offset 0 is replaced using LRU.INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4Fetch Instruction 0x00008067 from address 0x0000004c
+
+
+WRITEBACK: Register 5 updated with 0x0000007b.
+CACHE: It's a HIT at set number- 15 with tag- 134217723CACHE: It's a HIT at set number- 15 with tag- 134217723CACHE: It's a HIT at set number- 15 with tag- 134217723CACHE: It's a HIT at set number- 15 with tag- 134217723type is I
+rd is 00000
+rs1 is 00001
+imm is 000000000000
+opr is jalr
+EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
+Prediction MisMatched ! for pc, 0x0000004c
+INSTRUCTION_CACHE: It's a HIT at set number- 20 with tag- 5INSTRUCTION_CACHE: It's a HIT at set number- 20 with tag- 5INSTRUCTION_CACHE: It's a HIT at set number- 20 with tag- 5INSTRUCTION_CACHE: It's a HIT at set number- 20 with tag- 5Fetch Instruction 0x00500313 from address 0x00000050
+pc 0x00000050 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 4 updated with 0x00000001.
+INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3Fetch Instruction 0x01010113 from address 0x00000030
+
+
+type is I
+rd is 00010
+rs1 is 00010
+imm is 000000010000
+opr is addi
+EXECUTE: Adding 2147483568 and 16
+INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3Fetch Instruction 0x00030293 from address 0x00000034
+
+
+type is I
+rd is 00101
+rs1 is 00110
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 2 and 0
+INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3Fetch Instruction 0x00412303 from address 0x00000038
+
+
+WRITEBACK: Register 2 updated with 0x7fffffc0.
+type is I
+rd is 00110
+rs1 is 00010
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483584 and 4 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3Fetch Instruction 0x00012083 from address 0x0000003c
+
+
+WRITEBACK: Register 5 updated with 0x00000002.
+CACHE: It's a HIT at set number- 17 with tag- 134217724CACHE: It's a HIT at set number- 17 with tag- 134217724CACHE: It's a HIT at set number- 17 with tag- 134217724CACHE: It's a HIT at set number- 17 with tag- 134217724type is I
+rd is 00001
+rs1 is 00010
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483584 and 0 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4Fetch Instruction 0x02628333 from address 0x00000040
+
+
+WRITEBACK: Register 6 updated with 0x00000003.
+CACHE: It's a HIT at set number- 16 with tag- 134217724CACHE: It's a HIT at set number- 16 with tag- 134217724CACHE: It's a HIT at set number- 16 with tag- 134217724CACHE: It's a HIT at set number- 16 with tag- 134217724type is R
+rd is 00110
+rs1 is 00101
+rs2 is 00110
+opr is mul
+EXECUTE: Multiplication of 2 and 3
+INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4Fetch Instruction 0x00812283 from address 0x00000044
+
+
+WRITEBACK: Register 1 updated with 0x00000030.
+type is I
+rd is 00101
+rs1 is 00010
+imm is 000000001000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483584 and 8 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4Fetch Instruction 0x00C12203 from address 0x00000048
+
+
+WRITEBACK: Register 6 updated with 0x00000006.
+CACHE: It's a HIT at set number- 18 with tag- 134217724CACHE: It's a HIT at set number- 18 with tag- 134217724CACHE: It's a HIT at set number- 18 with tag- 134217724CACHE: It's a HIT at set number- 18 with tag- 134217724type is I
+rd is 00100
+rs1 is 00010
+imm is 000000001100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483584 and 12 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4Fetch Instruction 0x00008067 from address 0x0000004c
+
+
+WRITEBACK: Register 5 updated with 0x0000007b.
+CACHE: It's a HIT at set number- 19 with tag- 134217724CACHE: It's a HIT at set number- 19 with tag- 134217724CACHE: It's a HIT at set number- 19 with tag- 134217724CACHE: It's a HIT at set number- 19 with tag- 134217724type is I
+rd is 00000
+rs1 is 00001
+imm is 000000000000
+opr is jalr
+EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
+Prediction Successful ! for pc, 0x0000004c
+INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3Fetch Instruction 0x01010113 from address 0x00000030
+
+
+WRITEBACK: Register 4 updated with 0x00000001.
+type is I
+rd is 00010
+rs1 is 00010
+imm is 000000010000
+opr is addi
+EXECUTE: Adding 2147483584 and 16
+INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3Fetch Instruction 0x00030293 from address 0x00000034
+
+
+type is I
+rd is 00101
+rs1 is 00110
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 6 and 0
+INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3Fetch Instruction 0x00412303 from address 0x00000038
+
+
+WRITEBACK: Register 2 updated with 0x7fffffd0.
+type is I
+rd is 00110
+rs1 is 00010
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483600 and 4 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3Fetch Instruction 0x00012083 from address 0x0000003c
+
+
+WRITEBACK: Register 5 updated with 0x00000006.
+CACHE: It's a HIT at set number- 21 with tag- 134217725CACHE: It's a HIT at set number- 21 with tag- 134217725CACHE: It's a HIT at set number- 21 with tag- 134217725CACHE: It's a HIT at set number- 21 with tag- 134217725type is I
+rd is 00001
+rs1 is 00010
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483600 and 0 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4Fetch Instruction 0x02628333 from address 0x00000040
+
+
+WRITEBACK: Register 6 updated with 0x00000004.
+CACHE: It's a HIT at set number- 20 with tag- 134217725CACHE: It's a HIT at set number- 20 with tag- 134217725CACHE: It's a HIT at set number- 20 with tag- 134217725CACHE: It's a HIT at set number- 20 with tag- 134217725type is R
+rd is 00110
+rs1 is 00101
+rs2 is 00110
+opr is mul
+EXECUTE: Multiplication of 6 and 4
+INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4Fetch Instruction 0x00812283 from address 0x00000044
+
+
+WRITEBACK: Register 1 updated with 0x00000030.
+type is I
+rd is 00101
+rs1 is 00010
+imm is 000000001000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483600 and 8 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4Fetch Instruction 0x00C12203 from address 0x00000048
+
+
+WRITEBACK: Register 6 updated with 0x00000018.
+CACHE: It's a HIT at set number- 22 with tag- 134217725CACHE: It's a HIT at set number- 22 with tag- 134217725CACHE: It's a HIT at set number- 22 with tag- 134217725CACHE: It's a HIT at set number- 22 with tag- 134217725type is I
+rd is 00100
+rs1 is 00010
+imm is 000000001100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483600 and 12 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4Fetch Instruction 0x00008067 from address 0x0000004c
+
+
+WRITEBACK: Register 5 updated with 0x0000007b.
+CACHE: It's a HIT at set number- 23 with tag- 134217725CACHE: It's a HIT at set number- 23 with tag- 134217725CACHE: It's a HIT at set number- 23 with tag- 134217725CACHE: It's a HIT at set number- 23 with tag- 134217725type is I
+rd is 00000
+rs1 is 00001
+imm is 000000000000
+opr is jalr
+EXECUTE: Calculating net memory address by adding 48 and 0 in jalr instruction
+Prediction Successful ! for pc, 0x0000004c
+INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3Fetch Instruction 0x01010113 from address 0x00000030
+
+
+WRITEBACK: Register 4 updated with 0x00000001.
+type is I
+rd is 00010
+rs1 is 00010
+imm is 000000010000
+opr is addi
+EXECUTE: Adding 2147483600 and 16
+INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 13 with tag- 3Fetch Instruction 0x00030293 from address 0x00000034
+
+
+type is I
+rd is 00101
+rs1 is 00110
+imm is 000000000000
+opr is addi
+EXECUTE: Adding 24 and 0
+INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 14 with tag- 3Fetch Instruction 0x00412303 from address 0x00000038
+
+
+WRITEBACK: Register 2 updated with 0x7fffffe0.
+type is I
+rd is 00110
+rs1 is 00010
+imm is 000000000100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483616 and 4 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 15 with tag- 3Fetch Instruction 0x00012083 from address 0x0000003c
+
+
+WRITEBACK: Register 5 updated with 0x00000018.
+CACHE: It's a HIT at set number- 25 with tag- 134217726CACHE: It's a HIT at set number- 25 with tag- 134217726CACHE: It's a HIT at set number- 25 with tag- 134217726CACHE: It's a HIT at set number- 25 with tag- 134217726type is I
+rd is 00001
+rs1 is 00010
+imm is 000000000000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483616 and 0 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 16 with tag- 4Fetch Instruction 0x02628333 from address 0x00000040
+
+
+WRITEBACK: Register 6 updated with 0x00000005.
+CACHE: It's a HIT at set number- 24 with tag- 134217726CACHE: It's a HIT at set number- 24 with tag- 134217726CACHE: It's a HIT at set number- 24 with tag- 134217726CACHE: It's a HIT at set number- 24 with tag- 134217726type is R
+rd is 00110
+rs1 is 00101
+rs2 is 00110
+opr is mul
+EXECUTE: Multiplication of 24 and 5
+INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 17 with tag- 4Fetch Instruction 0x00812283 from address 0x00000044
+
+
+WRITEBACK: Register 1 updated with 0x00000058.
+type is I
+rd is 00101
+rs1 is 00010
+imm is 000000001000
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483616 and 8 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 18 with tag- 4Fetch Instruction 0x00C12203 from address 0x00000048
+
+
+WRITEBACK: Register 6 updated with 0x00000078.
+CACHE: It's a HIT at set number- 26 with tag- 134217726CACHE: It's a HIT at set number- 26 with tag- 134217726CACHE: It's a HIT at set number- 26 with tag- 134217726CACHE: It's a HIT at set number- 26 with tag- 134217726type is I
+rd is 00100
+rs1 is 00010
+imm is 000000001100
+opr is lw
+EXECUTE: Calculating net memory address by adding 2147483616 and 12 in Load instructions
+INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4INSTRUCTION_CACHE: It's a HIT at set number- 19 with tag- 4Fetch Instruction 0x00008067 from address 0x0000004c
+
+
+WRITEBACK: Register 5 updated with 0x0000007b.
+CACHE: It's a HIT at set number- 27 with tag- 134217726CACHE: It's a HIT at set number- 27 with tag- 134217726CACHE: It's a HIT at set number- 27 with tag- 134217726CACHE: It's a HIT at set number- 27 with tag- 134217726type is I
+rd is 00000
+rs1 is 00001
+imm is 000000000000
+opr is jalr
+EXECUTE: Calculating net memory address by adding 88 and 0 in jalr instruction
+Prediction MisMatched ! for pc, 0x0000004c
+INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3INSTRUCTION_CACHE: It's a HIT at set number- 12 with tag- 3Fetch Instruction 0x01010113 from address 0x00000030
+pc 0x00000030 is flushed because of prediction mismatched
+
+
+WRITEBACK: Register 4 updated with 0x00000013.
+
+
+
+
+X----------------X
+Code Ran Successfully
+
+
+Number of clock cycles =107
+Total number of instructions executed = 80
+CPI value calculated = 1.3375
+Total number of load/store instructions = 36
+Number of ALU instructions = 65
+Number of control instructions = 15
+Number of bubbles and stalls in the pipeline = 27
+Number of data hazards = 10
+Number of control hazards = 6
+Number of branch mispredictions = 6
+Number of stalls due to data hazards = 21
+Number of stalls due to control hazards = 6
+Total Number of Data Cache Accesses: 144
+Total number of Misses in Data Cache: 20
+Total number of Hits in Data Cache: 124
+Total Number of Instruction Cache Accesses: 360
+Total number of Misses in Instruction Cache: 20
+Total number of Hits in Instruction Cache: 128
+
+
+>>>>>>> c8a6d2b33d3e (updated)

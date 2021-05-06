@@ -182,22 +182,22 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
         if(decoded_info[this_pc]['opr']=='lw'):
             rz=int(rz,16)
             muxy='0x'
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
                 muxy+=am[2:4]
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict=memory.doing_load_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
                 muxy+=am[2:4]
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
                 muxy+=am[2:4]
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
@@ -205,7 +205,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
 
         elif(decoded_info[this_pc]['opr']=='lb'):
             muxy='0x'
-            am,memory_cache_dict=memory.doing_load_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict=memory.doing_load_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
             if(len(am)==3):
                 muxy+='0000000'+am[2]
 
@@ -218,12 +218,12 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
         elif(decoded_info[this_pc]['opr']=='lh'):
             rz=int(rz,16)
             muxy='0x'
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
                 muxy+=am[2:4]
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:

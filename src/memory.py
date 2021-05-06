@@ -137,19 +137,19 @@ def lru_policy(l):
             val=i
     return val
 
-def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,clockcycle,hit,miss):
+def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,clockcycle,hit,miss,output):
     values={}
     values=address_conversion(memory_address,block_size,no_of_sets)
     for i in range(len(memorycachedict[values['index']])):
         if(memorycachedict[values['index']][i][1]==values['tag']):
             hit+=1
             output+="CACHE: It's a HIT at set number- "+str(values['index'])+" with tag- "+str(values['tag'])
-            return memorycachedict[values['index']][i][3+values['block_offset']],memorycachedict,hit,miss
+            return memorycachedict[values['index']][i][3+values['block_offset']],memorycachedict,hit,miss,output
     val=lru_policy(memorycachedict[values['index']])
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
     miss+=1
     output+="CACHE: It's a MISS at set number- "+str(values['index'])+"\nSo, block at offset "+str(val)+" is replaced using LRU."
-    return memorycachedict[values['index']][val][3+values['block_offset']],memorycachedict,hit,miss
+    return memorycachedict[values['index']][val][3+values['block_offset']],memorycachedict,hit,miss,output
 
 
 def doing_store_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,byte_val,clockcycle,hit,miss,output):
@@ -162,10 +162,10 @@ def doing_store_cache(memory_address,memorycachedict,block_size,no_of_sets,memor
             hit+=1
             output+="CACHE: It's a HIT at set number- "+str(values['index'])+" with tag- "+str(values['tag'])
             memorycachedict[values['index']][i][3+values['block_offset']]=byte_val
-            return memorycachedict,hit,miss
+            return memorycachedict,hit,miss,output
     val=lru_policy(memorycachedict[values['index']])
     output+="CACHE: It's a MISS at set number- "+str(values['index'])+"\nSo, block at offset "+str(val)+" is replaced using LRU."
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
     memorycachedict[values['index']][val][3+values['block_offset']]=byte_val
     miss+=1
-    return memorycachedict,hit,miss
+    return memorycachedict,hit,miss,output
