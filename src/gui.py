@@ -10,7 +10,7 @@
 from PyQt5 import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os,sys,subprocess
-import gui_main,gui_stalling,gui_forwarding,aditi_main
+import gui_main,gui_stalling,gui_forwarding
 from PyQt5.QtWidgets import QApplication, QDialog, QLabel, QGroupBox, QVBoxLayout, QHBoxLayout, QCheckBox, QRadioButton
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QRect
@@ -543,7 +543,7 @@ class Ui_MainWindow(object):
                 data.write("")
 
         else:
-            self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t=aditi_main.assemble()
+            self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t,self.cache_list=gui_main.assemble()
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
@@ -627,7 +627,7 @@ class Ui_MainWindow(object):
             if(self.pc!=-1):
                 num=int(self.pc,16)
                 temp_pc=self.pc
-                self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=aditi_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext,self.cache_list=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.cache_list)
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
@@ -727,7 +727,7 @@ class Ui_MainWindow(object):
             while(self.pc!=-1):
                 num=int(self.pc,16)
                 temp_pc=self.pc
-                self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext=aditi_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock)
+                self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.outtext,self.cache_list=gui_main.runstep(self.idi,self.pc,self.pc_f,self.pc_t,self.reg,self.dd,self.ir,self.clock,self.cache_list)
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
