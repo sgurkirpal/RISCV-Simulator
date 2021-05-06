@@ -63,10 +63,11 @@ def assemble(input_list):
     flowchart_list=[]
     output=""
     buffers={}
+    hit_miss_btb=-1
     cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict]
     varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
     number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
-    number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
+    number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]
     return reg,instruction_dict,data_dict,clock,varlist,cache_list
 
 def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
@@ -107,6 +108,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     number_of_stalls_contolhazards=varlist[27]
     number_of_alu_instructions=varlist[28]
     buffers=varlist[29]
+    hit_miss_btb=varlist[30]
     output=""
     if pc==-1:
         output+="Number of clock cycles ="+str(clock)+"\n"+\
@@ -125,7 +127,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     if (len(write_pc) == 0 and len(mem_pc) == 0 and len(execute_pc) == 0 and len(decode_pc) == 0):
         varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
             number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
-            number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
+            number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]
         return reg,instruction_dict,data_dict,clock,varlist,cache_list
     clock += 1
 
@@ -309,10 +311,13 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             control_inst = False
             if this_pc in btb:
                 if pc_final == btb[this_pc]:
+                    output+="Prediction Successful ! for pc, "+str(this_pc)+"\n"
+                    hit_miss_btb=1
                     pass
                 else:
+                    output+="Prediction MisMatched ! for pc, "+str(this_pc)+"\n"
                     number_of_mispredictions+=1
-
+                    hit_miss_btb=0
                     remove_decode = True
                     if pc_final in instruction_dict:
                         decode_pc.append(pc_final)
@@ -321,10 +326,14 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             else:
                 btb[this_pc] = pc_final
                 if pc_final == fetch.increment_pc(this_pc):
+                    output+="Prediction Successful ! for pc, "+str(this_pc)+"\n"
+                    hit_miss_btb=1
                     pass
                 else:
+                    output+="Prediction MisMatched ! for pc, "+str(this_pc)+"\n"
                     number_of_mispredictions+=1
                     remove_decode = True
+                    hit_miss_btb=0
                     if pc_final in instruction_dict:
                         decode_pc.append(pc_final)
                         if decode_pc[0] == pc_final:
@@ -351,7 +360,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict]
             varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
                 number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
-                number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]    
+                number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]    
             return reg,instruction_dict,data_dict,clock,varlist,cache_list
         remove_decode = False
 
@@ -403,5 +412,5 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict]
     varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
         number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
-        number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]    
+        number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]    
     return reg,instruction_dict,data_dict,clock,varlist,cache_list
