@@ -30,10 +30,13 @@ def assemble(input_list):
     pc_temp="0x0"
     pc_final="0x0"
     instruction_register=None
+    Ins_hit=0
+    Ins_miss=0
+    Ins_access=0
     hit=0
     miss=0
     total_access=0
-    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access]
+    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access]
     return instruction_register,pc,reg,instruction_dict,data_dict,clock,pc_final,pc_temp,cache_list
 
 def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register,clock,cache_list):
@@ -46,6 +49,9 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     hit=cache_list[6]
     miss=cache_list[7]
     total_access=cache_list[8]
+    #Ins_hit=cache_list[9]
+    #Ins_miss=cache_list[10]
+    #Ins_access=cache_list[11]
     output=""
     pc="0x"+(10-len(pc))*'0'+pc[2:]
     if pc not in instruction_dict:
@@ -54,6 +60,7 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         return instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register,clock,output,cache_list
     clock+=1
     total_access+=1
+    print("Instruction dict")
     instruction_register,hit,miss=fetch.retrievingmachinecode(pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock,hit,miss)
     #instruction_register=instruction_dict[pc]
     pc_temp=fetch.increment_pc(pc)
@@ -77,7 +84,6 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     else:
         if(len(rz)!=10):
             rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
-    
     
     if(decoded_info['opr']=='lw'):
         total_access+=1

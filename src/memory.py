@@ -138,6 +138,7 @@ def lru_policy(l):
     return val
 
 def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,clockcycle,hit,miss):
+    print(memorycachedict)
     values={}
     values=address_conversion(memory_address,block_size,no_of_sets)
     for i in range(len(memorycachedict[values['index']])):
@@ -145,21 +146,27 @@ def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory
             hit+=1
             return memorycachedict[values['index']][i][3+values['block_offset']],memorycachedict,hit,miss
     val=lru_policy(memorycachedict[values['index']])
+    print(values)
+    print(val)
+    print("aditii adifiiti")
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
     miss+=1
+    print(memorycachedict)
     return memorycachedict[values['index']][val][3+values['block_offset']],memorycachedict,hit,miss
 
 
 def doing_store_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,byte_val,clockcycle,hit,miss):
     values={}
     values=address_conversion(memory_address,block_size,no_of_sets)
+    byte_val=str(hex(byte_val))
+    byte_val="0x"+(4-len(byte_val))*'0'+byte_val[2:]
     for i in range(len(memorycachedict[values['index']])):
         if(memorycachedict[values['index']][i][1]==values['tag']):
             hit+=1
-            memorycachedict[values['index']][i][3+values['block_offset']]=hex(byte_val)
+            memorycachedict[values['index']][i][3+values['block_offset']]=byte_val
             return memorycachedict,hit,miss
     val=lru_policy(memorycachedict[values['index']])
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
-    memorycachedict[values['index']][i][3+values['block_offset']]=hex(byte_val)
+    memorycachedict[values['index']][val][3+values['block_offset']]=byte_val
     miss+=1
     return memorycachedict,hit,miss
