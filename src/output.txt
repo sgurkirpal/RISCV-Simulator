@@ -986,7 +986,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0xff00000F.
+WRITEBACK: Register 10 updated with 0xff00000f.
 
 
 PC is 0x38
@@ -1088,7 +1088,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xff00002a.
+WRITEBACK: Register 9 updated with 0x0000002a.
 
 
 PC is 0x34
@@ -1100,10 +1100,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x00ffffec.
+WRITEBACK: Register 10 updated with 0xffffffec.
 
 
-PC is 0x40
+PC is 0x38
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -1111,7 +1111,29 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 16777196 is greater than -2130706474 hence, pc incremented. 
+EXECUTE: -2147483628 is not greater than 42 hence, pc not updated. 
+
+
+PC is 0x3c
+IR is 0x0093A223
+Fetch Instruction 0x0093A223 from address 0x00000038
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435468 and 4 in S-type instructions
+
+
+PC is 0x40
+IR is 0x00A3A023
+Fetch Instruction 0x00A3A023 from address 0x0000003c
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435468 and 0 in S-type instructions
 
 
 PC is 0x44
@@ -1180,7 +1202,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x00ffffec.
+WRITEBACK: Register 9 updated with 0x0000002a.
 
 
 PC is 0x34
@@ -1195,7 +1217,7 @@ EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instru
 WRITEBACK: Register 10 updated with 0x0000003a.
 
 
-PC is 0x38
+PC is 0x40
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -1203,29 +1225,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 58 is not greater than 16777196 hence, pc not updated. 
-
-
-PC is 0x3c
-IR is 0x0093A223
-Fetch Instruction 0x0093A223 from address 0x00000038
-type is S
-rs1 is 00111
-rs2 is 01001
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 4 in S-type instructions
-
-
-PC is 0x40
-IR is 0x00A3A023
-Fetch Instruction 0x00A3A023 from address 0x0000003c
-type is S
-rs1 is 00111
-rs2 is 01010
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 0 in S-type instructions
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
 
 
 PC is 0x44
@@ -1294,7 +1294,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xffffffec.
+WRITEBACK: Register 9 updated with 0x0000003a.
 
 
 PC is 0x34
@@ -1317,7 +1317,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 16777205 is greater than -2147483628 hence, pc incremented. 
+EXECUTE: 16777205 is greater than 58 hence, pc incremented. 
 
 
 PC is 0x44
@@ -1525,7 +1525,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000000f.
+WRITEBACK: Register 10 updated with 0xff00000f.
 
 
 PC is 0x38
@@ -1536,7 +1536,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 15 is not greater than 35 hence, pc not updated. 
+EXECUTE: -2130706447 is not greater than 35 hence, pc not updated. 
 
 
 PC is 0x3c
@@ -1639,7 +1639,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0xff00002a.
+WRITEBACK: Register 10 updated with 0xffffffec.
 
 
 PC is 0x38
@@ -1650,7 +1650,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: -2130706474 is not greater than 35 hence, pc not updated. 
+EXECUTE: -2147483628 is not greater than 35 hence, pc not updated. 
 
 
 PC is 0x3c
@@ -1753,10 +1753,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0xff00003a.
+WRITEBACK: Register 10 updated with 0x0000002a.
 
 
-PC is 0x38
+PC is 0x40
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -1764,29 +1764,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: -2130706490 is not greater than 35 hence, pc not updated. 
-
-
-PC is 0x3c
-IR is 0x0093A223
-Fetch Instruction 0x0093A223 from address 0x00000038
-type is S
-rs1 is 00111
-rs2 is 01001
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435468 and 4 in S-type instructions
-
-
-PC is 0x40
-IR is 0x00A3A023
-Fetch Instruction 0x00A3A023 from address 0x0000003c
-type is S
-rs1 is 00111
-rs2 is 01010
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435468 and 0 in S-type instructions
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
 
 
 PC is 0x44
@@ -1855,7 +1833,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xff000023.
+WRITEBACK: Register 9 updated with 0x0000002a.
 
 
 PC is 0x34
@@ -1867,10 +1845,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0xffffffec.
+WRITEBACK: Register 10 updated with 0x0000003a.
 
 
-PC is 0x38
+PC is 0x40
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -1878,29 +1856,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: -2147483628 is not greater than -2130706467 hence, pc not updated. 
-
-
-PC is 0x3c
-IR is 0x0093A223
-Fetch Instruction 0x0093A223 from address 0x00000038
-type is S
-rs1 is 00111
-rs2 is 01001
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 4 in S-type instructions
-
-
-PC is 0x40
-IR is 0x00A3A023
-Fetch Instruction 0x00A3A023 from address 0x0000003c
-type is S
-rs1 is 00111
-rs2 is 01010
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 0 in S-type instructions
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
 
 
 PC is 0x44
@@ -1969,7 +1925,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xff000023.
+WRITEBACK: Register 9 updated with 0x0000003a.
 
 
 PC is 0x34
@@ -1992,7 +1948,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 16777205 is greater than -2130706467 hence, pc incremented. 
+EXECUTE: 16777205 is greater than 58 hence, pc incremented. 
 
 
 PC is 0x44
@@ -2108,10 +2064,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000000f.
+WRITEBACK: Register 10 updated with 0xff00000f.
 
 
-PC is 0x40
+PC is 0x38
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -2119,7 +2075,29 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 15 is greater than 10 hence, pc incremented. 
+EXECUTE: -2130706447 is not greater than 10 hence, pc not updated. 
+
+
+PC is 0x3c
+IR is 0x0093A223
+Fetch Instruction 0x0093A223 from address 0x00000038
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in S-type instructions
+
+
+PC is 0x40
+IR is 0x00A3A023
+Fetch Instruction 0x00A3A023 from address 0x0000003c
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in S-type instructions
 
 
 PC is 0x44
@@ -2188,7 +2166,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000000f.
+WRITEBACK: Register 9 updated with 0x0000000a.
 
 
 PC is 0x34
@@ -2200,10 +2178,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000002a.
+WRITEBACK: Register 10 updated with 0xffffffec.
 
 
-PC is 0x40
+PC is 0x38
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -2211,7 +2189,29 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 42 is greater than 15 hence, pc incremented. 
+EXECUTE: -2147483628 is not greater than 10 hence, pc not updated. 
+
+
+PC is 0x3c
+IR is 0x0093A223
+Fetch Instruction 0x0093A223 from address 0x00000038
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435460 and 4 in S-type instructions
+
+
+PC is 0x40
+IR is 0x00A3A023
+Fetch Instruction 0x00A3A023 from address 0x0000003c
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435460 and 0 in S-type instructions
 
 
 PC is 0x44
@@ -2280,7 +2280,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000002a.
+WRITEBACK: Register 9 updated with 0x0000000a.
 
 
 PC is 0x34
@@ -2292,7 +2292,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000003a.
+WRITEBACK: Register 10 updated with 0x00000023.
 
 
 PC is 0x40
@@ -2303,7 +2303,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 58 is greater than 42 hence, pc incremented. 
+EXECUTE: 35 is greater than 10 hence, pc incremented. 
 
 
 PC is 0x44
@@ -2372,7 +2372,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000003a.
+WRITEBACK: Register 9 updated with 0x00000023.
 
 
 PC is 0x34
@@ -2384,7 +2384,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x00ffffec.
+WRITEBACK: Register 10 updated with 0x0000002a.
 
 
 PC is 0x40
@@ -2395,7 +2395,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 16777196 is greater than 58 hence, pc incremented. 
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
 
 
 PC is 0x44
@@ -2464,7 +2464,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x00ffffec.
+WRITEBACK: Register 9 updated with 0x0000002a.
 
 
 PC is 0x34
@@ -2476,10 +2476,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0xff000023.
+WRITEBACK: Register 10 updated with 0x0000003a.
 
 
-PC is 0x38
+PC is 0x40
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -2487,29 +2487,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: -2130706467 is not greater than 16777196 hence, pc not updated. 
-
-
-PC is 0x3c
-IR is 0x0093A223
-Fetch Instruction 0x0093A223 from address 0x00000038
-type is S
-rs1 is 00111
-rs2 is 01001
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 4 in S-type instructions
-
-
-PC is 0x40
-IR is 0x00A3A023
-Fetch Instruction 0x00A3A023 from address 0x0000003c
-type is S
-rs1 is 00111
-rs2 is 01010
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 0 in S-type instructions
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
 
 
 PC is 0x44
@@ -2578,7 +2556,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xffffffec.
+WRITEBACK: Register 9 updated with 0x0000003a.
 
 
 PC is 0x34
@@ -2601,7 +2579,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 16777205 is greater than -2147483628 hence, pc incremented. 
+EXECUTE: 16777205 is greater than 58 hence, pc incremented. 
 
 
 PC is 0x44
@@ -2705,7 +2683,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435456 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000000A.
+WRITEBACK: Register 9 updated with 0xff00000f.
 
 
 PC is 0x34
@@ -2717,10 +2695,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000000f.
+WRITEBACK: Register 10 updated with 0xffffffec.
 
 
-PC is 0x40
+PC is 0x38
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -2728,7 +2706,29 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 15 is greater than 10 hence, pc incremented. 
+EXECUTE: -2147483628 is not greater than -2130706447 hence, pc not updated. 
+
+
+PC is 0x3c
+IR is 0x0093A223
+Fetch Instruction 0x0093A223 from address 0x00000038
+type is S
+rs1 is 00111
+rs2 is 01001
+imm is 000000000100
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 4 in S-type instructions
+
+
+PC is 0x40
+IR is 0x00A3A023
+Fetch Instruction 0x00A3A023 from address 0x0000003c
+type is S
+rs1 is 00111
+rs2 is 01010
+imm is 000000000000
+opr is sw
+EXECUTE: Calculating net memory address by adding 268435456 and 0 in S-type instructions
 
 
 PC is 0x44
@@ -2797,7 +2797,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000000f.
+WRITEBACK: Register 9 updated with 0xff00000f.
 
 
 PC is 0x34
@@ -2809,7 +2809,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000002a.
+WRITEBACK: Register 10 updated with 0x0000000a.
 
 
 PC is 0x40
@@ -2820,7 +2820,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 42 is greater than 15 hence, pc incremented. 
+EXECUTE: 10 is greater than -2130706447 hence, pc incremented. 
 
 
 PC is 0x44
@@ -2889,7 +2889,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000002a.
+WRITEBACK: Register 9 updated with 0x0000000a.
 
 
 PC is 0x34
@@ -2901,7 +2901,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000003a.
+WRITEBACK: Register 10 updated with 0x00000023.
 
 
 PC is 0x40
@@ -2912,7 +2912,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 58 is greater than 42 hence, pc incremented. 
+EXECUTE: 35 is greater than 10 hence, pc incremented. 
 
 
 PC is 0x44
@@ -2981,7 +2981,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000003a.
+WRITEBACK: Register 9 updated with 0x00000023.
 
 
 PC is 0x34
@@ -2993,10 +2993,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0xff000023.
+WRITEBACK: Register 10 updated with 0x0000002a.
 
 
-PC is 0x38
+PC is 0x40
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -3004,29 +3004,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: -2130706467 is not greater than 58 hence, pc not updated. 
-
-
-PC is 0x3c
-IR is 0x0093A223
-Fetch Instruction 0x0093A223 from address 0x00000038
-type is S
-rs1 is 00111
-rs2 is 01001
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435468 and 4 in S-type instructions
-
-
-PC is 0x40
-IR is 0x00A3A023
-Fetch Instruction 0x00A3A023 from address 0x0000003c
-type is S
-rs1 is 00111
-rs2 is 01010
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435468 and 0 in S-type instructions
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
 
 
 PC is 0x44
@@ -3095,7 +3073,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xff00003a.
+WRITEBACK: Register 9 updated with 0x0000002a.
 
 
 PC is 0x34
@@ -3107,10 +3085,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0xffffffec.
+WRITEBACK: Register 10 updated with 0x0000003a.
 
 
-PC is 0x38
+PC is 0x40
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -3118,29 +3096,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: -2147483628 is not greater than -2130706490 hence, pc not updated. 
-
-
-PC is 0x3c
-IR is 0x0093A223
-Fetch Instruction 0x0093A223 from address 0x00000038
-type is S
-rs1 is 00111
-rs2 is 01001
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 4 in S-type instructions
-
-
-PC is 0x40
-IR is 0x00A3A023
-Fetch Instruction 0x00A3A023 from address 0x0000003c
-type is S
-rs1 is 00111
-rs2 is 01010
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 0 in S-type instructions
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
 
 
 PC is 0x44
@@ -3209,7 +3165,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xff00003a.
+WRITEBACK: Register 9 updated with 0x0000003a.
 
 
 PC is 0x34
@@ -3232,7 +3188,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 16777205 is greater than -2130706490 hence, pc incremented. 
+EXECUTE: 16777205 is greater than 58 hence, pc incremented. 
 
 
 PC is 0x44
@@ -3336,7 +3292,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435456 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000000A.
+WRITEBACK: Register 9 updated with 0xffffffec.
 
 
 PC is 0x34
@@ -3348,7 +3304,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435456 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000000f.
+WRITEBACK: Register 10 updated with 0xff00000f.
 
 
 PC is 0x40
@@ -3359,7 +3315,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 15 is greater than 10 hence, pc incremented. 
+EXECUTE: -2130706447 is greater than -2147483628 hence, pc incremented. 
 
 
 PC is 0x44
@@ -3428,7 +3384,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435460 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000000f.
+WRITEBACK: Register 9 updated with 0xff00000f.
 
 
 PC is 0x34
@@ -3440,7 +3396,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435460 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x0000002a.
+WRITEBACK: Register 10 updated with 0x0000000a.
 
 
 PC is 0x40
@@ -3451,7 +3407,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 42 is greater than 15 hence, pc incremented. 
+EXECUTE: 10 is greater than -2130706447 hence, pc incremented. 
 
 
 PC is 0x44
@@ -3520,7 +3476,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435464 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x0000002a.
+WRITEBACK: Register 9 updated with 0x0000000a.
 
 
 PC is 0x34
@@ -3535,7 +3491,7 @@ EXECUTE: Calculating net memory address by adding 268435464 and 4 in Load instru
 WRITEBACK: Register 10 updated with 0x00000023.
 
 
-PC is 0x38
+PC is 0x40
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -3543,29 +3499,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 35 is not greater than 42 hence, pc not updated. 
-
-
-PC is 0x3c
-IR is 0x0093A223
-Fetch Instruction 0x0093A223 from address 0x00000038
-type is S
-rs1 is 00111
-rs2 is 01001
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435464 and 4 in S-type instructions
-
-
-PC is 0x40
-IR is 0x00A3A023
-Fetch Instruction 0x00A3A023 from address 0x0000003c
-type is S
-rs1 is 00111
-rs2 is 01010
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435464 and 0 in S-type instructions
+EXECUTE: 35 is greater than 10 hence, pc incremented. 
 
 
 PC is 0x44
@@ -3634,7 +3568,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xff00002a.
+WRITEBACK: Register 9 updated with 0x00000023.
 
 
 PC is 0x34
@@ -3646,7 +3580,7 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435468 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0x00ffffec.
+WRITEBACK: Register 10 updated with 0x0000002a.
 
 
 PC is 0x40
@@ -3657,7 +3591,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 16777196 is greater than -2130706474 hence, pc incremented. 
+EXECUTE: 42 is greater than 35 hence, pc incremented. 
 
 
 PC is 0x44
@@ -3726,7 +3660,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0x00ffffec.
+WRITEBACK: Register 9 updated with 0x0000002a.
 
 
 PC is 0x34
@@ -3738,10 +3672,10 @@ rs1 is 00111
 imm is 000000000100
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435472 and 4 in Load instructions
-WRITEBACK: Register 10 updated with 0xff00003a.
+WRITEBACK: Register 10 updated with 0x0000003a.
 
 
-PC is 0x38
+PC is 0x40
 IR is 0x00955663
 Fetch Instruction 0x00955663 from address 0x00000034
 type is SB
@@ -3749,29 +3683,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: -2130706490 is not greater than 16777196 hence, pc not updated. 
-
-
-PC is 0x3c
-IR is 0x0093A223
-Fetch Instruction 0x0093A223 from address 0x00000038
-type is S
-rs1 is 00111
-rs2 is 01001
-imm is 000000000100
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 4 in S-type instructions
-
-
-PC is 0x40
-IR is 0x00A3A023
-Fetch Instruction 0x00A3A023 from address 0x0000003c
-type is S
-rs1 is 00111
-rs2 is 01010
-imm is 000000000000
-opr is sw
-EXECUTE: Calculating net memory address by adding 268435472 and 0 in S-type instructions
+EXECUTE: 58 is greater than 42 hence, pc incremented. 
 
 
 PC is 0x44
@@ -3840,7 +3752,7 @@ rs1 is 00111
 imm is 000000000000
 opr is lw
 EXECUTE: Calculating net memory address by adding 268435476 and 0 in Load instructions
-WRITEBACK: Register 9 updated with 0xffffffec.
+WRITEBACK: Register 9 updated with 0x0000003a.
 
 
 PC is 0x34
@@ -3863,7 +3775,7 @@ rs1 is 01010
 rs2 is 01001
 imm is 0000000001100
 opr is bge
-EXECUTE: 16777205 is greater than -2147483628 hence, pc incremented. 
+EXECUTE: 16777205 is greater than 58 hence, pc incremented. 
 
 
 PC is 0x44

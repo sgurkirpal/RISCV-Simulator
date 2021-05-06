@@ -137,24 +137,29 @@ def lru_policy(l):
             val=i
     return val
 
-def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,clockcycle):
+def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,clockcycle,hit,miss):
     values={}
     values=address_conversion(memory_address,block_size,no_of_sets)
     for i in range(len(memorycachedict[values['index']])):
         if(memorycachedict[values['index']][i][1]==values['tag']):
-            return memorycachedict[values['index']][i][3+values['block_offset']],memorycachedict
+            hit+=1
+            return memorycachedict[values['index']][i][3+values['block_offset']],memorycachedict,hit,miss
     val=lru_policy(memorycachedict[values['index']])
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
-    return memorycachedict[values['index']][val][3+values['block_offset']],memorycachedict
+    miss+=1
+    return memorycachedict[values['index']][val][3+values['block_offset']],memorycachedict,hit,miss
 
 
-def doing_store_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,byte_val,clockcycle):
+def doing_store_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,byte_val,clockcycle,hit,miss):
     values={}
     values=address_conversion(memory_address,block_size,no_of_sets)
     for i in range(len(memorycachedict[values['index']])):
         if(memorycachedict[values['index']][i][1]==values['tag']):
+            hit+=1
             memorycachedict[values['index']][i][3+values['block_offset']]=hex(byte_val)
+            return memorycachedict,hit,miss
     val=lru_policy(memorycachedict[values['index']])
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
     memorycachedict[values['index']][i][3+values['block_offset']]=hex(byte_val)
-    return memorycachedict
+    miss+=1
+    return memorycachedict,hit,miss
