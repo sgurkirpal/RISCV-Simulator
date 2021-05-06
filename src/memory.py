@@ -86,10 +86,16 @@ def rowConversion(memory_address,block_offset,memory_dictionary,tag,clockcycle,b
     l=[1,tag,clockcycle]
     for i in range(block_offset):
         a=hex(int(memory_address,16)-(block_offset-i))
-        l.append(memory_dictionary[a])
+        if a not in memory_dictionary:
+            l.append('0x00')
+        else:
+            l.append(memory_dictionary[a])
     for i in range(block_offset,blocksize):
         a=hex(int(memory_address,16)+i)
-        l.append(memory_dictionary[a])
+        if a not in memory_dictionary:
+            l.append('0x00')
+        else:
+            l.append(memory_dictionary[a])
     return l
 
 
@@ -98,10 +104,11 @@ def address_conversion(memory_address,block_size,no_of_sets):
     dicti={}
     new_mem=bin(int(memory_address,16))
     new_mem=new_mem[2:]
-    new_mem='0'*(len(32-new_mem))+new_mem
+    new_mem='0'*(32-len(new_mem))+new_mem
     import math
-    bloc_size=math.log(block_size,2)
-    sets=math.log(no_of_sets,2)
+    bloc_size=int(math.log(block_size,2))
+    sets=int(math.log(no_of_sets,2))
+    a=new_mem
     dicti['block_offset']=int(a[len(new_mem)-bloc_size:len(new_mem)],2)
     a=a[:len(new_mem)-bloc_size]
     dicti['index']=int(a[len(new_mem)-sets:len(new_mem)],2)
@@ -119,24 +126,26 @@ def lru_policy(l):
             val=i
     return val
 
-def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary):
+def doing_load_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,clockcycle):
     values={}
     values=address_conversion(memory_address,block_size,no_of_sets)
     for i in range(len(memorycachedict[values['index']])):
         if(memorycachedict[values['index']][i][1]==values['tag']):
-            return memorycachedict[values['index']][i][2+values['block_offset']],memorycachedict
+            print(memorycachedict[values['index']])
+            return memorycachedict[values['index']][i][3+values['block_offset']],memorycachedict
     val=lru_policy(memorycachedict[values['index']])
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
-    return memorycachedict[values['index']][val][2+values['block_offset']],memorycachedict
+    print(memorycachedict[values['index']])
+    return memorycachedict[values['index']][val][3+values['block_offset']],memorycachedict
 
 
-def doing_store_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,byte_val):
+def doing_store_cache(memory_address,memorycachedict,block_size,no_of_sets,memory_dictionary,byte_val,clockcycle):
     values={}
     values=address_conversion(memory_address,block_size,no_of_sets)
     for i in range(len(memorycachedict[values['index']])):
         if(memorycachedict[values['index']][i][1]==values['tag']):
-            memorycachedict[values['index']][i][2+values['block_offset']]=byte_val
+            memorycachedict[values['index']][i][3+values['block_offset']]=byte_val
     val=lru_policy(memorycachedict[values['index']])
     memorycachedict[values['index']][val]=rowConversion(memory_address,values['block_offset'],memory_dictionary,values['tag'],clockcycle,block_size)
-    memorycachedict[values['index']][i][2+values['block_offset']]=byte_val
+    memorycachedict[values['index']][i][3+values['block_offset']]=byte_val
     return memorycachedict

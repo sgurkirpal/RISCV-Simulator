@@ -54,11 +54,12 @@ def cacheinitialization():
         memorycachedict[i]=[]
         for j in range(k):
             memorycachedict[i].append([])
+            print(memorycachedict)
             memorycachedict[i][j].append(0)
             memorycachedict[i][j].append(-1)
             memorycachedict[i][j].append(-1)
             for _ in range(blocksize):
-                memorycachedict[i].append(-1)
+                memorycachedict[i][j].append(-1)
     return no_of_blocks,no_of_sets,memorycachedict,k,blocksize,cachesize
 
 
@@ -73,5 +74,5 @@ def instruction_initialization(no_of_sets,k,blocksize):
             InstructionCacheDict[i][j].append(-1)
             InstructionCacheDict[i][j].append(-1)
             for _ in range(blocksize):
-                InstructionCacheDict[i].append(-1)
+                InstructionCacheDict[i][j].append(-1)
     return InstructionCacheDict

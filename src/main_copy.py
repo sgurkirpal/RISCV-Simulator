@@ -16,7 +16,7 @@ for i in range(32):
         reg[i]='0x7FFFFFF0'
     if i==3:
         reg[i]='0x10000000'
-file=open("data.mc","r")
+file=open("input.txt","r")
 memory_cache_dict={}
 no_of_blocks,no_of_sets,memory_cache_dict,kset,blocksize,cachesize=fetch.cacheinitialization()
 instruction_cache_dict={}
@@ -59,36 +59,83 @@ while(1):
             rz=rz[:2]+'0'*(10-len(rz))+rz[2:]
 
 
-    muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
     if(decoded_info['opr']=='lw'):
         rz=int(rz,16)
-        am,memory_cache_dict=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict)
-        am,memory_cache_dict=memory.doing_load_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict)
-        am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict)
-        am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict)
+        muxy='0x'
+        am,memory_cache_dict=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+        print(type(am))
+        if(len(am)==3):
+            muxy+='0'+am[2]
+        else:
+            muxy+=am[2:4]
+        am,memory_cache_dict=memory.doing_load_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+        if(len(am)==3):
+            muxy+='0'+am[2]
+        else:
+            muxy+=am[2:4]
+        am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+        if(len(am)==3):
+            muxy+='0'+am[2]
+        else:
+            muxy+=am[2:4]
+        am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+        print(am)
+        if(len(am)==3):
+            muxy+='0'+am[2]
+        else:
+            muxy+=am[2:4]
 
     elif(decoded_info['opr']=='lb'):
-        am,memory_cache_dict=memory.doing_load_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict)
+        muxy='0x'
+        am,memory_cache_dict=memory.doing_load_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+        if(len(am)==3):
+            muxy+='0000000'+am[2]
+
+        else:
+            if(am[2]>=0x8):
+                muxy+='111111'+am[2:4]
+            else:
+                muxy+='000000'+am[2:4]
 
     elif(decoded_info['opr']=='lh'):
         rz=int(rz,16)
-        am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict)
-        am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict)
+        muxy='0x'
+        am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+        if(len(am)==3):
+            muxy+='0'+am[2]
+        else:
+            muxy+=am[2:4]
+        am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+        if(len(am)==3):
+            muxy+='0'+am[2]
+        else:
+            muxy+=am[2:4]
+            if(muxy[2]>=0x8):
+                muxy='0x1111'+muxy[2:]
+            else:
+                muxy='0x0000'+muxy[2:]
+        
     elif(decoded_info['opr']=='sw'):
+        muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
         rz=int(rz,16)
         rm=str(rm)
-        memory_cache_dict=memory.doing_store_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[0:2],2))
-        memory_cache_dict=memory.doing_store_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[2:4],2))
-        memory_cache_dict=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],2))
-        memory_cache_dict=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],2))
+        memory_cache_dict=memory.doing_store_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[0:2],16),clock)
+        memory_cache_dict=memory.doing_store_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[2:4],16),clock)
+        memory_cache_dict=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock)
+        memory_cache_dict=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock)
     elif(decoded_info['opr']=='sh'):
+        muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
         rz=int(rz,16)
         rm=str(rm)
-        memory_cache_dict=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],2))
-        memory_cache_dict=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],2)) 
+        memory_cache_dict=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock)
+        memory_cache_dict=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock) 
     elif(decoded_info['opr']=='sb'):
+        muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
         rm=str(rm)
-        memory_cache_dict=memory.doing_store_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],2)) 
+        memory_cache_dict=memory.doing_store_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock)
+    else:
+        muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
+
     output+=temp_string_memory
     if('rd' in decoded_info):
         if(int(decoded_info['rd'],2)!=0):
