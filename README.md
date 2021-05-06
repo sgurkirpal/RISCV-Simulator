@@ -57,6 +57,7 @@ How to run
 	| 1. Cache Size:- Input should be only integer and it should be in bytes
 	| 2. Block Size :- It should be integer and should be in bytes
 	| 3. Ways for SA :- Enter the value for k way set associative(k=this input)
+	| The same inputs should be provided for Instruction Cache as well
 	|
 	|---------------------------------------------------------
 	| After this click on Assemble button
@@ -203,3 +204,13 @@ then block diagram will be:-
 --all the outputs which we have to print will get printed in the end in output file
 --if we check the checkbox "PRINT ALL PRINT REGISTER" , and press the button "PRINT PIPELINE REGISTER",
   all of the buffers will get printed at the end of output.
+
+Data Cache Block
+-- It displays all the sets in data cache
+-- Different associative ways in a set is differentiated by lime and cyan colours
+-- First Column in each way gives the Tag of that block
+-- The next n (n=blocksize) columns gives the data of that particular tag
+
+Instruction Block
+-- It displays the cache memory for instructions
+-- Display format is similar to the Data Cache Block

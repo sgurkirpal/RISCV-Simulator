@@ -57,6 +57,7 @@ How to run
 	| 1. Cache Size:- Input should be only integer and it should be in bytes
 	| 2. Block Size :- It should be integer and should be in bytes
 	| 3. Ways for SA :- Enter the value for k way set associative(k=this input)
+	| The same inputs should be provided for Instruction Cache as well
 	|
 	|---------------------------------------------------------
 	| After this click on Assemble button
