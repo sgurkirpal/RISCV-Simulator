@@ -683,7 +683,10 @@ class Ui_MainWindow(object):
                 self.cachesize=int(self.lineEdit_2.text())
                 self.blocksize=int(self.lineEdit_3.text())
                 self.sa_ways=int(self.lineEdit_4.text())
-                self.input_list=[self.cachesize,self.blocksize,self.sa_ways]
+                self.cachesize_instruction=int(self.lineEdit_5.text())
+                self.blocksize_instruction=int(self.lineEdit_6.text())
+                self.sa_ways_instruction=int(self.lineEdit_7.text())
+                self.input_list=[self.cachesize,self.blocksize,self.sa_ways,self.cachesize_instruction,self.blocksize_instruction,self.sa_ways_instruction]
                 self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list=gui_forwarding.assemble(self.input_list)
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
@@ -727,7 +730,10 @@ class Ui_MainWindow(object):
                 self.cachesize=int(self.lineEdit_2.text())
                 self.blocksize=int(self.lineEdit_3.text())
                 self.sa_ways=int(self.lineEdit_4.text())
-                self.input_list=[self.cachesize,self.blocksize,self.sa_ways]
+                self.cachesize_instruction=int(self.lineEdit_5.text())
+                self.blocksize_instruction=int(self.lineEdit_6.text())
+                self.sa_ways_instruction=int(self.lineEdit_7.text())
+                self.input_list=[self.cachesize,self.blocksize,self.sa_ways,self.cachesize_instruction,self.blocksize_instruction,self.sa_ways_instruction]
                 self.reg,self.idi,self.dd,self.clock,self.varlist,self.cache_list=gui_stalling.assemble(self.input_list)
                 self.tableWidget_4.clear()
                 self.loaddata(self.reg)
@@ -771,7 +777,10 @@ class Ui_MainWindow(object):
             self.cachesize=int(self.lineEdit_2.text())
             self.blocksize=int(self.lineEdit_3.text())
             self.sa_ways=int(self.lineEdit_4.text())
-            self.input_list=[self.cachesize,self.blocksize,self.sa_ways]
+            self.cachesize_instruction=int(self.lineEdit_5.text())
+            self.blocksize_instruction=int(self.lineEdit_6.text())
+            self.sa_ways_instruction=int(self.lineEdit_7.text())
+            self.input_list=[self.cachesize,self.blocksize,self.sa_ways,self.cachesize_instruction,self.blocksize_instruction,self.sa_ways_instruction]
             self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t,self.cache_list=gui_main.assemble(self.input_list) 
             self.loaddata(self.reg)
             self.loaddata2(self.idi)

@@ -30,7 +30,7 @@ def assemble(input_list):
     if no_of_sets==0:
         print("Invalid Input")
     instruction_cache_dict={}
-    instruction_cache_dict=fetch.instruction_initialization(no_of_sets,kset,blocksize)
+    instruction_cache_dict,Ins_no_of_blocks,Ins_no_of_sets,Ins_kset,Ins_blocksize,Ins_cachesize=fetch.instruction_initialization(input_list)
     instruction_dict, data_dict = fetch.fetch_file(file)
 
     pc = "0x0"  # initial pc is by default 0x0
@@ -70,7 +70,7 @@ def assemble(input_list):
     Ins_miss=0
     Ins_access=0
     hit_miss_btb=-1
-    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access]
+    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access,Ins_no_of_blocks,Ins_no_of_sets,Ins_kset,Ins_blocksize,Ins_cachesize]
     varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
     number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
     number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]
@@ -108,6 +108,11 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     Ins_hit=cache_list[9]
     Ins_miss=cache_list[10]
     Ins_access=cache_list[11]
+    Ins_no_of_blocks=cache_list[12]
+    Ins_no_of_sets=cache_list[13]
+    Ins_kset=cache_list[14]
+    Ins_blocksize=cache_list[15]
+    Ins_cachesize=cache_list[16]
     number_of_instructions=varlist[18]
     number_of_load_instruction=varlist[19]
     number_of_store_instruction=varlist[20]
@@ -138,7 +143,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
         output+="Total Number of Data Cache Accesses: "+str(total_access)+"\n"+\
             "Total number of Misses in Data Cache: "+str(miss)+"\n"+\
                 "Total number of Hits in Data Cache: "+str(hit)+"\n"+\
-                    "Total Number of Instruction Cache Accesses: "+str(Ins_access)+"\n"+\
+                    "Total Number of Instruction Cache Accesses: "+str(Ins_hit+Ins_miss)+"\n"+\
             "Total number of Misses in Instruction Cache: "+str(Ins_miss)+"\n"+\
                 "Total number of Hits in Instruction Cache: "+str(Ins_hit)+"\n"
         return output
@@ -366,7 +371,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     if len(decode_pc) != 0:
         this_pc = decode_pc[0]
         this_pc="0x"+(10-len(this_pc))*'0'+this_pc[2:]
-        instruction_register,Ins_hit,Ins_miss,output=fetch.retrievingmachinecode(this_pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock,Ins_hit,Ins_miss,output)
+        instruction_register,Ins_hit,Ins_miss,output=fetch.retrievingmachinecode(this_pc,instruction_dict,instruction_cache_dict,Ins_blocksize,Ins_no_of_sets,clock,Ins_hit,Ins_miss,output)
         output+="Fetch Instruction "+str(instruction_register)+" from address "+str(this_pc)+"\n"
         flowchart_list.append(this_pc)
         decode_pc.pop(0)
@@ -380,7 +385,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             flowchart_list[len(flowchart_list)-1]=-1
             output+="pc "+str(this_pc)+" is flushed because of prediction mismatched\n"
             remove_decode=False
-            cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access]
+            cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access,Ins_no_of_blocks,Ins_no_of_sets,Ins_kset,Ins_blocksize,Ins_cachesize]
             varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
                 number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
                 number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]    
@@ -432,7 +437,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
 
     # print(remove_decode)
     
-    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access]
+    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access,Ins_no_of_blocks,Ins_no_of_sets,Ins_kset,Ins_blocksize,Ins_cachesize]
     varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,control_inst,remove_decode,write_df_reg,val_df_reg,flowchart_list,output,
         number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,
         number_of_stall_instructions,number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]    
