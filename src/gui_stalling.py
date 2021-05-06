@@ -130,13 +130,11 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     "Number of branch mispredictions = "+ str(number_of_mispredictions)+"\n"+\
     "Number of stalls due to data hazards = "+str(clock-number_of_instructions-number_of_mispredictions)+"\n"+\
     "Number of stalls due to control hazards = "+str(number_of_mispredictions)+"\n"
-        print("hussssssss")
         return output
     if len(write_pc)==0 and len(mem_pc)==0 and len(execute_pc)==0 and len(decode_pc)==0:
         varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
                 number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
                 number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]    
-        print("ggggg")
         return reg,instruction_dict,data_dict,clock,varlist,cache_list
     clock+=1
 
@@ -180,7 +178,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             rz=int(rz,16)
             muxy='0x'
             am,memory_cache_dict=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
-            print(type(am))
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
@@ -196,7 +193,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             else:
                 muxy+=am[2:4]
             am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
-            print(am)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
@@ -274,8 +270,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
         rz,pc_final,temp_string_execute=execute.execute(decoded_info[this_pc],reg,pc_temp)
         output+=temp_string_execute
         rz=hex(rz)
-        #print(this_pc,end=" ")
-        #print(rz)
         if this_pc not in buffers:
             buffers[this_pc]={}
             buffers[this_pc]['exe']=rz
@@ -318,7 +312,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
         varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
             number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
             number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
-        print("zzzzzzzzzzzzzzz")
         return reg,instruction_dict,data_dict,clock,varlist,cache_list
     if len(decode_pc)!=0:
         this_pc=decode_pc[0]
@@ -330,7 +323,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
         decode_pc.pop(0)
         if remove_decode==False:
             execute_pc.append(this_pc)
-            print(this_pc,fetch.increment_pc(this_pc),instruction_dict)
             if fetch.increment_pc(this_pc) in instruction_dict:
                 decode_pc.append(fetch.increment_pc(this_pc))
             remove_decode=False
@@ -342,7 +334,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
                 number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
                 number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
-            print("nono")
             return reg,instruction_dict,data_dict,clock,varlist,cache_list
         remove_decode=False
         pc_temp=fetch.increment_pc(this_pc)
@@ -400,6 +391,4 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
             number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
     cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict]
-    print(decode_pc,execute_pc,mem_pc,write_pc)
-    print("naaaaaaaaaa")
     return reg,instruction_dict,data_dict,clock,varlist,cache_list

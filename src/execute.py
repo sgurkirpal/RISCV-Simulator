@@ -64,28 +64,40 @@ def SB_type(l,pc_temp,output):
             output+="EXECUTE: "+str(l[1])+" and "+str(l[2])+" are equal, hence, pc incremented. \n"
             #yahan kuch pc final type ki baat hori hai..we have to go in pc final 
             #we don't have to return the value of other things.
-            return 1,hex(int(pc_temp,16)-4+l[3]),output
+            ha=hex(int(pc_temp,16)-4+l[3])
+            ha=str(ha)
+            ha="0x"+(10-len(ha))*'0'+ha[2:]
+            return 1,ha,output
         else:
             output+="EXECUTE: "+str(l[1])+" and "+str(l[2])+" are not equal, hence, pc not updated. \n"
             return 0,pc_temp,output
     if(l[0]=='bne'):
         if(l[1]!=l[2]):
             output+="EXECUTE: "+str(l[1])+" and "+str(l[2])+" are not equal, hence, pc incremented. \n"
-            return 1,hex(int(pc_temp,16)-4+l[3]),output
+            ha=hex(int(pc_temp,16)-4+l[3])
+            ha=str(ha)
+            ha="0x"+(10-len(ha))*'0'+ha[2:]
+            return 1,ha,output
         else:
             output+="EXECUTE: "+str(l[1])+" and "+str(l[2])+" are equal, hence, pc not updated. \n"
             return 0,pc_temp,output
     if(l[0]=='bge'):
         if(l[1]>=l[2]):
             output+="EXECUTE: "+str(l[1])+" is greater than "+str(l[2])+" hence, pc incremented. \n"
-            return 1,hex(int(pc_temp,16)+l[3]-4),output
+            ha=hex(int(pc_temp,16)+l[3]-4)
+            ha=str(ha)
+            ha="0x"+(10-len(ha))*'0'+ha[2:]
+            return 1,ha,output
         else:
             output+="EXECUTE: "+str(l[1])+" is not greater than "+str(l[2])+" hence, pc not updated. \n"
             return 0,pc_temp,output
     if(l[0]=='blt'):
         if(l[1]<l[2]):
             output+="EXECUTE: "+str(l[1])+" is less than "+str(l[2])+" hence, pc incremented. \n"
-            return 1,hex(int(pc_temp,16)-4+l[3]),output
+            hex(int(pc_temp,16)-4+l[3])
+            ha=str(ha)
+            ha="0x"+(10-len(ha))*'0'+ha[2:]
+            return 1,ha,output
         else:
             output+="EXECUTE: "+str(l[1])+" is not less than "+str(l[2])+" hence, pc not updated. \n"
             return 0,pc_temp,output   
@@ -105,14 +117,20 @@ def I_type(l,pc_temp,output):  #l[0] is operation , l[1] is rs1 and l[2] is imme
         return l[1]+l[2],pc_temp,output
     if l[0]=='jalr':
         output+="EXECUTE: Calculating net memory address by adding "+str(l[1])+" and "+str(l[2])+" in jalr instruction\n"
-        return int(pc_temp,16),hex(l[1]+l[2]),output
+        ha=hex(l[1]+l[2])
+        ha=str(ha)
+        ha="0x"+(10-len(ha))*'0'+ha[2:]
+        return int(pc_temp,16),ha,output
 
 
 def UJ_type(l,pc_temp,output):
     #we have to change the value of pc final to pc_immediate and also we have to store the value of next thing in register
     #we have to store the value of pc_temp also
     output+="EXECUTE: Calculating net memory address by adding "+str(l[1])+" in jal instruction\n"
-    return int(pc_temp,16),hex(int(pc_temp,16)+l[1]-4),output
+    ha=hex(int(pc_temp,16)+l[1]-4)
+    ha=str(ha)
+    ha="0x"+(10-len(ha))*'0'+ha[2:]
+    return int(pc_temp,16),ha,output
     #we don't have to do anything in uj_type instruction in execution step
 
 def U_type(l,pc_temp,output):
