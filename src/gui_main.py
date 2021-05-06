@@ -20,6 +20,8 @@ def assemble(input_list):
     file=open("data.mc","r")
     memory_cache_dict={}
     no_of_blocks,no_of_sets,memory_cache_dict,kset,blocksize,cachesize=fetch.cacheinitialization(input_list)
+    if no_of_sets==0:
+        print("Invalid Input")
     instruction_cache_dict={}
     instruction_cache_dict=fetch.instruction_initialization(no_of_sets,kset,blocksize)
     instruction_dict,data_dict = fetch.fetch_file(file)

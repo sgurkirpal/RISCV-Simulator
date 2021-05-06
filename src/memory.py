@@ -109,11 +109,20 @@ def address_conversion(memory_address,block_size,no_of_sets):
     bloc_size=int(math.log(block_size,2))
     sets=int(math.log(no_of_sets,2))
     a=new_mem
-    dicti['block_offset']=int(a[len(new_mem)-bloc_size:len(new_mem)],2)
-    a=a[:len(new_mem)-bloc_size]
-    dicti['index']=int(a[len(new_mem)-sets:len(new_mem)],2)
-    a=a[:len(new_mem)-bloc_size]
-    dicti['tag']=int(a,2)
+    if bloc_size!=0 and len(a)!=0:
+        dicti['block_offset']=int(a[len(a)-bloc_size:len(a)],2)
+    else:
+        dicti['block_offset']=0
+    a=a[:len(a)-bloc_size]
+    if sets!=0 and len(a)!=0:
+        dicti['index']=int(a[len(a)-sets:len(a)],2)
+    else:
+        dicti['index']=0
+    a=a[:len(a)-bloc_size]
+    if len(a)==0:
+        dicti['tag']=0
+    else:
+        dicti['tag']=int(a,2)
     dicti['memory_address']=memory_address
     return dicti
     
