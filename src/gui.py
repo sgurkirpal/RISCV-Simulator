@@ -30,6 +30,7 @@ class Ui_MainWindow(object):
     bdd=[]
     cpc=[]
     cachesize=0
+    predictor=0
     blocksize=0
     sa_ways=0
     def setupUi(self, MainWindow):
@@ -460,7 +461,6 @@ class Ui_MainWindow(object):
         self.clock-=1
 
     def loaddata5(self,dicti):
-        print(dicti)
         self.tableWidget_5.setColumnCount((self.blocksize+1)*self.sa_ways)
         self.tableWidget_5.setRowCount(len(dicti)+1)
         for i in range(self.sa_ways):
@@ -491,6 +491,36 @@ class Ui_MainWindow(object):
                             self.tableWidget_5.item(int(x)+1,i).setBackground(QtGui.QColor("#63c5da"))
                         i+=1
 
+    def loaddata6(self,dicti):
+        self.tableWidget_6.setColumnCount((self.blocksize+1)*self.sa_ways)
+        self.tableWidget_6.setRowCount(len(dicti)+1)
+        for i in range(self.sa_ways):
+            x="Way "+str(i+1)
+            self.tableWidget_6.setItem(0,(self.blocksize+1)*i,QtWidgets.QTableWidgetItem(x))
+        
+        for x in dicti:
+            i=0
+            flag=0
+            for k in range(len(dicti[x])):
+                flag+=1
+                flag=flag%2  
+                for j in range (len(dicti[x][k])):
+                    if(j==0 or j==2):
+                        continue
+                    else:
+                        
+                        if(dicti[x][k][j]!=-1):
+                            if(j==1):
+                                self.tableWidget_6.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(hex(dicti[x][k][j])))
+                            else:
+                                self.tableWidget_6.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(dicti[x][k][j]))
+                        else:
+                            self.tableWidget_6.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(" "))
+                        if(flag):
+                            self.tableWidget_6.item(int(x)+1,i).setBackground(QtGui.QColor("#effd5f"))
+                        else:
+                            self.tableWidget_6.item(int(x)+1,i).setBackground(QtGui.QColor("#63c5da"))
+                        i+=1
 
                     
                     
@@ -637,6 +667,7 @@ class Ui_MainWindow(object):
             if(self.radioBox_3.isChecked()):
                 self.tableWidget_5.clear()
                 self.tableWidget_4.clear()
+                self.textBrowser_7.clear()
                 self.cachesize=int(self.lineEdit_2.text())
                 self.blocksize=int(self.lineEdit_3.text())
                 self.sa_ways=int(self.lineEdit_4.text())
@@ -645,6 +676,16 @@ class Ui_MainWindow(object):
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
+                self.predictor=self.varlist[30]
+                if(self.predictor==-1):
+                    self.textBrowser_7.clear()
+                    self.textBrowser_7.append("\n-1\nNo Result")
+                elif(self.predictor==1):
+                    self.textBrowser_7.clear()
+                    self.textBrowser_7.append("\n1\nHit")
+                else:
+                    self.textBrowser_7.clear()
+                    self.textBrowser_7.append("\n0\nMiss")
                 self.pc=self.varlist[0]
                 self.outtext=self.varlist[17]
                 self.bdd=self.varlist[16]
@@ -668,6 +709,7 @@ class Ui_MainWindow(object):
                 data=open("output.txt","wt")
                 data.write("")
             else:
+                self.textBrowser_7.clear()
 
                 self.tableWidget_5.clear()
                 self.cachesize=int(self.lineEdit_2.text())
@@ -696,12 +738,23 @@ class Ui_MainWindow(object):
                 self.textBrowser_4.clear()
                 self.textBrowser_4.append("Pipelined Execution")
                 self.clockadj()
+                self.predictor=self.varlist[33]
+                if(self.predictor==-1):
+                    self.textBrowser_7.clear()
+                    self.textBrowser_7.append("\n-1\nNo Result")
+                elif(self.predictor==1):
+                    self.textBrowser_7.clear()
+                    self.textBrowser_7.append("\n1\nHit")
+                else:
+                    self.textBrowser_7.clear()
+                    self.textBrowser_7.append("\n0\nMiss")
                 self.tableWidget_2.clear()
                 self.textBrowser.clear()
                 data=open("output.txt","wt")
                 data.write("")
 
         else:
+            self.textBrowser_7.clear()
             self.tableWidget_5.clear()
             self.cachesize=int(self.lineEdit_2.text())
             self.blocksize=int(self.lineEdit_3.text())
@@ -729,7 +782,8 @@ class Ui_MainWindow(object):
                     self.loaddata(self.reg)
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
-                    
+                    self.loaddata5(self.cache_list[0])
+                    self.loaddata6(self.cache_list[5])
                     self.pc=self.varlist[0]
                     self.outtext=self.varlist[17]
                     self.bdd=self.varlist[16]
@@ -739,7 +793,16 @@ class Ui_MainWindow(object):
                     decode_pc=self.varlist[10]
                     fetch_pc=self.varlist[11]
                     self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
-                    
+                    self.predictor=self.varlist[30]
+                    if(self.predictor==-1):
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n-1\nNo Result")
+                    elif(self.predictor==1):
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n1\nHit")
+                    else:
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n0\nMiss")
                     self.loaddata4(self.bdd,self.cpc)
                     
                     self.clockadj()
@@ -762,6 +825,8 @@ class Ui_MainWindow(object):
                     self.loaddata(self.reg)
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
+                    self.loaddata5(self.cache_list[0])
+                    self.loaddata6(self.cache_list[5])
                     self.pc=self.varlist[0]
                     self.outtext=self.varlist[20]
                     self.bdd=self.varlist[19]
@@ -773,7 +838,16 @@ class Ui_MainWindow(object):
                     self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
                     
                     self.loaddata4(self.bdd,self.cpc)
-                    
+                    self.predictor=self.varlist[33]
+                    if(self.predictor==-1):
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n-1\nNo Result")
+                    elif(self.predictor==1):
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n1\nHit")
+                    else:
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n0\nMiss")
                     self.clockadj()
                     self.textBrowser.append(self.outtext)
                     data=open("output.txt",'a')
@@ -797,12 +871,14 @@ class Ui_MainWindow(object):
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
                 self.loaddata5(self.cache_list[0])
+                self.loaddata6(self.cache_list[5])
                 if(self.pc!=-1):
                     self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
                     self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
                     self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4, 0))
                 else:
                     num=int(temp_pc,16)
+                    print(num)
                     self.tableWidget_3.item(num//4-1,0).setBackground(QtGui.QColor(255,111,0))
                     self.tableWidget_3.item(num//4-1,1).setBackground(QtGui.QColor(255,111,0))
                     self.tableWidget_3.scrollToItem(self.tableWidget_3.item(num//4-1, 0))
@@ -837,12 +913,24 @@ class Ui_MainWindow(object):
                     self.loaddata(self.reg)
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
+                    self.loaddata5(self.cache_list[0])
+                    self.loaddata6(self.cache_list[5])
                     self.pc=self.varlist[0]
                     self.outtext=self.varlist[17]
                     self.bdd=self.varlist[16]
                     mem_pc=self.varlist[7]
                     write_pc=self.varlist[8]
                     execute_pc=self.varlist[9]
+                    self.predictor=self.varlist[33]
+                    if(self.predictor==-1):
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n-1\nNo Result")
+                    elif(self.predictor==1):
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n1\nHit")
+                    else:
+                        self.textBrowser_7.clear()
+                        self.textBrowser_7.append("\n0\nMiss")
                     decode_pc=self.varlist[10]
                     fetch_pc=self.varlist[11]
                     self.cpc=[fetch_pc[:],decode_pc[:],execute_pc[:],mem_pc[:],write_pc[:]]
@@ -867,6 +955,8 @@ class Ui_MainWindow(object):
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
                     self.pc=self.varlist[0]
+                    self.loaddata5(self.cache_list[0])
+                    self.loaddata6(self.cache_list[5])
                     self.outtext=self.varlist[20]
                     self.bdd=self.varlist[19]
                     mem_pc=self.varlist[7]
@@ -897,6 +987,8 @@ class Ui_MainWindow(object):
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
+                self.loaddata5(self.cache_list[0])
+                self.loaddata6(self.cache_list[5])
                 if(self.pc!=-1):
                     self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
                     self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
