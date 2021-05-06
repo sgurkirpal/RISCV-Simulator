@@ -32,13 +32,13 @@ def fetch_file(mc_file):
         
     return dict_text,dict_data
 
-def cacheinitialization():
-    print("Enter the value for cachesize(in Bytes only)")
-    cachesize=int(input())
-    print("Enter the value for blocksize(in Bytes only)")
-    blocksize=int(input())
-    print("Enter number of ways for SA")
-    k=int(input())
+def cacheinitialization(input_list):
+    #print("Enter the value for cachesize(in Bytes only)")
+    cachesize=input_list[0]
+    #print("Enter the value for blocksize(in Bytes only)")
+    blocksize=input_list[1]
+    #print("Enter number of ways for SA")
+    k=input_list[2]
     memorycachedict={}
     no_of_blocks=(cachesize//blocksize)
     no_of_sets=no_of_blocks//k

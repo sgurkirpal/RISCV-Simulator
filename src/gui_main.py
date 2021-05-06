@@ -5,7 +5,7 @@ import decode
 import execute
 import memory
 import Writeback
-def assemble():
+def assemble(input_list):
     clock=0
     instruction_dict={}    #dictionary storing instructions
     data_dict={}    #dictionary storing data in memory
@@ -19,7 +19,7 @@ def assemble():
             reg[i]='0x10000000'
     file=open("data.mc","r")
     memory_cache_dict={}
-    no_of_blocks,no_of_sets,memory_cache_dict,kset,blocksize,cachesize=fetch.cacheinitialization()
+    no_of_blocks,no_of_sets,memory_cache_dict,kset,blocksize,cachesize=fetch.cacheinitialization(input_list)
     instruction_cache_dict={}
     instruction_cache_dict=fetch.instruction_initialization(no_of_sets,kset,blocksize)
     instruction_dict,data_dict = fetch.fetch_file(file)
@@ -143,7 +143,7 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     else:
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
 
-    output+=temp_string_memory
+    #output+=temp_string_memory
     if('rd' in decoded_info):
         if(int(decoded_info['rd'],2)!=0):
             reg,temp_string_writeback=Writeback.write_back(muxy,[decoded_info['type'],decoded_info['opr'],decoded_info['rd']],reg)

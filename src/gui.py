@@ -555,10 +555,12 @@ class Ui_MainWindow(object):
                 data.write("")
 
         else:
-            self.cachesize=self.lineEdit_2.text()
-            self.blocksize=self.lineEdit_3.text()
-            self.sa_ways=self.lineEdit_4.text()
-            self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t,self.cache_list=gui_main.assemble()
+            self.cachesize=int(self.lineEdit_2.text())
+            self.blocksize=int(self.lineEdit_3.text())
+            self.sa_ways=int(self.lineEdit_4.text())
+            self.input_list=[self.cachesize,self.blocksize,self.sa_ways]
+            print(self.input_list)
+            self.ir,self.pc,self.reg,self.idi,self.dd,self.clock,self.pc_f,self.pc_t,self.cache_list=gui_main.assemble(self.input_list)
             self.loaddata(self.reg)
             self.loaddata2(self.idi)
             self.loaddata3(self.dd)
