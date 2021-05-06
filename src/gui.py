@@ -460,7 +460,9 @@ class Ui_MainWindow(object):
         self.clock-=1
 
     def loaddata5(self,dicti):
-        self.tableWidget_5.setColumnCount(self.blocksize*self.sa_ways+2)
+        print(dicti)
+        self.tableWidget_5.setColumnCount((self.blocksize+1)*self.sa_ways)
+        self.tableWidget_5.setRowCount(len(dicti)+1)
         for i in range(self.sa_ways):
             x="Way "+str(i+1)
             self.tableWidget_5.setItem(0,(self.blocksize+1)*i,QtWidgets.QTableWidgetItem(x))
@@ -475,16 +477,18 @@ class Ui_MainWindow(object):
                     if(j==0 or j==2):
                         continue
                     else:
+                        
                         if(dicti[x][k][j]!=-1):
-                            self.tableWidget_5.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(dicti[x][k][j]))
-                            
+                            if(j==1):
+                                self.tableWidget_5.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(hex(dicti[x][k][j])))
+                            else:
+                                self.tableWidget_5.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(dicti[x][k][j]))
                         else:
                             self.tableWidget_5.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(" "))
-                        
                         if(flag):
                             self.tableWidget_5.item(int(x)+1,i).setBackground(QtGui.QColor("#effd5f"))
                         else:
-                            self.tableWidget_5.item(int(x)+1,i).setBackground(QtGui.QColor("#c7ea46"))
+                            self.tableWidget_5.item(int(x)+1,i).setBackground(QtGui.QColor("#63c5da"))
                         i+=1
 
 
@@ -631,6 +635,7 @@ class Ui_MainWindow(object):
     def assembly(self):
         if(self.pipeline):
             if(self.radioBox_3.isChecked()):
+                self.tableWidget_5.clear()
                 self.tableWidget_4.clear()
                 self.cachesize=int(self.lineEdit_2.text())
                 self.blocksize=int(self.lineEdit_3.text())
@@ -663,6 +668,8 @@ class Ui_MainWindow(object):
                 data=open("output.txt","wt")
                 data.write("")
             else:
+
+                self.tableWidget_5.clear()
                 self.cachesize=int(self.lineEdit_2.text())
                 self.blocksize=int(self.lineEdit_3.text())
                 self.sa_ways=int(self.lineEdit_4.text())
@@ -672,6 +679,7 @@ class Ui_MainWindow(object):
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
+                
                 self.pc=self.varlist[0]
                 self.outtext=self.varlist[20]
                 self.bdd=self.varlist[19]
@@ -694,6 +702,7 @@ class Ui_MainWindow(object):
                 data.write("")
 
         else:
+            self.tableWidget_5.clear()
             self.cachesize=int(self.lineEdit_2.text())
             self.blocksize=int(self.lineEdit_3.text())
             self.sa_ways=int(self.lineEdit_4.text())
@@ -720,6 +729,7 @@ class Ui_MainWindow(object):
                     self.loaddata(self.reg)
                     self.loaddata2(self.idi)
                     self.loaddata3(self.dd)
+                    
                     self.pc=self.varlist[0]
                     self.outtext=self.varlist[17]
                     self.bdd=self.varlist[16]
@@ -786,6 +796,7 @@ class Ui_MainWindow(object):
                 self.loaddata(self.reg)
                 self.loaddata2(self.idi)
                 self.loaddata3(self.dd)
+                self.loaddata5(self.cache_list[0])
                 if(self.pc!=-1):
                     self.tableWidget_3.item(num//4,0).setBackground(QtGui.QColor(18,243,78))
                     self.tableWidget_3.item(num//4,1).setBackground(QtGui.QColor(18,243,78))
