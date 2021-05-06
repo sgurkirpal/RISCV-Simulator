@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
     sa_ways=0
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1360, 821)
+        MainWindow.resize(1920, 821)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -71,7 +71,58 @@ class Ui_MainWindow(object):
         self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_5.setObjectName("line_5")
         self.line_6 = QtWidgets.QFrame(self.centralwidget)
-        self.line_6.setGeometry(QtCore.QRect(940, 200, 420, 20))
+        self.line_6.setGeometry(QtCore.QRect(940, 200, 960, 20))
+        self.tabWidget = QTabWidget(self.centralwidget)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setGeometry(QRect(1360, 210, 980, 621))
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.label_16 = QtWidgets.QLabel(self.tab)
+        self.label_16.setGeometry(QtCore.QRect(220, 10, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_16.setFont(font)
+        self.label_16.setObjectName("label_10")
+        self.tableWidget_5 = QtWidgets.QTableWidget(self.tab)
+        self.tableWidget_5.setGeometry(QtCore.QRect(10, 40, 536, 521))
+        self.tableWidget_5.setRowCount(30)
+        self.tableWidget_5.setColumnCount(200)
+        self.tableWidget_5.setObjectName("tableWidget_5")
+        for i in range(200):
+            self.tableWidget_5.setColumnWidth(i,50)
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.tableWidget_6 = QtWidgets.QTableWidget(self.tab_2)
+        self.tableWidget_6.setGeometry(QtCore.QRect(10, 40, 536, 521))
+        self.tableWidget_6.setRowCount(30)
+        self.tableWidget_6.setColumnCount(200)
+        self.tableWidget_6.setObjectName("tableWidget_5")
+        for i in range(200):
+            self.tableWidget_6.setColumnWidth(i,50)
+        self.label_17 = QtWidgets.QLabel(self.tab_2)
+        self.label_17.setGeometry(QtCore.QRect(220, 10, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_17.setFont(font)
+        self.label_17.setObjectName("label_10")
+        self.tabWidget.addTab(self.tab_2, "")
+        self.tab_3 = QWidget()
+        self.tab_3.setObjectName(u"tab_3")
+        self.tab_3 = QWidget()
+        self.tab_3.setObjectName(u"tab_3")
+        
+        
+        self.label_18 = QtWidgets.QLabel(self.tab_3)
+        self.label_18.setGeometry(QtCore.QRect(220, 10, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_18.setFont(font)
+        self.label_18.setObjectName("label_10")
+        self.tabWidget.addTab(self.tab_3, "")
+
         self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_6.setObjectName("line_6")
@@ -153,6 +204,12 @@ class Ui_MainWindow(object):
         font.setPointSize(13)
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
+        self.label_12 = QtWidgets.QLabel(self.centralwidget)
+        self.label_12.setGeometry(QtCore.QRect(1550, 40, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_12.setFont(font)
+        self.label_12.setObjectName("label_12")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(950, 230, 101, 20))
         font = QtGui.QFont()
@@ -188,13 +245,14 @@ class Ui_MainWindow(object):
         self.lineEdit.setGeometry(QRect(1000, 180, 91, 21))
         self.lineEdit_2 = QLineEdit(self.centralwidget)
         self.lineEdit_2.setObjectName(u"lineEdit")
-        self.lineEdit_2.setGeometry(QRect(1000, 200, 91, 21))
+        self.lineEdit_2.setGeometry(QRect(1600, 100, 91, 21))
         self.lineEdit_3 = QLineEdit(self.centralwidget)
         self.lineEdit_3.setObjectName(u"lineEdit")
-        self.lineEdit_3.setGeometry(QRect(1000, 220, 91, 21))
+        self.lineEdit_3.setGeometry(QRect(1600, 140, 91, 21))
         self.lineEdit_4 = QLineEdit(self.centralwidget)
         self.lineEdit_4.setObjectName(u"lineEdit")
-        self.lineEdit_4.setGeometry(QRect(1000, 240, 91, 21))
+        self.lineEdit_4.setGeometry(QRect(1600, 180, 91, 21))
+
         self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_7.setGeometry(QtCore.QRect(1150, 180, 91, 28))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -218,6 +276,11 @@ class Ui_MainWindow(object):
         self.line_4.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
+        self.line_8 = QtWidgets.QFrame(self.centralwidget)
+        self.line_8.setGeometry(QtCore.QRect(1350, 20, 20, 791))
+        self.line_8.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_8.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_8.setObjectName("line_8")
         
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -230,7 +293,7 @@ class Ui_MainWindow(object):
         self.radioBox_2.setHidden(True)
         self.radioBox_3.setHidden(True)
         self.checkBox.setStyleSheet("background-color : red")
-        self.retranslateUi(MainWindow)
+        
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.tableWidget.setColumnWidth(0,50)
         self.tableWidget.setColumnWidth(1,42)
@@ -249,9 +312,28 @@ class Ui_MainWindow(object):
         self.tableWidget_4.setColumnCount(2000)
         self.tableWidget_4.setObjectName("tableWidget_4")
         self.tableWidget_4.setColumnWidth(0,80)
+        self.label_13 = QtWidgets.QLabel(self.centralwidget)
+        self.label_13.setGeometry(QtCore.QRect(1400, 100, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_13.setFont(font)
+        self.label_13.setObjectName("label_10")
+        self.label_14 = QtWidgets.QLabel(self.centralwidget)
+        self.label_14.setGeometry(QtCore.QRect(1400, 140, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_14.setFont(font)
+        self.label_14.setObjectName("label_10")
+        self.label_15 = QtWidgets.QLabel(self.centralwidget)
+        self.label_15.setGeometry(QtCore.QRect(1400, 180, 101, 20))
+        
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_15.setFont(font)
+        self.label_15.setObjectName("label_10")
         for i in range(self.tableWidget_4.columnCount()):
             self.tableWidget_4.setColumnWidth(i+1,45)
-
+        self.retranslateUi(MainWindow)
     def loaddata(self,dic):
         i=0
         for x in dic:
@@ -377,7 +459,39 @@ class Ui_MainWindow(object):
                         break
         self.clock-=1
 
-                
+    def loaddata5(self,dicti):
+        self.tableWidget_5.setColumnCount(self.blocksize*self.sa_ways+2)
+        for i in range(self.sa_ways):
+            x="Way "+str(i+1)
+            self.tableWidget_5.setItem(0,(self.blocksize+1)*i,QtWidgets.QTableWidgetItem(x))
+        
+        for x in dicti:
+            i=0
+            flag=0
+            for k in range(len(dicti[x])):
+                flag+=1
+                flag=flag%2  
+                for j in range (len(dicti[x][k])):
+                    if(j==0 or j==2):
+                        continue
+                    else:
+                        if(dicti[x][k][j]!=-1):
+                            self.tableWidget_5.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(dicti[x][k][j]))
+                            
+                        else:
+                            self.tableWidget_5.setItem(int(x)+1,i,QtWidgets.QTableWidgetItem(" "))
+                        
+                        if(flag):
+                            self.tableWidget_5.item(int(x)+1,i).setBackground(QtGui.QColor("#effd5f"))
+                        else:
+                            self.tableWidget_5.item(int(x)+1,i).setBackground(QtGui.QColor("#c7ea46"))
+                        i+=1
+
+
+                    
+                    
+
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -391,7 +505,9 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Register View"))
         self.label_4.setText(_translate("MainWindow", "Memory View"))
         self.label_2.setText(_translate("MainWindow", "Output"))
-        
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab),_translate("MainWindow", u"Data Cache", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2),_translate("MainWindow", u"Instruction Cache", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3),_translate("MainWindow", u"LRU Table", None))
         self.pushButton_5.setText(_translate("MainWindow", "STEP"))
         self.pushButton_6.setText(_translate("MainWindow", "ASSEMBLE"))
         self.label_5.setText(_translate("MainWindow", "PC :"))
@@ -403,6 +519,13 @@ class Ui_MainWindow(object):
         
         self.label_7.setText(_translate("MainWindow", "Instructions"))
         self.label_9.setText(_translate("MainWindow", "Control Knobs"))
+        self.label_12.setText(_translate("MainWindow", "Cache Memory"))
+        self.label_13.setText(_translate("MainWindow", "Cache Size"))
+        self.label_14.setText(_translate("MainWindow", "Block Size"))
+        self.label_15.setText(_translate("MainWindow", "Ways for SA"))
+        self.label_16.setText(_translate("MainWindow", "Data Cache"))
+        self.label_17.setText(_translate("MainWindow", "Instruction Cache"))
+        self.label_18.setText(_translate("MainWindow", "LRU Table"))
         self.label_10.setText(_translate("MainWindow", "1-Bit                    Prediction:\nBranch Predictor     Hit/Miss:"))
         self.label_11.setText(_translate("MainWindow", "Block Diagram of Instructions"))
         self.label_8.setText(_translate("MainWindow", "Clock:"))
@@ -415,6 +538,8 @@ class Ui_MainWindow(object):
         self.label.adjustSize()
         self.label_2.adjustSize()
         self.label_3.adjustSize()
+        
+        self.label_12.adjustSize()
         self.label_4.adjustSize()
         self.label_5.adjustSize()
         self.label_6.adjustSize()
@@ -423,6 +548,12 @@ class Ui_MainWindow(object):
         self.label_10.adjustSize()
         self.label_11.adjustSize()
         self.checkBox.adjustSize()
+        self.label_15.adjustSize()
+        self.label_14.adjustSize()
+        self.label_13.adjustSize()
+        self.label_18.adjustSize()
+        self.label_17.adjustSize()
+        self.label_16.adjustSize()
         self.radioBox_2.adjustSize()
         self.radioBox_3.adjustSize()
         self.checkBox_4.adjustSize()
