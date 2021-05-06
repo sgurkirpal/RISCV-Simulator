@@ -25,7 +25,12 @@ def fetch_file(mc_file):
             flag=1
             continue
         if flag==0:
-            dict_text[words[0]]=words[1]
+            for i in range(4):
+                pc_val=words[0]
+                pc_val=int(pc_val,16)
+                pc_val=hex(pc_val+i)
+                pc_val='0x'+'0'*(10-len(pc_val))+pc_val[2:]
+                dict_text[pc_val]=words[1][2*i:2*i+2]    
         else:
             if(len(words[1])==3):
                 words[1]=words[1][:2]+'0'+words[1][2:]
@@ -76,3 +81,13 @@ def instruction_initialization(no_of_sets,k,blocksize):
             for _ in range(blocksize):
                 InstructionCacheDict[i][j].append(-1)
     return InstructionCacheDict
+
+def retrievingmachinecode(pc_val,instruction_dict,instruction_cache_dict,block_size,no_of_sets,clockcycle):
+    machine_code='0x'
+    for i in range(4):
+        pc_val=int(pc_val,16)
+        pc_val=hex(pc_val+i)
+        pc_val='0x'+'0'*(10-len(pc_val))+pc_val[2:]
+        a,instruction_cache_dict=memory.doing_load_cache(pc_val,instruction_cache_dict,block_size,no_of_sets,instruction_dict,clockcycle)
+        machine_code+=a[2:]
+    return machine_code
