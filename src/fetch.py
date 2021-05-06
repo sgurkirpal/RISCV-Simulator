@@ -73,7 +73,14 @@ def cacheinitialization(input_list):
 
 
 #instruction cache dict is exactly same as memory cache dict
-def instruction_initialization(no_of_sets,k,blocksize):
+def instruction_initialization(input_list):
+    cachesize=input_list[3]
+    #print("Enter the value for blocksize(in Bytes only)")
+    blocksize=input_list[4]
+    #print("Enter number of ways for SA")
+    k=input_list[5]
+    no_of_blocks=(cachesize//blocksize)
+    no_of_sets=no_of_blocks//k
     InstructionCacheDict={}
     for i in range(no_of_sets):
         InstructionCacheDict[i]=[]
@@ -84,7 +91,7 @@ def instruction_initialization(no_of_sets,k,blocksize):
             InstructionCacheDict[i][j].append(-1)
             for _ in range(blocksize):
                 InstructionCacheDict[i][j].append(-1)
-    return InstructionCacheDict
+    return InstructionCacheDict,no_of_blocks,no_of_sets,k,blocksize,cachesize
 
 def retrievingmachinecode(pc_val,instruction_dict,instruction_cache_dict,block_size,no_of_sets,clockcycle,hit,miss):
     machine_code='0x'
