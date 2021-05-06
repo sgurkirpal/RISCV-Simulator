@@ -70,10 +70,14 @@ def assemble(input_list):
     number_of_stalls_datahazards=0
     number_of_stalls_contolhazards=0
     number_of_alu_instructions=0
-    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict]
+    hit=0
+    miss=0
+    total_access=0
+    hit_miss_btb=-1
+    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access]    
     varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
         number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
-        number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
+        number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]
     return reg,instruction_dict,data_dict,clock,varlist,cache_list
 def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     pc=varlist[0]
@@ -103,6 +107,9 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     blocksize=cache_list[3]
     cachesize=cache_list[4]
     instruction_cache_dict=cache_list[5]
+    hit=cache_list[6]
+    miss=cache_list[7]
+    total_access=cache_list[8]
     output=""
     number_of_instructions=varlist[21]
     number_of_load_instruction=varlist[22]
@@ -116,6 +123,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     number_of_stalls_contolhazards=varlist[30]
     number_of_alu_instructions=varlist[31]
     buffers=varlist[32]
+    hit_miss_btb=varlist[33]
     new_var+=4
     if pc==-1:
         output+="Number of clock cycles ="+str(clock)+"\n"+\
@@ -134,7 +142,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     if len(write_pc)==0 and len(mem_pc)==0 and len(execute_pc)==0 and len(decode_pc)==0:
         varlist=[-1,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
                 number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
-                number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]    
+                number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]    
         return reg,instruction_dict,data_dict,clock,varlist,cache_list
     clock+=1
 
@@ -177,22 +185,22 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
         if(decoded_info[this_pc]['opr']=='lw'):
             rz=int(rz,16)
             muxy='0x'
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
                 muxy+=am[2:4]
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
                 muxy+=am[2:4]
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
                 muxy+=am[2:4]
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
@@ -200,7 +208,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
 
         elif(decoded_info[this_pc]['opr']=='lb'):
             muxy='0x'
-            am,memory_cache_dict=memory.doing_load_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict,hit,miss=memory.doing_load_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
             if(len(am)==3):
                 muxy+='0000000'+am[2]
 
@@ -213,12 +221,12 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
         elif(decoded_info[this_pc]['opr']=='lh'):
             rz=int(rz,16)
             muxy='0x'
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
                 muxy+=am[2:4]
-            am,memory_cache_dict=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock)
+            am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
             if(len(am)==3):
                 muxy+='0'+am[2]
             else:
@@ -232,20 +240,20 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr']],rm,data_dict,pc_temp)
             rz=int(rz,16)
             rm=str(rm)
-            memory_cache_dict=memory.doing_store_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[0:2],16),clock)
-            memory_cache_dict=memory.doing_store_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[2:4],16),clock)
-            memory_cache_dict=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock)
-            memory_cache_dict=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock)
+            memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[0:2],16),clock,hit,miss)
+            memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[2:4],16),clock,hit,miss)
+            memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock,hit,miss)
+            memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss)
         elif(decoded_info[this_pc]['opr']=='sh'):
             muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr']],rm,data_dict,pc_temp)
             rz=int(rz,16)
             rm=str(rm)
-            memory_cache_dict=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock)
-            memory_cache_dict=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock) 
+            memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock,hit,miss)
+            memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss) 
         elif(decoded_info[this_pc]['opr']=='sb'):
             muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr']],rm,data_dict,pc_temp)
             rm=str(rm)
-            memory_cache_dict=memory.doing_store_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock)
+            memory_cache_dict,hit,miss=memory.doing_store_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss)
         else:
             muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info[this_pc]['type'],decoded_info[this_pc]['opr']],rm,data_dict,pc_temp)
 
@@ -280,9 +288,11 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             if this_pc in btb:
                 if pc_final==btb[this_pc]:
                     output+="Prediction Successful ! for pc, "+str(this_pc)+"\n"
+                    hit_miss_btb=1
                     pass
                 else:
                     output+="Prediction MisMatched ! for pc, "+str(this_pc)+"\n"
+                    hit_miss_btb=0
                     number_of_mispredictions+=1
                     remove_decode=True
                     if pc_final in instruction_dict:
@@ -294,9 +304,11 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
                 btb[this_pc]=pc_final
                 if pc_final==fetch.increment_pc(this_pc):
                     output+="Prediction Successful ! for pc, "+str(this_pc)+"\n"
+                    hit_miss_btb=1
                     pass
                 else:
                     output+="Prediction MisMatched ! for pc, "+str(this_pc)+"\n"
+                    hit_miss_btb=0
                     number_of_mispredictions+=1
                     remove_decode=True
                     if pc_final in instruction_dict:
@@ -308,15 +320,15 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     if(dummy_val>0):
         number_of_stall_instructions+=1
         dummy_val-=4
-        cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict]
+        cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access]
         varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
             number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
-            number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
+            number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]
         return reg,instruction_dict,data_dict,clock,varlist,cache_list
     if len(decode_pc)!=0:
         this_pc=decode_pc[0]
         this_pc="0x"+(10-len(this_pc))*'0'+this_pc[2:]
-        instruction_register=instruction_register=fetch.retrievingmachinecode(this_pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock)
+        instruction_register=instruction_register,hit,miss=fetch.retrievingmachinecode(this_pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock,hit,miss)
         output+="Fetch Instruction "+str(instruction_register)+" from address "+str(this_pc)+"\n"
         if(this_pc!='0x00000000' and this_pc!='0x00000004'):
             flowchart_list.append(this_pc)
@@ -330,10 +342,10 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
             output+="pc "+str(this_pc)+" is flushed because of prediction mismatched\n"
             flowchart_list[len(flowchart_list)-1]=-1
             remove_decode=False
-            cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict]
+            cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access]
             varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
                 number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
-                number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
+                number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]
             return reg,instruction_dict,data_dict,clock,varlist,cache_list
         remove_decode=False
         pc_temp=fetch.increment_pc(this_pc)
@@ -389,6 +401,6 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     
     varlist=[pc,pc_temp,decoded_info,rz,rm,muxy,btb,mem_pc,write_pc,execute_pc,decode_pc,fetch_pc,buffer_var,buffer_val_for_rd,control_inst,remove_decode,dummy_val,buffer_memory,new_var,flowchart_list,output,
             number_of_instructions,number_of_load_instruction,number_of_store_instruction,number_of_control_instructions,number_of_stall_instructions,
-            number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers]
-    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict]
+            number_of_mispredictions,number_of_datahazards,number_of_contolhazards,number_of_stalls_datahazards,number_of_stalls_contolhazards,number_of_alu_instructions,buffers,hit_miss_btb]
+    cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access]
     return reg,instruction_dict,data_dict,clock,varlist,cache_list
