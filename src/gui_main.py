@@ -61,11 +61,17 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     pc="0x"+(10-len(pc))*'0'+pc[2:]
     if pc not in instruction_dict:
         pc=-1
+        output+="Total Number of Data Cache Accesses: "+str(total_access)+"\n"+\
+            "Total number of Misses in Data Cache: "+str(miss)+"\n"+\
+                "Total number of Hits in Data Cache: "+str(hit)+"\n"+\
+                    "Total Number of Instruction Cache Accesses: "+str(Ins_access)+"\n"+\
+            "Total number of Misses in Instruction Cache: "+str(Ins_miss)+"\n"+\
+                "Total number of Hits in Instruction Cache: "+str(Ins_hit)+"\n"
         cache_list=[memory_cache_dict,no_of_blocks,no_of_sets,blocksize,cachesize,instruction_cache_dict,hit,miss,total_access,Ins_hit,Ins_miss,Ins_access,Ins_no_of_blocks,Ins_no_of_sets,Ins_kset,Ins_blocksize,Ins_cachesize]
         return instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register,clock,output,cache_list
     clock+=1
-    Ins_access+=1
-    instruction_register,Ins_hit,Ins_miss=fetch.retrievingmachinecode(pc,instruction_dict,instruction_cache_dict,Ins_blocksize,Ins_no_of_sets,clock,Ins_hit,Ins_miss)
+    Ins_access+=4
+    instruction_register,Ins_hit,Ins_miss,output=fetch.retrievingmachinecode(pc,instruction_dict,instruction_cache_dict,Ins_blocksize,Ins_no_of_sets,clock,Ins_hit,Ins_miss,output)
     #instruction_register=instruction_dict[pc]
     pc_temp=fetch.increment_pc(pc)
     decoded_info=decode.decode(instruction_register)
@@ -93,22 +99,22 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         total_access+=4
         rz=int(rz,16)
         muxy='0x'
-        am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
+        am,memory_cache_dict,hit,miss,output=memory.doing_load_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
         if(len(am)==3):
             muxy+='0'+am[2]
         else:
             muxy+=am[2:4]
-        am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
+        am,memory_cache_dict,hit,miss,output=memory.doing_load_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
         if(len(am)==3):
             muxy+='0'+am[2]
         else:
             muxy+=am[2:4]
-        am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
+        am,memory_cache_dict,hit,miss,output=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
         if(len(am)==3):
             muxy+='0'+am[2]
         else:
             muxy+=am[2:4]
-        am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
+        am,memory_cache_dict,hit,miss,output=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
         if(len(am)==3):
             muxy+='0'+am[2]
         else:
@@ -117,7 +123,7 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     elif(decoded_info['opr']=='lb'):
         total_access+=1
         muxy='0x'
-        am,memory_cache_dict,hit,miss=memory.doing_load_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
+        am,memory_cache_dict,hit,miss,output=memory.doing_load_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
         if(len(am)==3):
             muxy+='0000000'+am[2]
 
@@ -131,12 +137,12 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         total_access+=2
         rz=int(rz,16)
         muxy='0x'
-        am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
+        am,memory_cache_dict,hit,miss,output=memory.doing_load_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
         if(len(am)==3):
             muxy+='0'+am[2]
         else:
             muxy+=am[2:4]
-        am,memory_cache_dict,hit,miss=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss)
+        am,memory_cache_dict,hit,miss,output=memory.doing_load_cache(hex(rz),memory_cache_dict,blocksize,no_of_sets,data_dict,clock,hit,miss,output)
         if(len(am)==3):
             muxy+='0'+am[2]
         else:
@@ -151,24 +157,24 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
         rz=int(rz,16)
         rm=str(rm)
-        memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[0:2],16),clock,hit,miss,output)
-        memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[2:4],16),clock,hit,miss,output)
-        memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock,hit,miss,output)
-        memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss,output)
+        memory_cache_dict,hit,miss,output=memory.doing_store_cache(hex(rz+3),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[0:2],16),clock,hit,miss,output)
+        memory_cache_dict,hit,miss,output=memory.doing_store_cache(hex(rz+2),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[2:4],16),clock,hit,miss,output)
+        memory_cache_dict,hit,miss,output=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock,hit,miss,output)
+        memory_cache_dict,hit,miss,output=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss,output)
     
     elif(decoded_info['opr']=='sh'):
         total_access+=2
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
         rz=int(rz,16)
         rm=str(rm)
-        memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock,hit,miss,output)
-        memory_cache_dict,hit,miss=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss,output) 
+        memory_cache_dict,hit,miss,output=memory.doing_store_cache(hex(rz+1),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[4:6],16),clock,hit,miss,output)
+        memory_cache_dict,hit,miss,output=memory.doing_store_cache(hex(rz+0),memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss,output) 
     
     elif(decoded_info['opr']=='sb'):
         total_access+=1
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)
         rm=str(rm)
-        memory_cache_dict,hit,miss=memory.doing_store_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss,output)
+        memory_cache_dict,hit,miss,output=memory.doing_store_cache(rz,memory_cache_dict,blocksize,no_of_sets,data_dict,int(rm[6:8],16),clock,hit,miss,output)
     
     else:
         muxy,data_dict,temp_string_memory=memory.memory(0x0,rz,[decoded_info['type'],decoded_info['opr']],rm,data_dict,pc_temp)

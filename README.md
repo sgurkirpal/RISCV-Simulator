@@ -1,4 +1,4 @@
-# RISCV-Simulator Phase 2 
+# RISCV-Simulator Phase 3
 
 =============================================
 Functional Simulator for RISC Processor
@@ -52,17 +52,35 @@ How to run
 	|	|
 	|	| 
 	| A window will appear
-	| 2. Firstly click on Assemble
- 	| If you want to run the code step by step:-
-	| >>>>Click on run button on the gui 
-	|	-In output log, will get the output after each step
-	|	-Like the value stored in the register, opcode,immediate, Instruction Type etc.
+	| On the right side of GUI
+	| Enter the input in Cache Memory block for
+	| 1. Cache Size:- Input should be only integer and it should be in bytes
+	| 2. Block Size :- It should be integer and should be in bytes
+	| 3. Ways for SA :- Enter the value for k way set associative(k=this input)
+	|
+	|---------------------------------------------------------
+	| After this click on Assemble button
+	|---------------------------------------------------------
+	| Now you have two options to proceed further
+	| 1. Going step by step
+	| 2. running the whole code together
+ 	|
+	|
+	|--If you want to run the code step by step:-
+	| >>>>Click on Step button on the gui 
+	|	-In output log, Output after each step will get printed
+	|	- Detailed view of output log is shown at the bottom of the README
+	|	-If the instruction is load or store:- Data cache will get updated accordingly
+	|
+	|
+	|
 	| If you want to run the whole code together:-
 	|
 	|
 	| >>>>Click on run button
 	|	-And the whole code will get executed
-	| 
+	|	-All the necessary things will get printed in the output log
+	| 	-You can see the Data cache as well as instruction cache on the GUI by switching tabs 
 	|
 	|
 	| 
@@ -97,7 +115,21 @@ How to run
 Assumptions
 ================
 Delimiter-0xffffc
+No. of Accesses:- like in Sw and lw instruction, our code is byte addressable so we are checking byte by byte
+for eg in lw instruction:- word is 4byte 
+so firstly we will check for 1st byte of the word
+then for 2nd byte 
+and in all these steps we are accessing data cache 
+so I am calculating no. of accesses to be 4 in this case
 
+No. of hits and misses:- same is the situation for hits and misses in case of lw and sw. as the word is 4 bytes so I am accessing data cache 4 times so I am counting hits and misses accordingly in each and every access.
+
+No. of accesses of data cache and instruction cache:- we printed the total accesses of data cache and instruction cache separately.
+No. of hits and No. of misses:- printed no. of hits and no. of misses separately in case of data cache and instruction cache.
+
+Input:-1. Total sets should not be equal to 0
+	   2. Block size should be less than cache size
+	   3. (cachesize//block size)//(k way associativity) this value should be greater than 0
 
 ==================
 More About GUI
@@ -108,6 +140,14 @@ Output
 --Instruction type
 --Rs1,RS2,Immediate values
 --Messages like which function executed.
+-------------------------------------
+In case of lw, sw instructions
+--Printing the data cache structure
+--It will show the tag, blockoffset and index for a particular instruction
+--Will also tell whether the cache accessing is missed or hit.
+--In case of miss, it will show the value of the block which we have to replace and we found it using lru method
+--This is actually the victim block which we will replace from the data cache
+--Similarly we will do for instruction cache.
 
 Output log:-
 --By clicking on this button, complete output file will be displayed

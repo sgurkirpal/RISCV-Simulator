@@ -33,6 +33,9 @@ class Ui_MainWindow(object):
     predictor=0
     blocksize=0
     sa_ways=0
+    cachesize_instruction=0
+    blocksize_instruction=0
+    sa_ways_instruction=0
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1920, 821)
@@ -110,19 +113,7 @@ class Ui_MainWindow(object):
         self.label_17.setFont(font)
         self.label_17.setObjectName("label_10")
         self.tabWidget.addTab(self.tab_2, "")
-        self.tab_3 = QWidget()
-        self.tab_3.setObjectName(u"tab_3")
-        self.tab_3 = QWidget()
-        self.tab_3.setObjectName(u"tab_3")
         
-        
-        self.label_18 = QtWidgets.QLabel(self.tab_3)
-        self.label_18.setGeometry(QtCore.QRect(220, 10, 101, 20))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_18.setFont(font)
-        self.label_18.setObjectName("label_10")
-        self.tabWidget.addTab(self.tab_3, "")
 
         self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -206,7 +197,7 @@ class Ui_MainWindow(object):
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
         self.label_12 = QtWidgets.QLabel(self.centralwidget)
-        self.label_12.setGeometry(QtCore.QRect(1550, 40, 101, 20))
+        self.label_12.setGeometry(QtCore.QRect(1550, 30, 101, 20))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_12.setFont(font)
@@ -253,7 +244,27 @@ class Ui_MainWindow(object):
         self.lineEdit_4 = QLineEdit(self.centralwidget)
         self.lineEdit_4.setObjectName(u"lineEdit")
         self.lineEdit_4.setGeometry(QRect(1600, 180, 91, 21))
-
+        self.lineEdit_5 = QLineEdit(self.centralwidget)
+        self.lineEdit_5.setObjectName(u"lineEdit")
+        self.lineEdit_5.setGeometry(QRect(1780, 100, 91, 21))
+        self.lineEdit_6 = QLineEdit(self.centralwidget)
+        self.lineEdit_6.setObjectName(u"lineEdit")
+        self.lineEdit_6.setGeometry(QRect(1780, 140, 91, 21))
+        self.lineEdit_7 = QLineEdit(self.centralwidget)
+        self.lineEdit_7.setObjectName(u"lineEdit")
+        self.lineEdit_7.setGeometry(QRect(1780, 180, 91, 21))
+        self.label_18 = QtWidgets.QLabel(self.centralwidget)
+        self.label_18.setGeometry(QtCore.QRect(1780, 60, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_18.setFont(font)
+        self.label_18.setObjectName("label_10")
+        self.label_19 = QtWidgets.QLabel(self.centralwidget)
+        self.label_19.setGeometry(QtCore.QRect(1600, 60, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_19.setFont(font)
+        self.label_19.setObjectName("label_10")
         self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_7.setGeometry(QtCore.QRect(1150, 180, 91, 28))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -492,11 +503,11 @@ class Ui_MainWindow(object):
                         i+=1
 
     def loaddata6(self,dicti):
-        self.tableWidget_6.setColumnCount((self.blocksize+1)*self.sa_ways)
+        self.tableWidget_6.setColumnCount((self.blocksize_instruction+1)*self.sa_ways_instruction)
         self.tableWidget_6.setRowCount(len(dicti)+1)
-        for i in range(self.sa_ways):
+        for i in range(self.sa_ways_instruction):
             x="Way "+str(i+1)
-            self.tableWidget_6.setItem(0,(self.blocksize+1)*i,QtWidgets.QTableWidgetItem(x))
+            self.tableWidget_6.setItem(0,(self.blocksize_instruction+1)*i,QtWidgets.QTableWidgetItem(x))
         
         for x in dicti:
             i=0
@@ -541,7 +552,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Output"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab),_translate("MainWindow", u"Data Cache", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2),_translate("MainWindow", u"Instruction Cache", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3),_translate("MainWindow", u"LRU Table", None))
+        
         self.pushButton_5.setText(_translate("MainWindow", "STEP"))
         self.pushButton_6.setText(_translate("MainWindow", "ASSEMBLE"))
         self.label_5.setText(_translate("MainWindow", "PC :"))
@@ -553,13 +564,15 @@ class Ui_MainWindow(object):
         
         self.label_7.setText(_translate("MainWindow", "Instructions"))
         self.label_9.setText(_translate("MainWindow", "Control Knobs"))
+        self.label_18.setText(_translate("MainWindow", "Instruction"))
         self.label_12.setText(_translate("MainWindow", "Cache Memory"))
+        self.label_19.setText(_translate("MainWindow", "Data"))
         self.label_13.setText(_translate("MainWindow", "Cache Size"))
         self.label_14.setText(_translate("MainWindow", "Block Size"))
         self.label_15.setText(_translate("MainWindow", "Ways for SA"))
         self.label_16.setText(_translate("MainWindow", "Data Cache"))
         self.label_17.setText(_translate("MainWindow", "Instruction Cache"))
-        self.label_18.setText(_translate("MainWindow", "LRU Table"))
+
         self.label_10.setText(_translate("MainWindow", "1-Bit                    Prediction:\nBranch Predictor     Hit/Miss:"))
         self.label_11.setText(_translate("MainWindow", "Block Diagram of Instructions"))
         self.label_8.setText(_translate("MainWindow", "Clock:"))
@@ -585,7 +598,6 @@ class Ui_MainWindow(object):
         self.label_15.adjustSize()
         self.label_14.adjustSize()
         self.label_13.adjustSize()
-        self.label_18.adjustSize()
         self.label_17.adjustSize()
         self.label_16.adjustSize()
         self.radioBox_2.adjustSize()
@@ -921,7 +933,7 @@ class Ui_MainWindow(object):
                     mem_pc=self.varlist[7]
                     write_pc=self.varlist[8]
                     execute_pc=self.varlist[9]
-                    self.predictor=self.varlist[33]
+                    self.predictor=self.varlist[30]
                     if(self.predictor==-1):
                         self.textBrowser_7.clear()
                         self.textBrowser_7.append("\n-1\nNo Result")

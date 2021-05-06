@@ -203,3 +203,13 @@ then block diagram will be:-
 --all the outputs which we have to print will get printed in the end in output file
 --if we check the checkbox "PRINT ALL PRINT REGISTER" , and press the button "PRINT PIPELINE REGISTER",
   all of the buffers will get printed at the end of output.
+
+Data Cache Block
+-- It displays all the sets in data cache
+-- Different associative ways in a set is differentiated by lime and cyan colours
+-- First Column in each way gives the Tag of that block
+-- The next n (n=blocksize) columns gives the data of that particular tag
+
+Instruction Block
+-- It displays the cache memory for instructions
+-- Display format is similar to the Data Cache Block
