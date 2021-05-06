@@ -30,7 +30,7 @@ def fetch_file(mc_file):
                 pc_val=int(pc_val,16)
                 pc_val=hex(pc_val+i)
                 pc_val='0x'+'0'*(10-len(pc_val))+pc_val[2:]
-                dict_text[pc_val]=words[1][2*i:2*i+2]    
+                dict_text[pc_val]="0x"+words[1][2*i+2:2*i+4]    
         else:
             if(len(words[1])==3):
                 words[1]=words[1][:2]+'0'+words[1][2:]

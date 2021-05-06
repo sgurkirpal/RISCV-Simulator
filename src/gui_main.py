@@ -44,7 +44,8 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
         pc=-1
         return instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_register,clock,output,cache_list
     clock+=1
-    instruction_register=instruction_dict[pc]
+    instruction_register=fetch.retrievingmachinecode(pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock)
+    #instruction_register=instruction_dict[pc]
     pc_temp=fetch.increment_pc(pc)
     decoded_info=decode.decode(instruction_register)
     rm=None
