@@ -24,6 +24,7 @@ def assemble():
     instruction_cache_dict=fetch.instruction_initialization(no_of_sets,k,blocksize)
     instruction_dict,data_dict = fetch.fetch_file(file)
     
+    
     pc="0x0"    #initial pc is by default 0x0
     pc_temp="0x0"
     pc_final="0x0"

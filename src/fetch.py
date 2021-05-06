@@ -54,7 +54,6 @@ def cacheinitialization():
         memorycachedict[i]=[]
         for j in range(k):
             memorycachedict[i].append([])
-            print(memorycachedict)
             memorycachedict[i][j].append(0)
             memorycachedict[i][j].append(-1)
             memorycachedict[i][j].append(-1)
