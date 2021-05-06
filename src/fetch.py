@@ -1,4 +1,5 @@
 #Returns two dictionaries one with the text and other with data part
+import memory
 
 def increment_pc(pc):   #takes a hex string as input and returns a hex string with 0x4 added in it
     pc_int=int(pc,16)
