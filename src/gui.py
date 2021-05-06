@@ -110,19 +110,7 @@ class Ui_MainWindow(object):
         self.label_17.setFont(font)
         self.label_17.setObjectName("label_10")
         self.tabWidget.addTab(self.tab_2, "")
-        self.tab_3 = QWidget()
-        self.tab_3.setObjectName(u"tab_3")
-        self.tab_3 = QWidget()
-        self.tab_3.setObjectName(u"tab_3")
         
-        
-        self.label_18 = QtWidgets.QLabel(self.tab_3)
-        self.label_18.setGeometry(QtCore.QRect(220, 10, 101, 20))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_18.setFont(font)
-        self.label_18.setObjectName("label_10")
-        self.tabWidget.addTab(self.tab_3, "")
 
         self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -541,7 +529,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Output"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab),_translate("MainWindow", u"Data Cache", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2),_translate("MainWindow", u"Instruction Cache", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3),_translate("MainWindow", u"LRU Table", None))
+        
         self.pushButton_5.setText(_translate("MainWindow", "STEP"))
         self.pushButton_6.setText(_translate("MainWindow", "ASSEMBLE"))
         self.label_5.setText(_translate("MainWindow", "PC :"))
@@ -559,7 +547,7 @@ class Ui_MainWindow(object):
         self.label_15.setText(_translate("MainWindow", "Ways for SA"))
         self.label_16.setText(_translate("MainWindow", "Data Cache"))
         self.label_17.setText(_translate("MainWindow", "Instruction Cache"))
-        self.label_18.setText(_translate("MainWindow", "LRU Table"))
+       
         self.label_10.setText(_translate("MainWindow", "1-Bit                    Prediction:\nBranch Predictor     Hit/Miss:"))
         self.label_11.setText(_translate("MainWindow", "Block Diagram of Instructions"))
         self.label_8.setText(_translate("MainWindow", "Clock:"))
@@ -585,7 +573,6 @@ class Ui_MainWindow(object):
         self.label_15.adjustSize()
         self.label_14.adjustSize()
         self.label_13.adjustSize()
-        self.label_18.adjustSize()
         self.label_17.adjustSize()
         self.label_16.adjustSize()
         self.radioBox_2.adjustSize()

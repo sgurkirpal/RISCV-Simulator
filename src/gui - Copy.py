@@ -684,13 +684,6 @@ class Ui_MainWindow(object):
                     data.write("X----------------X\nCode Ran Successfully\n")
                 data.write(self.outtext)
                 data.write("\n\n")
-            else:
-                self.outtext=gui_stalling.runstep(self.reg,self.idi,self.dd,self.clock,self.varlist)
-                data=open("output.txt",'a')
-                data.write(self.outtext)
-                data.write("\n\n")
-                self.textBrowser.append(self.outtext)
-                return
     def run(self):
         if(self.pipeline):
             if(self.radioBox_3.isChecked()):
