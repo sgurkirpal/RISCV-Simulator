@@ -79,7 +79,7 @@ def runstep(instruction_dict,pc,pc_final,pc_temp,reg,data_dict,instruction_regis
     elif(l[1]=='sw'):
         rz=int(rz,16)
         rm=str(rm)
-        memory_cache_dict=memory.doing_store_cache(hex(rz+3),memorycachedict,block_size,no_of_sets,memory_dictionary,int(rm[0:2],2))
+        memory_cache_dict=memory.doing_store_cache(hex(rz+3),memorycachedict,block_size,no_of_sets,memory_dictionary,int(rm[0:2],2),hit,miss,output)
         memory_cache_dict=memory.doing_store_cache(hex(rz+2),memorycachedict,block_size,no_of_sets,memory_dictionary,int(rm[2:4],2))
         memory_cache_dict=memory.doing_store_cache(hex(rz+1),memorycachedict,block_size,no_of_sets,memory_dictionary,int(rm[4:6],2))
         memory_cache_dict=memory.doing_store_cache(hex(rz+0),memorycachedict,block_size,no_of_sets,memory_dictionary,int(rm[6:8],2))
