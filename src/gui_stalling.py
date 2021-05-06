@@ -346,7 +346,7 @@ def runstep(reg,instruction_dict,data_dict,clock,varlist,cache_list):
     if len(decode_pc)!=0:
         this_pc=decode_pc[0]
         this_pc="0x"+(10-len(this_pc))*'0'+this_pc[2:]
-        instruction_register=instruction_register,Ins_hit,Ins_miss,output=fetch.retrievingmachinecode(this_pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock,hit,miss,output)
+        instruction_register=instruction_register,Ins_hit,Ins_miss,output=fetch.retrievingmachinecode(this_pc,instruction_dict,instruction_cache_dict,blocksize,no_of_sets,clock,Ins_hit,Ins_miss,output)
         output+="Fetch Instruction "+str(instruction_register)+" from address "+str(this_pc)+"\n"
         if(this_pc!='0x00000000' and this_pc!='0x00000004'):
             flowchart_list.append(this_pc)

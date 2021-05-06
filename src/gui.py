@@ -933,7 +933,7 @@ class Ui_MainWindow(object):
                     mem_pc=self.varlist[7]
                     write_pc=self.varlist[8]
                     execute_pc=self.varlist[9]
-                    self.predictor=self.varlist[33]
+                    self.predictor=self.varlist[30]
                     if(self.predictor==-1):
                         self.textBrowser_7.clear()
                         self.textBrowser_7.append("\n-1\nNo Result")
