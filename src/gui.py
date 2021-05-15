@@ -614,7 +614,7 @@ class Ui_MainWindow(object):
         self.checkBox.clicked.connect(lambda: self.pipelining())
     def buffers(self):
         tempx=""
-        nice=self.varlist[-1]
+        nice=self.varlist[-2]
         keys=self.lineEdit.text()
         if(nice.get(str(keys),-1)!=-1):
             for x in nice[str(keys)]:
